@@ -1,0 +1,121 @@
+X-Mda-Received: from <mx-27-60.mail.sina.com.cn>([<10.182.27.60>])
+ by <micagent-22-86.mda.fmail.bx.sinanode.com> with LMTP id <1318782>
+ Oct 30 2022 05:50:55 +0800 (CST)
+X-Sina-MID:04BCBC288889DE9324332D097D2639C1BC00000000000001
+X-Sina-Attnum:0
+Received: (qmail 20783 invoked by uid 1044); 30 Oct 2022 05:50:55 +0800 (CST)
+X-SMAIL-SPAM-FILTER: 20776 OK; Sun, 30 Oct 2022 05:50:55 +0800 (CST)
+X-subc-flag: YES
+Received: from out-20.smtp.github.com (HELO out-20.smtp.github.com)([192.30.252.203])
+	by sina.com (10.182.27.60) with SMTP
+	id 635DA03D000050FE; Sat, 30 Oct 2022 05:50:55 +0800 (CST)
+X-Sender: noreply@github.com
+Authentication-Results: sina.com; dkim=pass (Signature verified) header.i=github.com
+Received-SPF: Pass (sina.com: SPF record at github.com designates 192.30.252.203 as permitted sender) identity=from;
+	client-ip=192.30.252.203;
+	receiver=sina.com;
+	envelope-from=noreply@github.com;
+	helo=out-20.smtp.github.com
+X-SMAIL-MID: 208758396958
+Received: from github-lowworker-f373a82.va3-iad.github.net (github-lowworker-f373a82.va3-iad.github.net [10.48.114.27])
+	by smtp.github.com (Postfix) with ESMTP id 25781E0170
+	for <jas31@sina.com>; Sat, 29 Oct 2022 14:50:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1667080253;
+	bh=XXGU6eCpEsXYy7Dw22aGeNlXbAt8Jhm49VF34+JMFlQ=;
+	h=Date:From:Reply-To:To:Cc:Subject:List-ID:List-Archive:List-Post:
+	 List-Unsubscribe:From;
+	b=jQPZsGPVgzmfYNjE1SRR4qHojJQFWib/4S8I5C6YGG8Uc6M+x/ob1eJg1ei08rWHz
+	 MBv/VTD4tPSmt06CAhgeFlox76z2f7l1zz6OGNYT11GKEs82OP5icsFS7U0ZPtbrB2
+	 cywjuesi4k5Fpp9RbxJMyIMYfjaMhqUCDdlS5sXA=
+Date: Sat, 29 Oct 2022 14:50:53 -0700
+From: dan-m8t <notifications@github.com>
+Reply-To: AdguardTeam/AdGuardHome <reply+AD2VYOODWNG75MS4CFH7U2OBNLJL3EVBMXHAARH2EQ@reply.github.com>
+To: AdguardTeam/AdGuardHome <AdGuardHome@noreply.github.com>
+Cc: Subscribed <subscribed@noreply.github.com>
+Message-ID: <AdguardTeam/AdGuardHome/repo-discussions/5079@github.com>
+Subject: [AdguardTeam/AdGuardHome] Where is "blocked services" configuration
+ stored? (Discussion #5079)
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_635da03d17fc5_41efd4f81710bd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Precedence: list
+X-GitHub-Sender: dan-m8t
+X-GitHub-Recipient: jas31
+X-GitHub-Reason: subscribed
+List-ID: AdguardTeam/AdGuardHome <AdGuardHome.AdguardTeam.github.com>
+List-Archive: https://github.com/AdguardTeam/AdGuardHome
+List-Post: <mailto:reply+AD2VYOODWNG75MS4CFH7U2OBNLJL3EVBMXHAARH2EQ@reply.github.com>
+List-Unsubscribe: <mailto:unsub+AD2VYOODWNG75MS4CFH7U2OBNLJL3EVBMXHAARH2EQ@reply.github.com>,
+ <https://github.com/notifications/unsubscribe/AD2VYOMHKXIQIJLNMIYMUW3WFWL33ANCNFSM6AAAAAARR7DBSQ>
+X-Auto-Response-Suppress: All
+X-GitHub-Recipient-Address: jas31@sina.com
+
+
+----==_mimepart_635da03d17fc5_41efd4f81710bd
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+I am wondering where AdGuard Home stores the config for blocked services?
+
+I mean this part:
+![Screenshot 2022-10-29 at 23-47-30 AdGuard Home](https://user-images.githubusercontent.com/48068660/198853619-4532b522-9584-4889-8702-d78faab1a80b.png)
+
+
+Context:
+
+I run AdGuard Home in Kubernetes and manage all the configuration with a configmap.
+
+Issue: When I edit the configmap the settings above always get overridden because of the new deployment. I tinkered around and looked inside the pod, AdGuardHome.yaml is stored at /tmp. I cp'ed the old one before I made changes in the blocked services settings but the config does not change. Seems this is not configureable over the configuration file? I checked the wiki but didn't find any parameter for that services.
+
+Any hint?
+
+Thanks
+
+-- 
+Reply to this email directly or view it on GitHub:
+https://github.com/AdguardTeam/AdGuardHome/discussions/5079
+You are receiving this because you are subscribed to this thread.
+
+Message ID: <AdguardTeam/AdGuardHome/repo-discussions/5079@github.com>
+----==_mimepart_635da03d17fc5_41efd4f81710bd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p></p>
+<p dir="auto">Hi,</p>
+<p dir="auto">I am wondering where AdGuard Home stores the config for blocked services?</p>
+<p dir="auto">I mean this part:<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/48068660/198853619-4532b522-9584-4889-8702-d78faab1a80b.png"><img src="https://user-images.githubusercontent.com/48068660/198853619-4532b522-9584-4889-8702-d78faab1a80b.png" alt="Screenshot 2022-10-29 at 23-47-30 AdGuard Home" style="max-width: 100%;"></a></p>
+<p dir="auto">Context:</p>
+<p dir="auto">I run AdGuard Home in Kubernetes and manage all the configuration with a configmap.</p>
+<p dir="auto">Issue: When I edit the configmap the settings above always get overridden because of the new deployment. I tinkered around and looked inside the pod, AdGuardHome.yaml is stored at /tmp. I cp'ed the old one before I made changes in the blocked services settings but the config does not change. Seems this is not configureable over the configuration file? I checked the wiki but didn't find any parameter for that services.</p>
+<p dir="auto">Any hint?</p>
+<p dir="auto">Thanks</p>
+
+<p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">&mdash;<br />Reply to this email directly, <a href="https://github.com/AdguardTeam/AdGuardHome/discussions/5079">view it on GitHub</a>, or <a href="https://github.com/notifications/unsubscribe-auth/AD2VYOLZZJRZKAXGVZ4XNBLWFWL33ANCNFSM6AAAAAARR7DBSQ">unsubscribe</a>.<br />You are receiving this because you are subscribed to this thread.<img src="https://github.com/notifications/beacon/AD2VYOLWVNUWSDFHXK2YR63WFWL33A5CNFSM6AAAAAARR7DBSSWGG33NNVSW45C7OR4XAZNKIRUXGY3VONZWS33OVJRW63LNMVXHIX3JMTHAARH2EQ.gif" height="1" width="1" alt="" /><span style="color: transparent; font-size: 0; display: none; visibility: hidden; overflow: hidden; opacity: 0; width: 0; height: 0; max-width: 0; max-height: 0; mso-hide: all">Message ID: <span>&lt;AdguardTeam/AdGuardHome/repo-discussions/5079</span><span>@</span><span>github</span><span>.</span><span>com&gt;</span></span></p>
+<script type="application/ld+json">[
+{
+"@context": "http://schema.org",
+"@type": "EmailMessage",
+"potentialAction": {
+"@type": "ViewAction",
+"target": "https://github.com/AdguardTeam/AdGuardHome/discussions/5079",
+"url": "https://github.com/AdguardTeam/AdGuardHome/discussions/5079",
+"name": "View Discussion"
+},
+"description": "View this Discussion on GitHub",
+"publisher": {
+"@type": "Organization",
+"name": "GitHub",
+"url": "https://github.com"
+}
+}
+]</script>
+----==_mimepart_635da03d17fc5_41efd4f81710bd--

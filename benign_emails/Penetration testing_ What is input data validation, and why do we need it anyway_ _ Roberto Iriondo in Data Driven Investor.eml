@@ -1,0 +1,1591 @@
+Delivered-To: lily.lawrence2019@gmail.com
+Received: by 2002:a0c:b886:0:0:0:0:0 with SMTP id y6csp99185qvf;
+        Fri, 8 Nov 2019 16:00:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz2pgDX0rJLIubFP02F7wpQPjFhH9NAIE7pdRGdiDxnLbwnNUufsyePFEh671hQ5nIrjOFp
+X-Received: by 2002:a17:906:6d4f:: with SMTP id a15mr11375626ejt.175.1573257637992;
+        Fri, 08 Nov 2019 16:00:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573257637; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OK6XTE2imLr62W1PRKU+1b3OSCLMcx8soAORlNz0hTu1fXz5NmZ8lMFfuRBqQsjmY2
+         Zf87mUzXVmFnPukcNR6SZ98fWoG33n/tw8d2aE1/FRQC6EnEe2sZx7D4hTKpS8D6Mpo4
+         cmalxE/TMR05rAdxp9P0glpqfa9O4GPp7D0mw5Kwo2aKVrgNqoT05uac6yTPX1D6noHe
+         UDMxXYXY7za0/+mbDYfDvaxtib+IaxaM6rtq2tggN3qZtHLNjaHh7MInxftdI29NnSR9
+         HaS3URxJIeK88kkz56SOe7897GIfAHDksMGd1lFPPT8Nxu2uAMao9TMv1PFnis/PTQAl
+         WahQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:subject:message-id:to:reply-to:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=xmJ0obe2BcVTMNzRQOCxftuuPsEMgZg9gv2EG+OXpT0=;
+        b=G3b4G8fn3ZD+0pm1m8JSWL9x3Mp3uyRyQxzSby1X44Cxc0JJfliZ1v1ruyF6jKZD8W
+         tZsu0oWw0a7TL4tNeReMEX1sBmCXvxXAh6StRBTYHWZ6EQNyllLR+nx94XrTrvhYHhBH
+         9e4cdcdc6I0mKxoIGAhA95IATSXB+nMi8r+k4c/inIzIDPzOEk2rrlhorjMagUaQdzrf
+         2I/0nwo0OhacueTpVgcLGGGuO7eB3xEuGq1mdc/3msUsa1NBpZ9tT0ylFNTWCpoX5jNa
+         aLRxQqoZqmqLnLS3ft8HxTneomL89bSUXU6yknRilpUSlWGah1DxNSWFeAIA7QCtScyA
+         vVlg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@medium.com header.s=m1 header.b=KkCjrshz;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=IJmxD6uP;
+       spf=pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 149.72.133.59 as permitted sender) smtp.mailfrom="bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+Return-Path: <bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com>
+Received: from o10.email.medium.com (o10.email.medium.com. [149.72.133.59])
+        by mx.google.com with ESMTPS id p92si5735508edd.407.2019.11.08.16.00.36
+        for <lily.lawrence2019@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Nov 2019 16:00:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 149.72.133.59 as permitted sender) client-ip=149.72.133.59;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@medium.com header.s=m1 header.b=KkCjrshz;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=IJmxD6uP;
+       spf=pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 149.72.133.59 as permitted sender) smtp.mailfrom="bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=medium.com; 
+	h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe; 
+	s=m1; bh=xmJ0obe2BcVTMNzRQOCxftuuPsEMgZg9gv2EG+OXpT0=; b=KkCjrsh
+	zcArF8XWXErI/OWj9qtaGNKCka3PWNvzkcEMiJ7xv+G2Ekio7Eu/NFAwnpN8R4fB
+	lzlW/ELaSuj6PBGbzgCKkDZuqlBjnQojFE4abUUoAyVJj/4KGgKuRc2mQD2dvHcj
+	llz1uJYpTbXxEjtKlKf+aedHYuCv6ltjUfD0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; 
+	d=sendgrid.info; 
+	h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe:x-feedback-id; 
+	s=smtpapi; bh=xmJ0obe2BcVTMNzRQOCxftuuPsEMgZg9gv2EG+OXpT0=; b=IJ
+	mxD6uPbAaUqRMZ4HX3TRQhQN2e8UChiEBzEavDDKaUNWOpIGGPZLvsZUrziDdeD9
+	pKv2DKwQiLG2JMobgdC82PPoVfBaB+nUljSc3YjZwBZ64qUU0M4Z7+8oKw7z46h7
+	9EzCzQeKvg+mr1DZbeEr4txa0P7Nf1UVY93WYRhRo=
+Received: by filter2001p1mdw1.sendgrid.net with SMTP id filter2001p1mdw1-19168-5DC5AFE4-D
+        2019-11-08 18:11:48.40556794 +0000 UTC m=+258459.391401476
+Received: from MTgyMzE0NA (ec2-54-175-48-214.compute-1.amazonaws.com [54.175.48.214])
+	by ismtpd0096p1iad2.sendgrid.net (SG) with HTTP id G5my2du2RZ-A_bfBLQRMhg
+	Fri, 08 Nov 2019 18:11:48.279 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=5ee6098c224703466c93ceee47f29e4cc3575bbf22ebb624a2cdb884ad85
+Date: Sat, 09 Nov 2019 00:00:00 +0000 (UTC)
+From: "Medium Daily Digest" <noreply@medium.com>
+Mime-Version: 1.0
+Reply-to: noreply@medium.com
+To: lily.lawrence2019@gmail.com
+Message-ID: <G5my2du2RZ-A_bfBLQRMhg@ismtpd0096p1iad2.sendgrid.net>
+Subject: Penetration testing: What is input data validation, and why do we need it anyway? | Roberto Iriondo in Data Driven Investor
+List-unsubscribe: <https://medium.com/me/email-settings/9c3bd689d8a4/2b108308fdc4?source=email-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69&type=social>
+X-rpcampaign: medium20191021122700
+X-SG-EID: pQ0Om+Ta8VX2X5lVOLqHqyWQdYH0p5FuHQUe1VZJYYTuuj7p3bGuf2AE6U9UZzaaycvccs/rb6Qyde
+ xGpNHNJgqXQ3cJVjg3ww8R+soJhACpVXV533LLsGODKl4+aPnosZPX7DLWhYDNjpXMTl3JD+x96Pum
+ Jxe52amYLH4RwKN10t7ORAabHpkRZ+ufh59EJW99JhCRP1x+VCuq56D+0zMheDpQdHcvbl+G+Aepg5
+ iPy3ocgjF/3gvQDPqPm1oG
+X-SG-ID: D6Z+UOEZAHNtlrjTKHUMD75AordC15kANr6foLtMLZdlXN6jSAaiLmiX5Bx5RvBnKOuY3dYYmurleI
+ iCxuhqySiFQorw1MXeGnVntTmi9idseEYa/2+YuYgccVXmIv7m6929gz1HYu/WRDxzlakgAyPxaEDV
+ UAuKgpGR4W34Ws+nLff+VqlpRO2vuBke2xkHxPr9fW4DytBKYcqC/lhb1g==
+X-Feedback-ID: 1823144:rksEbNtEQ6Bnz0TsDXX13UBrU6m1i9dl8uXhN1gSydA=:CZ/pKfOzmNDe1pfdb7RS5r3BtifnYSeAIqL52d1Ytoc=:SG
+
+--5ee6098c224703466c93ceee47f29e4cc3575bbf22ebb624a2cdb884ad85
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+Today's highlights
+
+Penetration testing: What is input data validation, and why do we need it=
+=E2=80=A6 (https://medium.com/@robiriondo/penetration-testing-what-is-input=
+-data-validation-and-why-do-we-need-it-anyway-98309d6f1db4?source=3Demail-9=
+c3bd689d8a4-1573236686908-digest.reader------0-59------------------73ebc871=
+_6173_42c2_8091_6f0ee7c08f69-1-----&sectionName=3Dtop)
+
+Unfortunately, a lot of web development agencies, and a large percentage of=
+ web designers still rely on=E2=80=A6
+Roberto Iriondo (https://medium.com/@robiriondo?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+ in Data Driven Investor (https://medium.com/datadriveninvestor?source=3Dem=
+ail-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc8=
+71_6173_42c2_8091_6f0ee7c08f69)
+6 min read
+
+
+Five Pentesting Tools and Techniques (That Every Sysadmin Should Know) (htt=
+ps://medium.com/@jeremy.trinka/five-pentesting-tools-and-techniques-that-sy=
+sadmins-should-know-about-4ceca1488bff?source=3Demail-9c3bd689d8a4-15732366=
+86908-digest.reader------1-59------------------73ebc871_6173_42c2_8091_6f0e=
+e7c08f69-1-----&sectionName=3Dtop)
+
+Step into the mind of a pentester.
+Jeremy Trinka (https://medium.com/@jeremy.trinka?source=3Demail-9c3bd689d8a=
+4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_80=
+91_6f0ee7c08f69)
+13 min read
+
+
+3 Foods You Should Throw Away Forever. (https://medium.com/@timrees/3-foods=
+-you-should-throw-away-forever-3eb7b5f38075?source=3Demail-9c3bd689d8a4-157=
+3236686908-digest.reader------2-73------------------73ebc871_6173_42c2_8091=
+_6f0ee7c08f69-1-----&sectionName=3Dtop)
+
+Unless you want to be ill and die young..
+Tim Rees (https://medium.com/@timrees?source=3Demail-9c3bd689d8a4-157323668=
+6908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c0=
+8f69)
+ in Noteworthy - The Journal Blog (https://medium.com/did-you-know-the-jour=
+nal-blog?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----------=
+--------------73ebc871_6173_42c2_8091_6f0ee7c08f69)
+7 min read
+
+
+I hired a wife. And my career took off. (https://medium.com/@chrismorgan_16=
+57/i-hired-a-wife-and-my-career-took-off-16dc8ae481fe?source=3Demail-9c3bd6=
+89d8a4-1573236686908-digest.reader------3-51------------------73ebc871_6173=
+_42c2_8091_6f0ee7c08f69-1-----&sectionName=3Dtop)
+
+Her name is Luisa. Late 20s, Brazilian, smiley, warm, beautiful. Last Fall,=
+ I hired her to take over for my=E2=80=A6
+Chris Morgan (https://medium.com/@chrismorgan_1657?source=3Demail-9c3bd689d=
+8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_=
+8091_6f0ee7c08f69)
+2 min read
+
+Quick reads
+
+The 2-Word Trick That Makes Small Talk Interesting (https://medium.com/@Dav=
+eSchools/the-2-word-trick-that-makes-small-talk-interesting-fdd4d5aa693?sou=
+rce=3Demail-9c3bd689d8a4-1573236686908-digest.reader------0-72-------------=
+-----73ebc871_6173_42c2_8091_6f0ee7c08f69-28-----&sectionName=3DquickReads)
+
+Podcast hosts like Guy Raz and Tim Ferriss use it often
+Dave Schools (https://medium.com/@DaveSchools?source=3Demail-9c3bd689d8a4-1=
+573236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_=
+6f0ee7c08f69)
+ in Forge (https://medium.com/forge?source=3Demail-9c3bd689d8a4-15732366869=
+08-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f=
+69)
+4 min read
+
+
+Solutions to Communication Problems in Microservices using Apache Kafka and=
+=E2=80=A6 (https://medium.com/@harmonh/solutions-to-communication-problems-=
+in-microservices-using-apache-kafka-and-kafka-lens-9b6d453de352?source=3Dem=
+ail-9c3bd689d8a4-1573236686908-digest.reader------1-72------------------73e=
+bc871_6173_42c2_8091_6f0ee7c08f69-28-----&sectionName=3DquickReads)
+
+Applications built using microservices as an architectural pattern are grow=
+ing at a rapid pace. Monolithic=E2=80=A6
+Harmon Huynh (https://medium.com/@harmonh?source=3Demail-9c3bd689d8a4-15732=
+36686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0e=
+e7c08f69)
+4 min read
+
+Best in CybersecurityFollow
+
+
+Is Porn Becoming a Monopoly? (https://medium.com/@thomas_mac/is-porn-becomi=
+ng-a-monopoly-41a05d4e7fd1?source=3Demail-9c3bd689d8a4-1573236686908-digest=
+.reader------0-50------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-12-=
+----&sectionName=3Dtopic)
+
+As the consumer internet becomes 'sterilized and gentrified,' alt-porn prod=
+ucers say they're being=E2=80=A6
+Thomas McMullan (https://medium.com/@thomas_mac?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+ in GEN (https://medium.com/gen?source=3Demail-9c3bd689d8a4-1573236686908-d=
+igest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69)
+7 min read
+
+
+If You're Online, You're Getting Scammed (https://medium.com/@adamkraymond/=
+if-youre-online-you-re-getting-scammed-7cd91350722d?source=3Demail-9c3bd689=
+d8a4-1573236686908-digest.reader------1-50------------------73ebc871_6173_4=
+2c2_8091_6f0ee7c08f69-12-----&sectionName=3Dtopic)
+
+The five latest swindles=E2=80=8A-=E2=80=8Aand how to avoid them
+Adam K. Raymond (https://medium.com/@adamkraymond?source=3Demail-9c3bd689d8=
+a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_8=
+091_6f0ee7c08f69)
+ in OneZero (https://medium.com/one-zero?source=3Demail-9c3bd689d8a4-157323=
+6686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69)
+9 min read
+
+
+Three Takeaways From the Hack of Jack Dorsey's Twitter Account (https://med=
+ium.com/@WillOremus/three-takeaways-from-the-hack-of-jack-dorseys-twitter-a=
+ccount-e9de7b8614d8?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader=
+------2-50------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-12-----&se=
+ctionName=3Dtopic)
+
+And how to keep it from happening to you
+Will Oremus (https://medium.com/@WillOremus?source=3Demail-9c3bd689d8a4-157=
+3236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f=
+0ee7c08f69)
+ in OneZero (https://medium.com/one-zero?source=3Demail-9c3bd689d8a4-157323=
+6686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69)
+4 min read
+
+Most read
+
+How to Support Your Fat Friends, as a Straight Size Person (https://medium.=
+com/@thefatshadow/what-i-appreciate-most-from-thinner-friends-2c1524ae09c9?=
+source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------0-62----------=
+--------73ebc871_6173_42c2_8091_6f0ee7c08f69-21-----&sectionName=3Devergree=
+n)
+
+I appreciate when my thin or straight-size friends take the initiative to s=
+peak up against anti-fat bias
+Your Fat Friend (https://medium.com/@thefatshadow?source=3Demail-9c3bd689d8=
+a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_8=
+091_6f0ee7c08f69)
+ in Human Parts (https://medium.com/human-parts?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+11 min read
+
+
+The Unexpected Benefit of Writing Letters to My Kids Every Month (https://m=
+edium.com/@widow411/the-unexpected-benefit-of-writing-letters-to-my-kids-ev=
+ery-month-1b42214bb49?source=3Demail-9c3bd689d8a4-1573236686908-digest.read=
+er------1-62------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-21-----&=
+sectionName=3Devergreen)
+
+I was recording a memorial for a story we never expected to end
+Kimberlee Murray (https://medium.com/@widow411?source=3Demail-9c3bd689d8a4-=
+1573236686908-digest.reader-------------------------73ebc871_6173_42c2_8091=
+_6f0ee7c08f69)
+ in Human Parts (https://medium.com/human-parts?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+8 min read
+
+
+The Questions No One Asks When You Move 3,000 Miles Across the Country (htt=
+ps://medium.com/@sophiacamille/the-questions-no-one-asks-when-you-move-3-00=
+0-miles-across-the-country-2c856eac5924?source=3Demail-9c3bd689d8a4-1573236=
+686908-digest.reader------2-62------------------73ebc871_6173_42c2_8091_6f0=
+ee7c08f69-21-----&sectionName=3Devergreen)
+
+Must bravery or stupidity underwrite every bold life decision?
+Sophia Smith (https://medium.com/@sophiacamille?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+ in Human Parts (https://medium.com/human-parts?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+6 min read
+
+Editors' picks
+
+Can We Please Stop Using 'Latinx'? Thanx. (https://medium.com/@kurlytlapoya=
+wa/can-we-please-stop-using-latinx-thanx-423ac92a87dc?source=3Demail-9c3bd6=
+89d8a4-1573236686908-digest.reader------0-13------------------73ebc871_6173=
+_42c2_8091_6f0ee7c08f69-6-----&sectionName=3Dsuggested)
+
+Gender inclusivity is important, but so is acknowledging our indigenous ori=
+gins
+Kurly Tlapoyawa (https://medium.com/@kurlytlapoyawa?source=3Demail-9c3bd689=
+d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2=
+_8091_6f0ee7c08f69)
+ in Human Parts (https://medium.com/human-parts?source=3Demail-9c3bd689d8a4=
+-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_809=
+1_6f0ee7c08f69)
+6 min read
+
+
+Attention, T.I.: There's No Such Thing as Virginity (https://medium.com/@je=
+ssicavalenti/attention-t-i-theres-no-such-thing-as-virginity-30bcc5020a9c?s=
+ource=3Demail-9c3bd689d8a4-1573236686908-digest.reader------1-13-----------=
+-------73ebc871_6173_42c2_8091_6f0ee7c08f69-6-----&sectionName=3Dsuggested)
+
+The rapper's comments about his daughter's hymen show that America is still=
+ obsessed over a purity standard=E2=80=A6
+Jessica Valenti (https://medium.com/@jessicavalenti?source=3Demail-9c3bd689=
+d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2=
+_8091_6f0ee7c08f69)
+ in GEN (https://medium.com/gen?source=3Demail-9c3bd689d8a4-1573236686908-d=
+igest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69)
+3 min read
+
+
+What the Internet Does to Bad Ideas (https://medium.com/@NickyWoolf/what-th=
+e-internet-does-to-bad-ideas-f8e3020cd3f4?source=3Demail-9c3bd689d8a4-15732=
+36686908-digest.reader------2-13------------------73ebc871_6173_42c2_8091_6=
+f0ee7c08f69-6-----&sectionName=3Dsuggested)
+
+Our Body Cultural is built upon our stories of ourselves, but that process =
+is crumbling
+Nicky Woolf (https://medium.com/@NickyWoolf?source=3Demail-9c3bd689d8a4-157=
+3236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f=
+0ee7c08f69)
+ in OneZero (https://medium.com/one-zero?source=3Demail-9c3bd689d8a4-157323=
+6686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69)
+15 min read
+
+
+Still looking for something to read?
+Follow a trending topic to see what you're missing.
+Philosophy (https://medium.com/_/api/requests/7d3014c7320c?source=3Demail-9=
+c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_61=
+73_42c2_8091_6f0ee7c08f69-19)
+
+Think about it.
++
+Self (https://medium.com/_/api/requests/d8a03542b60b?source=3Demail-9c3bd68=
+9d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c=
+2_8091_6f0ee7c08f69-19)
+
+Live better.
++
+Creativity (https://medium.com/_/api/requests/a9b5414ef6fb?source=3Demail-9=
+c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_61=
+73_42c2_8091_6f0ee7c08f69-19)
+
+Of muses and mistakes.
++
+Future (https://medium.com/_/api/requests/8987b481e68f?source=3Demail-9c3bd=
+689d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_4=
+2c2_8091_6f0ee7c08f69-19)
+
+Dispatches from tomorrow.
++
+Equality (https://medium.com/_/api/requests/eca261125ce3?source=3Demail-9c3=
+bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_6173=
+_42c2_8091_6f0ee7c08f69-19)
+
+Typing truth to power.
++
+Productivity (https://medium.com/_/api/requests/479fcaf04f10?source=3Demail=
+-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_=
+6173_42c2_8091_6f0ee7c08f69-19)
+
+Working with purpose.
++
+---
+Sent by Medium, P.O. Box 602, San Francisco, CA 94104-0602
+To unsubscribe, visit https://medium.com/me/email-settings/9c3bd689d8a4/2b1=
+08308fdc4?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader----------=
+---------------73ebc871_6173_42c2_8091_6f0ee7c08f69&type=3Dsocial
+
+--5ee6098c224703466c93ceee47f29e4cc3575bbf22ebb624a2cdb884ad85
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3Dutf-8"><meta name=3D"viewport" content=3D"width=3Ddevice-=
+width, initial-scale=3D1, maximum-scale=3D1" user-scalable=3D"no"><meta nam=
+e=3D"robots" content=3D"none"><style>
+@media all and (max-width:420px) {
+.email {
+	width:	100% !important;
+	padding-left:	5px !important;
+	padding-right:	5px !important;
+}
+.email-hr {
+	margin-top:	25px;
+	margin-right:	auto;
+	margin-bottom:	25px;
+	margin-left:	auto;
+}
+.email-disclaimer {
+	font-size:	12px;
+}
+.email-title--stats {
+	font-size:	32px;
+	line-height:	35px;
+}
+.email-allCaps {
+	font-size:	12px;
+	line-height:	14px;
+}
+.email-title--post {
+	font-size:	22px;
+	line-height:	26px;
+}
+.email-topWriter--badge {
+	float:	none;
+	text-align:	center;
+	width:	100%;
+	min-width:	100%;
+	padding-top:	0;
+	padding-right:	0;
+	padding-bottom:	0;
+	padding-left:	0;
+	margin-bottom:	20px;
+}
+.email-headline--section {
+	font-size:	20px;
+	line-height:	24px;
+	margin-bottom:	5px;
+}
+.email-subtitle--section {
+	font-size:	14px;
+	line-height:	18px;
+}
+.email-subtitle--stats {
+	font-size:	12px;
+}
+.email-digestPostTitle {
+	font-size:	17px !important;
+	line-height:	1.3 !important;
+}
+.email-digestPostTitle--hero {
+	font-size:	19px !important;
+	line-height:	1.26 !important;
+}
+.email-digestColorBlock {
+	padding-top:	24px !important;
+	padding-bottom:	24px !important;
+}
+.email-digestWelcomeHeaderTitle {
+	font-size:	22px;
+}
+.email-xs-block {
+	display:	block;
+}
+.email-xs-inlineBlock {
+	display:	inline-block;
+}
+.email-xs-fontSize14 {
+	font-size:	14px;
+}
+.email-xs-fontSize15 {
+	font-size:	15px;
+}
+.email-xs-fontSize16 {
+	font-size:	16px !important;
+}
+.email-xs-fontSize18 {
+	font-size:	18px;
+}
+.email-xs-fontSize19 {
+	font-size:	19px;
+}
+.email-xs-fontSize20 {
+	font-size:	20px;
+}
+.email-xs-paddingHorizontal0 {
+	padding-left:	0;
+	padding-right:	0;
+}
+.email-xs-paddingHorizontal8 {
+	padding-left:	8px;
+	padding-right:	8px;
+}
+.email-xs-paddingHorizontal16 {
+	padding-left:	16px;
+	padding-right:	16px;
+}
+.email-xs-paddingHorizontal24 {
+	padding-left:	24px;
+	padding-right:	24px;
+}
+.email-xs-paddingHorizontal25 {
+	padding-left:	25px;
+	padding-right:	25px;
+}
+.email-xs-paddingHorizontal30 {
+	padding-left:	30px;
+	padding-right:	30px;
+}
+.email-xs-paddingVertical24 {
+	padding-top:	24px;
+	padding-bottom:	24px;
+}
+.email-xs-paddingVertical35 {
+	padding-top:	35px;
+	padding-bottom:	35px;
+}
+.email-xs-paddingLeft0 {
+	padding-left:	0 !important;
+}
+.email-xs-paddingLeft10 {
+	padding-left:	10px;
+}
+.email-xs-paddingLeft15 {
+	padding-left:	15px;
+}
+.email-xs-paddingRight10 {
+	padding-right:	10px;
+}
+.email-xs-paddingTop0 {
+	padding-top:	0;
+}
+.email-xs-paddingTop8 {
+	padding-top:	8px;
+}
+.email-xs-paddingTop20 {
+	padding-top:	20px;
+}
+.email-xs-paddingTop35 {
+	padding-top:	35px;
+}
+.email-xs-paddingBottom0 {
+	padding-bottom:	0;
+}
+.email-xs-paddingBottom12 {
+	padding-bottom:	12px !important;
+}
+.email-xs-paddingBottom20 {
+	padding-bottom:	20px;
+}
+.email-xs-paddingBottom24 {
+	padding-bottom:	24px;
+}
+.email-xs-paddingLeft20 {
+	padding-left:	20px;
+}
+.email-xs-paddingRight20 {
+	padding-right:	20px;
+}
+.email-xs-padding20 {
+	padding-top:	20px;
+	padding-right:	20px;
+	padding-bottom:	20px;
+	padding-left:	20px;
+}
+.email-xs-padding24 {
+	padding-top:	24px;
+	padding-right:	24px;
+	padding-bottom:	24px;
+	padding-left:	24px;
+}
+.email-xs-marginAuto {
+	margin-left:	auto;
+	margin-right:	auto;
+}
+.email-xs-marginHorizontal2 {
+	margin-left:	2px;
+	margin-right:	2px;
+}
+.email-xs-marginHorizontal8 {
+	margin-left:	8px;
+	margin-right:	8px;
+}
+.email-xs-marginHorizontal12 {
+	margin-left:	12px;
+	margin-right:	12px;
+}
+.email-xs-marginTop10 {
+	margin-top:	10px !important;
+}
+.email-xs-marginTop12 {
+	margin-top:	12px !important;
+}
+.email-xs-marginTop20 {
+	margin-top:	20px;
+}
+.email-xs-marginTop24 {
+	margin-top:	24px;
+}
+.email-xs-marginLeft0 {
+	margin-left:	0px;
+}
+.email-xs-marginBottom2 {
+	margin-bottom:	2px;
+}
+.email-xs-marginBottom4 {
+	margin-bottom:	4px;
+}
+.email-xs-marginBottom8 {
+	margin-bottom:	8px;
+}
+.email-xs-marginBottom16 {
+	margin-bottom:	16px;
+}
+.email-xs-marginBottom20 {
+	margin-bottom:	20px;
+}
+.email-xs-marginBottom32 {
+	margin-bottom:	32px !important;
+}
+.email-xs-width100 {
+	width:	100px;
+}
+.email-xs-width140 {
+	width:	140px;
+}
+.email-xs-width45pct {
+	width:	45%;
+}
+.email-xs-fillWidth {
+	width:	100% !important;
+}
+.email-xs-heightAuto {
+	height:	auto;
+}
+.email-xs-height85 {
+	height:	85px;
+}
+.email-xs-height100 {
+	max-height:	100px;
+	height:	100px;
+}
+.email-xs-height165 {
+	max-height:	165px;
+	height:	165px;
+}
+.email-xs-minHeight0 {
+	min-height:	0;
+}
+.email-xs-fillHeight {
+	height:	100%;
+}
+.email-xs-borderBottom0 {
+	border-bottom:	0;
+}
+.email-xs-hide {
+	display:	none !important;
+}
+.email-xs-floatLeft {
+	float:	left;
+}
+.email-xs-border0 {
+	border:	0 !important;
+}
+}
+
+</style></head><body style=3D"margin-top: 0; margin-right: 0; margin-bottom=
+: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; p=
+adding-left: 0;"><div class=3D"email-fillWidth email-backgroundWhite js-ema=
+ilHeader" style=3D"min-width: 100%; width: 100%; background-color: #ffffff;=
+"><table class=3D"email-digest email-paddingBottom0" style=3D"border-spacin=
+g: 0; color: rgba(0 , 0 , 0 , 0.9); font-family: Arial , sans-serif; letter=
+-spacing: 0em; line-height: 1.4; margin-top: 0; margin-right: auto; margin-=
+bottom: 0; margin-left: auto; padding-left: 24px; padding-right: 24px; widt=
+h: 100%; max-width: 648px; padding-bottom: 0px;"><tr><td class=3D"email-fil=
+lWidth email-padding0" style=3D"min-width: 100%; width: 100%; padding-top: =
+0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"><div clas=
+s=3D"email-paddingTop30 email-textTransparentBlack" style=3D"color: rgba(0 =
+, 0 , 0 , 0.54); padding-top: 30px;"><img src=3D"https://cdn-images-1.mediu=
+m.com/proxy/1*5gCbsDPwqJZuveQ1HK7epw.png" class=3D"email-paddingBottom5" al=
+t=3D"Medium Logo" width=3D"291" height=3D"25" style=3D"padding-bottom: 5px;=
+"><div class=3D"email-borderBottomGrey email-digestDividerHeight" style=3D"=
+height: 2px; border-bottom: 1px solid #e5e5e5;"></div><div class=3D"email-f=
+ontSize14 email-paddingTop8" style=3D"font-size: 14px; padding-top: 8px;">S=
+tories for Lily Lawrence</div></div></td></tr></table></div><table class=3D=
+"email-fillWidth" style=3D"min-width: 100%; width: 100%;"><tr><td class=3D"=
+email-fillWidth email-padding0" style=3D"min-width: 100%; width: 100%; padd=
+ing-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">=
+<img src=3D"https://medium.com/_/stat?event=3Demail.opened&amp;emailId=3D73=
+ebc871-6173-42c2-8091-6f0ee7c08f69&amp;source=3Demail-9c3bd689d8a4-15732366=
+86908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c=
+08f69" width=3D"1" height=3D"1"><div><table class=3D"email-digest" width=3D=
+"600" style=3D"border-spacing: 0; color: rgba(0 , 0 , 0 , 0.9); font-family=
+: Arial , sans-serif; letter-spacing: 0em; line-height: 1.4; margin-top: 0;=
+ margin-right: auto; margin-bottom: 0; margin-left: auto; padding-left: 24p=
+x; padding-right: 24px; width: 100%; max-width: 648px;"><tr><td><div class=
+=3D"email-fontSize18 email-xs-fontSize16 email-bold email-marginTop24 email=
+-marginBottom8" style=3D"font-size: 18px; font-weight: 700; margin-bottom: =
+8px; margin-top: 24px;">Today=E2=80=99s highlights</div><div class=3D""></d=
+iv><table class=3D"email-marginTop16 email-marginBottom36 email-xs-marginBo=
+ttom32 email-borderSpacing0 email-fillWidth" style=3D"min-width: 100%; widt=
+h: 100%; margin-top: 16px; margin-bottom: 36px; border-spacing: 0;"><tr><td=
+ class=3D"email-fillWidth email-paddingBottom16 email-xs-paddingBottom12" w=
+idth=3D"100" style=3D"min-width: 100%; width: 100%; padding-bottom: 16px;">=
+<a href=3D"https://medium.com/@robiriondo/penetration-testing-what-is-input=
+-data-validation-and-why-do-we-need-it-anyway-98309d6f1db4?source=3Demail-9=
+c3bd689d8a4-1573236686908-digest.reader------0-59------------------73ebc871=
+_6173_42c2_8091_6f0ee7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: =
+#333332; text-decoration: none;"><div class=3D"email-backgroundSizeCover em=
+ail-backgroundNoRepeat email-fillWidth email-height200 email-borderBlueGrey=
+ email-backgroundGrayLightest" style=3D"background-image: url(https://cdn-i=
+mages-1.medium.com/fit/c/600/600/1*7mfxU3Lx2ikedpqXe3CC-g.jpeg?q=3D50); bac=
+kground-position: 50% 50%; min-width: 100%; width: 100%; max-height: 200px;=
+ height: 200px; border: 1px solid #f2f2f2; background-color: #f8f8f8; backg=
+round-size: cover; background-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]=
+><img src=3D"https://cdn-images-1.medium.com/fit/c/600/200/1*7mfxU3Lx2ikedp=
+qXe3CC-g.jpeg?q=3D50" width=3D"600" height=3D"200"><![endif]--></div></a></=
+td></tr><tr class=3D"email-verticalAlignTop" style=3D"vertical-align: top;"=
+><td class=3D"email-xs-paddingLeft0 email-xs-block email-xs-fillWidth"><a h=
+ref=3D"https://medium.com/@robiriondo/penetration-testing-what-is-input-dat=
+a-validation-and-why-do-we-need-it-anyway-98309d6f1db4?source=3Demail-9c3bd=
+689d8a4-1573236686908-digest.reader------0-59------------------73ebc871_617=
+3_42c2_8091_6f0ee7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: #333=
+332; text-decoration: none;"><div class=3D"email-bold email-digestPostTitle=
+--hero" style=3D"font-size: 22px; line-height: 1.27; font-weight: 700;"><a =
+href=3D"https://medium.com/@robiriondo/penetration-testing-what-is-input-da=
+ta-validation-and-why-do-we-need-it-anyway-98309d6f1db4?source=3Demail-9c3b=
+d689d8a4-1573236686908-digest.reader------0-59------------------73ebc871_61=
+73_42c2_8091_6f0ee7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: #33=
+3332; text-decoration: none;">Penetration testing: What is input data valid=
+ation, and why do we need it=E2=80=A6</a></div><div class=3D"email-digestPo=
+stSubtitle" style=3D"line-height: 1.33; font-size: 15px; margin-top: 4px;">=
+Unfortunately, a lot of web development agencies, and a large percentage of=
+ web designers still rely on=E2=80=A6</div></a><div class=3D"email-marginTo=
+p12 email-xs-marginTop10 email-fontSize15 email-textDarkerGray" style=3D"fo=
+nt-size: 15px; color: #757575; margin-top: 12px;"><a class=3D"email-link em=
+ail-textDarkerGray" href=3D"https://medium.com/@robiriondo?source=3Demail-9=
+c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_61=
+73_42c2_8091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: none;"=
+>Roberto Iriondo</a> in <a class=3D"email-link email-textDarkerGray" href=
+=3D"https://medium.com/datadriveninvestor?source=3Demail-9c3bd689d8a4-15732=
+36686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0e=
+e7c08f69" style=3D"color: #757575; text-decoration: none;">Data Driven Inve=
+stor</a><img src=3D"https://cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHz=
+Q5T7oaA.png" class=3D"email-inlineBlock email-marginLeft10" alt=3D"Member o=
+nly content" width=3D"12" height=3D"12" style=3D"display: inline-block; mar=
+gin-left: 10px;"><span class=3D"email-marginLeft10" style=3D"margin-left: 1=
+0px;">6 min read</span></div></td></tr></table><table class=3D"email-margin=
+Top24 email-xs-marginTop12 email-marginBottom36 email-xs-marginBottom32 ema=
+il-borderSpacing0 email-fillWidth" style=3D"min-width: 100%; width: 100%; m=
+argin-top: 24px; margin-bottom: 36px; border-spacing: 0;"><tr class=3D"emai=
+l-verticalAlignTop" style=3D"vertical-align: top;"><td class=3D"email-width=
+100 email-xs-block email-xs-fillWidth email-xs-paddingBottom12" width=3D"10=
+0" style=3D"width: 100px;"><a href=3D"https://medium.com/@jeremy.trinka/fiv=
+e-pentesting-tools-and-techniques-that-sysadmins-should-know-about-4ceca148=
+8bff?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------1-59-----=
+-------------73ebc871_6173_42c2_8091_6f0ee7c08f69-1-----&amp;sectionName=3D=
+top" style=3D"color: #333332; text-decoration: none;"><div class=3D"email-b=
+ackgroundSizeCover email-backgroundNoRepeat email-width100 email-height100 =
+email-xs-fillWidth email-borderBlueGrey email-backgroundGrayLightest" style=
+=3D"background-image: url(https://cdn-images-1.medium.com/fit/c/420/420/1*e=
+WYm3Dm7s0t8lLWYRW4pow.jpeg?q=3D50); background-position: 50% 50%; width: 10=
+0px; max-height: 100px; height: 100px; border: 1px solid #f2f2f2; backgroun=
+d-color: #f8f8f8; background-size: cover; background-repeat: no-repeat;"><!=
+--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/fit/c/1=
+00/100/1*eWYm3Dm7s0t8lLWYRW4pow.jpeg?q=3D50" width=3D"100" height=3D"100"><=
+![endif]--></div></a></td><td class=3D"email-paddingLeft20 email-xs-padding=
+Left0 email-xs-block email-xs-fillWidth" style=3D"padding-left: 20px;"><a h=
+ref=3D"https://medium.com/@jeremy.trinka/five-pentesting-tools-and-techniqu=
+es-that-sysadmins-should-know-about-4ceca1488bff?source=3Demail-9c3bd689d8a=
+4-1573236686908-digest.reader------1-59------------------73ebc871_6173_42c2=
+_8091_6f0ee7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: #333332; t=
+ext-decoration: none;"><div class=3D"email-bold email-digestPostTitle" styl=
+e=3D"font-size: 18px; line-height: 1.22; font-weight: 700;"><a href=3D"http=
+s://medium.com/@jeremy.trinka/five-pentesting-tools-and-techniques-that-sys=
+admins-should-know-about-4ceca1488bff?source=3Demail-9c3bd689d8a4-157323668=
+6908-digest.reader------1-59------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: #333332; text-decorat=
+ion: none;">Five Pentesting Tools and Techniques (That Every Sysadmin Shoul=
+d Know)</a></div><div class=3D"email-digestPostSubtitle" style=3D"line-heig=
+ht: 1.33; font-size: 15px; margin-top: 4px;">Step into the mind of a pentes=
+ter.</div></a><div class=3D"email-marginTop8 email-xs-marginTop10 email-fon=
+tSize15 email-textDarkerGray" style=3D"font-size: 15px; color: #757575; mar=
+gin-top: 8px;"><a class=3D"email-link email-textDarkerGray" href=3D"https:/=
+/medium.com/@jeremy.trinka?source=3Demail-9c3bd689d8a4-1573236686908-digest=
+.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=
+=3D"color: #757575; text-decoration: none;">Jeremy Trinka</a><span class=3D=
+"email-marginLeft10" style=3D"margin-left: 10px;">13 min read</span></div><=
+/td></tr></table><table class=3D"email-marginTop24 email-xs-marginTop12 ema=
+il-marginBottom36 email-xs-marginBottom32 email-borderSpacing0 email-fillWi=
+dth" style=3D"min-width: 100%; width: 100%; margin-top: 24px; margin-bottom=
+: 36px; border-spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"v=
+ertical-align: top;"><td class=3D"email-width100 email-xs-block email-xs-fi=
+llWidth email-xs-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a =
+href=3D"https://medium.com/@timrees/3-foods-you-should-throw-away-forever-3=
+eb7b5f38075?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------2-=
+73------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-1-----&amp;section=
+Name=3Dtop" style=3D"color: #333332; text-decoration: none;"><div class=3D"=
+email-backgroundSizeCover email-backgroundNoRepeat email-width100 email-hei=
+ght100 email-xs-fillWidth email-borderBlueGrey email-backgroundGrayLightest=
+" style=3D"background-image: url(https://cdn-images-1.medium.com/fit/c/420/=
+420/1*dPj6Vu5V6ZCPwVhwEW4B0g.jpeg?q=3D50); background-position: 50% 50%; wi=
+dth: 100px; max-height: 100px; height: 100px; border: 1px solid #f2f2f2; ba=
+ckground-color: #f8f8f8; background-size: cover; background-repeat: no-repe=
+at;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/=
+fit/c/100/100/1*dPj6Vu5V6ZCPwVhwEW4B0g.jpeg?q=3D50" width=3D"100" height=3D=
+"100"><![endif]--></div></a></td><td class=3D"email-paddingLeft20 email-xs-=
+paddingLeft0 email-xs-block email-xs-fillWidth" style=3D"padding-left: 20px=
+;"><a href=3D"https://medium.com/@timrees/3-foods-you-should-throw-away-for=
+ever-3eb7b5f38075?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader--=
+----2-73------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-1-----&amp;s=
+ectionName=3Dtop" style=3D"color: #333332; text-decoration: none;"><div cla=
+ss=3D"email-bold email-digestPostTitle" style=3D"font-size: 18px; line-heig=
+ht: 1.22; font-weight: 700;"><a href=3D"https://medium.com/@timrees/3-foods=
+-you-should-throw-away-forever-3eb7b5f38075?source=3Demail-9c3bd689d8a4-157=
+3236686908-digest.reader------2-73------------------73ebc871_6173_42c2_8091=
+_6f0ee7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: #333332; text-d=
+ecoration: none;">3 Foods You Should Throw Away Forever.</a></div><div clas=
+s=3D"email-digestPostSubtitle" style=3D"line-height: 1.33; font-size: 15px;=
+ margin-top: 4px;">Unless you want to be ill and die young..</div></a><div =
+class=3D"email-marginTop8 email-xs-marginTop10 email-fontSize15 email-textD=
+arkerGray" style=3D"font-size: 15px; color: #757575; margin-top: 8px;"><a c=
+lass=3D"email-link email-textDarkerGray" href=3D"https://medium.com/@timree=
+s?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------------------=
+-------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575; text-=
+decoration: none;">Tim Rees</a> in <a class=3D"email-link email-textDarkerG=
+ray" href=3D"https://medium.com/did-you-know-the-journal-blog?source=3Demai=
+l-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871=
+_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: non=
+e;">Noteworthy - The Journal Blog</a><img src=3D"https://cdn-images-1.mediu=
+m.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email-inlineBlock email-=
+marginLeft10" alt=3D"Member only content" width=3D"12" height=3D"12" style=
+=3D"display: inline-block; margin-left: 10px;"><span class=3D"email-marginL=
+eft10" style=3D"margin-left: 10px;">7 min read</span></div></td></tr></tabl=
+e><table class=3D"email-marginTop24 email-xs-marginTop12 email-marginBottom=
+36 email-xs-marginBottom32 email-borderSpacing0 email-fillWidth" style=3D"m=
+in-width: 100%; width: 100%; margin-top: 24px; margin-bottom: 36px; border-=
+spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"vertical-align: =
+top;"><td class=3D"email-width100 email-xs-block email-xs-fillWidth email-x=
+s-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a href=3D"https:/=
+/medium.com/@chrismorgan_1657/i-hired-a-wife-and-my-career-took-off-16dc8ae=
+481fe?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------3-51----=
+--------------73ebc871_6173_42c2_8091_6f0ee7c08f69-1-----&amp;sectionName=
+=3Dtop" style=3D"color: #333332; text-decoration: none;"><div class=3D"emai=
+l-backgroundSizeCover email-backgroundNoRepeat email-width100 email-height1=
+00 email-xs-fillWidth email-borderBlueGrey email-backgroundGrayLightest" st=
+yle=3D"background-image: url(https://cdn-images-1.medium.com/fit/c/420/420/=
+1*d89ICoVSNhjacGEyBBksxA.jpeg?q=3D50); background-position: 50% 50%; width:=
+ 100px; max-height: 100px; height: 100px; border: 1px solid #f2f2f2; backgr=
+ound-color: #f8f8f8; background-size: cover; background-repeat: no-repeat;"=
+><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/fit/=
+c/100/100/1*d89ICoVSNhjacGEyBBksxA.jpeg?q=3D50" width=3D"100" height=3D"100=
+"><![endif]--></div></a></td><td class=3D"email-paddingLeft20 email-xs-padd=
+ingLeft0 email-xs-block email-xs-fillWidth" style=3D"padding-left: 20px;"><=
+a href=3D"https://medium.com/@chrismorgan_1657/i-hired-a-wife-and-my-career=
+-took-off-16dc8ae481fe?source=3Demail-9c3bd689d8a4-1573236686908-digest.rea=
+der------3-51------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-1-----&=
+amp;sectionName=3Dtop" style=3D"color: #333332; text-decoration: none;"><di=
+v class=3D"email-bold email-digestPostTitle" style=3D"font-size: 18px; line=
+-height: 1.22; font-weight: 700;"><a href=3D"https://medium.com/@chrismorga=
+n_1657/i-hired-a-wife-and-my-career-took-off-16dc8ae481fe?source=3Demail-9c=
+3bd689d8a4-1573236686908-digest.reader------3-51------------------73ebc871_=
+6173_42c2_8091_6f0ee7c08f69-1-----&amp;sectionName=3Dtop" style=3D"color: #=
+333332; text-decoration: none;">I hired a wife. And my career took off.</a>=
+</div><div class=3D"email-digestPostSubtitle" style=3D"line-height: 1.33; f=
+ont-size: 15px; margin-top: 4px;">Her name is Luisa. Late 20s, Brazilian, s=
+miley, warm, beautiful. Last Fall, I hired her to take over for my=E2=80=A6=
+</div></a><div class=3D"email-marginTop8 email-xs-marginTop10 email-fontSiz=
+e15 email-textDarkerGray" style=3D"font-size: 15px; color: #757575; margin-=
+top: 8px;"><a class=3D"email-link email-textDarkerGray" href=3D"https://med=
+ium.com/@chrismorgan_1657?source=3Demail-9c3bd689d8a4-1573236686908-digest.=
+reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=
+=3D"color: #757575; text-decoration: none;">Chris Morgan</a><img src=3D"htt=
+ps://cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"e=
+mail-inlineBlock email-marginLeft10" alt=3D"Member only content" width=3D"1=
+2" height=3D"12" style=3D"display: inline-block; margin-left: 10px;"><span =
+class=3D"email-marginLeft10" style=3D"margin-left: 10px;">2 min read</span>=
+</div></td></tr></table></td></tr><tr><td></td></tr><tr><td><div class=3D"e=
+mail-fontSize18 email-xs-fontSize16 email-bold email-marginTop24 email-marg=
+inBottom8" style=3D"font-size: 18px; font-weight: 700; margin-bottom: 8px; =
+margin-top: 24px;">Quick reads</div><div class=3D"email-borderBottomGrey em=
+ail-digestDividerHeight" style=3D"height: 2px; border-bottom: 1px solid #e5=
+e5e5;"></div><table class=3D"email-marginTop24 email-xs-marginTop12 email-m=
+arginBottom36 email-xs-marginBottom32 email-borderSpacing0 email-fillWidth"=
+ style=3D"min-width: 100%; width: 100%; margin-top: 24px; margin-bottom: 36=
+px; border-spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"verti=
+cal-align: top;"><td class=3D"email-width100 email-xs-block email-xs-fillWi=
+dth email-xs-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a href=
+=3D"https://medium.com/@DaveSchools/the-2-word-trick-that-makes-small-talk-=
+interesting-fdd4d5aa693?source=3Demail-9c3bd689d8a4-1573236686908-digest.re=
+ader------0-72------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-28----=
+-&amp;sectionName=3DquickReads" style=3D"color: #333332; text-decoration: n=
+one;"><div class=3D"email-backgroundSizeCover email-backgroundNoRepeat emai=
+l-width100 email-height100 email-xs-fillWidth email-borderBlueGrey email-ba=
+ckgroundGrayLightest" style=3D"background-image: url(https://cdn-images-1.m=
+edium.com/fit/c/420/420/1*kbQ4_ZreqYbkt0sjAkxJew.png?q=3D50); background-po=
+sition: 50% 50%; width: 100px; max-height: 100px; height: 100px; border: 1p=
+x solid #f2f2f2; background-color: #f8f8f8; background-size: cover; backgro=
+und-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-i=
+mages-1.medium.com/fit/c/100/100/1*kbQ4_ZreqYbkt0sjAkxJew.png?q=3D50" width=
+=3D"100" height=3D"100"><![endif]--></div></a></td><td class=3D"email-paddi=
+ngLeft20 email-xs-paddingLeft0 email-xs-block email-xs-fillWidth" style=3D"=
+padding-left: 20px;"><a href=3D"https://medium.com/@DaveSchools/the-2-word-=
+trick-that-makes-small-talk-interesting-fdd4d5aa693?source=3Demail-9c3bd689=
+d8a4-1573236686908-digest.reader------0-72------------------73ebc871_6173_4=
+2c2_8091_6f0ee7c08f69-28-----&amp;sectionName=3DquickReads" style=3D"color:=
+ #333332; text-decoration: none;"><div class=3D"email-bold email-digestPost=
+Title" style=3D"font-size: 18px; line-height: 1.22; font-weight: 700;"><a h=
+ref=3D"https://medium.com/@DaveSchools/the-2-word-trick-that-makes-small-ta=
+lk-interesting-fdd4d5aa693?source=3Demail-9c3bd689d8a4-1573236686908-digest=
+.reader------0-72------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-28-=
+----&amp;sectionName=3DquickReads" style=3D"color: #333332; text-decoration=
+: none;">The 2-Word Trick That Makes Small Talk Interesting</a></div><div c=
+lass=3D"email-digestPostSubtitle" style=3D"line-height: 1.33; font-size: 15=
+px; margin-top: 4px;">Podcast hosts like Guy Raz and Tim Ferriss use it oft=
+en</div></a><div class=3D"email-marginTop8 email-xs-marginTop10 email-fontS=
+ize15 email-textDarkerGray" style=3D"font-size: 15px; color: #757575; margi=
+n-top: 8px;"><a class=3D"email-link email-textDarkerGray" href=3D"https://m=
+edium.com/@DaveSchools?source=3Demail-9c3bd689d8a4-1573236686908-digest.rea=
+der-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"=
+color: #757575; text-decoration: none;">Dave Schools</a> in <a class=3D"ema=
+il-link email-textDarkerGray" href=3D"https://medium.com/forge?source=3Dema=
+il-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc87=
+1_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: no=
+ne;">Forge</a><img src=3D"https://cdn-images-1.medium.com/proxy/1*dMba6LR4d=
+soQTHzQ5T7oaA.png" class=3D"email-inlineBlock email-marginLeft10" alt=3D"Me=
+mber only content" width=3D"12" height=3D"12" style=3D"display: inline-bloc=
+k; margin-left: 10px;"><span class=3D"email-marginLeft10" style=3D"margin-l=
+eft: 10px;">4 min read</span></div></td></tr></table><table class=3D"email-=
+marginTop24 email-xs-marginTop12 email-marginBottom36 email-xs-marginBottom=
+32 email-borderSpacing0 email-fillWidth" style=3D"min-width: 100%; width: 1=
+00%; margin-top: 24px; margin-bottom: 36px; border-spacing: 0;"><tr class=
+=3D"email-verticalAlignTop" style=3D"vertical-align: top;"><td class=3D"ema=
+il-width100 email-xs-block email-xs-fillWidth email-xs-paddingBottom12" wid=
+th=3D"100" style=3D"width: 100px;"><a href=3D"https://medium.com/@harmonh/s=
+olutions-to-communication-problems-in-microservices-using-apache-kafka-and-=
+kafka-lens-9b6d453de352?source=3Demail-9c3bd689d8a4-1573236686908-digest.re=
+ader------1-72------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-28----=
+-&amp;sectionName=3DquickReads" style=3D"color: #333332; text-decoration: n=
+one;"><div class=3D"email-backgroundSizeCover email-backgroundNoRepeat emai=
+l-width100 email-height100 email-xs-fillWidth email-borderBlueGrey email-ba=
+ckgroundGrayLightest" style=3D"background-image: url(https://cdn-images-1.m=
+edium.com/fit/c/420/420/1*n8zkw7XzJv8jkgHJAl2z6g.jpeg?q=3D50); background-p=
+osition: 50% 50%; width: 100px; max-height: 100px; height: 100px; border: 1=
+px solid #f2f2f2; background-color: #f8f8f8; background-size: cover; backgr=
+ound-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-=
+images-1.medium.com/fit/c/100/100/1*n8zkw7XzJv8jkgHJAl2z6g.jpeg?q=3D50" wid=
+th=3D"100" height=3D"100"><![endif]--></div></a></td><td class=3D"email-pad=
+dingLeft20 email-xs-paddingLeft0 email-xs-block email-xs-fillWidth" style=
+=3D"padding-left: 20px;"><a href=3D"https://medium.com/@harmonh/solutions-t=
+o-communication-problems-in-microservices-using-apache-kafka-and-kafka-lens=
+-9b6d453de352?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------=
+1-72------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-28-----&amp;sect=
+ionName=3DquickReads" style=3D"color: #333332; text-decoration: none;"><div=
+ class=3D"email-bold email-digestPostTitle" style=3D"font-size: 18px; line-=
+height: 1.22; font-weight: 700;"><a href=3D"https://medium.com/@harmonh/sol=
+utions-to-communication-problems-in-microservices-using-apache-kafka-and-ka=
+fka-lens-9b6d453de352?source=3Demail-9c3bd689d8a4-1573236686908-digest.read=
+er------1-72------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-28-----&=
+amp;sectionName=3DquickReads" style=3D"color: #333332; text-decoration: non=
+e;">Solutions to Communication Problems in Microservices using Apache Kafka=
+ and=E2=80=A6</a></div><div class=3D"email-digestPostSubtitle" style=3D"lin=
+e-height: 1.33; font-size: 15px; margin-top: 4px;">Applications built using=
+ microservices as an architectural pattern are growing at a rapid pace. Mon=
+olithic=E2=80=A6</div></a><div class=3D"email-marginTop8 email-xs-marginTop=
+10 email-fontSize15 email-textDarkerGray" style=3D"font-size: 15px; color: =
+#757575; margin-top: 8px;"><a class=3D"email-link email-textDarkerGray" hre=
+f=3D"https://medium.com/@harmonh?source=3Demail-9c3bd689d8a4-1573236686908-=
+digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69"=
+ style=3D"color: #757575; text-decoration: none;">Harmon Huynh</a><img src=
+=3D"https://cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" cla=
+ss=3D"email-inlineBlock email-marginLeft10" alt=3D"Member only content" wid=
+th=3D"12" height=3D"12" style=3D"display: inline-block; margin-left: 10px;"=
+><span class=3D"email-marginLeft10" style=3D"margin-left: 10px;">4 min read=
+</span></div></td></tr></table></td></tr><tr><td><div class=3D"email-fontSi=
+ze18 email-xs-fontSize16 email-bold email-marginTop24 email-marginBottom8" =
+style=3D"font-size: 18px; font-weight: 700; margin-bottom: 8px; margin-top:=
+ 24px;">Best in Cybersecurity<a class=3D"link u-baseColor--link" href=3D"ht=
+tps://medium.com/_/api/requests/c3ba8a0563b3?source=3Demail-9c3bd689d8a4-15=
+73236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6=
+f0ee7c08f69-12" style=3D"color: #333332; text-decoration: none;"><div class=
+=3D"email-normal email-marginLeft20 email-button email-button--bordered ema=
+il-digestFollowButton email-xs-hide" style=3D"display: inline-block; positi=
+on: relative; height: auto; line-height: 1.6; padding-top: 0; padding-right=
+: 20px; padding-bottom: 0; padding-left: 20px; border: 1px solid #03a87c; o=
+utline: 0; color: #03a87c; background-color: #ffffff; font-size: 14px; font=
+-style: normal; font-weight: 400; text-align: center; text-decoration: none=
+; cursor: pointer; white-space: nowrap; text-rendering: optimizeLegibility;=
+ -webkit-font-smoothing: antialiased; user-select: none; border-radius: 4px=
+; margin-left: 20px;">Follow</div></a></div><div class=3D"email-borderBotto=
+mGrey email-digestDividerHeight" style=3D"height: 2px; border-bottom: 1px s=
+olid #e5e5e5;"></div><table class=3D"email-marginTop24 email-xs-marginTop12=
+ email-marginBottom36 email-xs-marginBottom32 email-borderSpacing0 email-fi=
+llWidth" style=3D"min-width: 100%; width: 100%; margin-top: 24px; margin-bo=
+ttom: 36px; border-spacing: 0;"><tr class=3D"email-verticalAlignTop" style=
+=3D"vertical-align: top;"><td class=3D"email-width100 email-xs-block email-=
+xs-fillWidth email-xs-paddingBottom12" width=3D"100" style=3D"width: 100px;=
+"><a href=3D"https://medium.com/@thomas_mac/is-porn-becoming-a-monopoly-41a=
+05d4e7fd1?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------0-50=
+------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-12-----&amp;sectionN=
+ame=3Dtopic" style=3D"color: #333332; text-decoration: none;"><div class=3D=
+"email-backgroundSizeCover email-backgroundNoRepeat email-width100 email-he=
+ight100 email-xs-fillWidth email-borderBlueGrey email-backgroundGrayLightes=
+t" style=3D"background-image: url(https://cdn-images-1.medium.com/focal/420=
+/420/65/38/1*PTHqunUJi3uKDvwQsVfovw.jpeg?q=3D50); background-position: 65% =
+38%; width: 100px; max-height: 100px; height: 100px; border: 1px solid #f2f=
+2f2; background-color: #f8f8f8; background-size: cover; background-repeat: =
+no-repeat;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-images-1.medi=
+um.com/fit/c/100/100/1*PTHqunUJi3uKDvwQsVfovw.jpeg?q=3D50" width=3D"100" he=
+ight=3D"100"><![endif]--></div></a></td><td class=3D"email-paddingLeft20 em=
+ail-xs-paddingLeft0 email-xs-block email-xs-fillWidth" style=3D"padding-lef=
+t: 20px;"><a href=3D"https://medium.com/@thomas_mac/is-porn-becoming-a-mono=
+poly-41a05d4e7fd1?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader--=
+----0-50------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-12-----&amp;=
+sectionName=3Dtopic" style=3D"color: #333332; text-decoration: none;"><div =
+class=3D"email-bold email-digestPostTitle" style=3D"font-size: 18px; line-h=
+eight: 1.22; font-weight: 700;"><a href=3D"https://medium.com/@thomas_mac/i=
+s-porn-becoming-a-monopoly-41a05d4e7fd1?source=3Demail-9c3bd689d8a4-1573236=
+686908-digest.reader------0-50------------------73ebc871_6173_42c2_8091_6f0=
+ee7c08f69-12-----&amp;sectionName=3Dtopic" style=3D"color: #333332; text-de=
+coration: none;">Is Porn Becoming a Monopoly?</a></div><div class=3D"email-=
+digestPostSubtitle" style=3D"line-height: 1.33; font-size: 15px; margin-top=
+: 4px;">As the consumer internet becomes =E2=80=98sterilized and gentrified=
+,=E2=80=99 alt-porn producers say they=E2=80=99re being=E2=80=A6</div></a><=
+div class=3D"email-marginTop8 email-xs-marginTop10 email-fontSize15 email-t=
+extDarkerGray" style=3D"font-size: 15px; color: #757575; margin-top: 8px;">=
+<a class=3D"email-link email-textDarkerGray" href=3D"https://medium.com/@th=
+omas_mac?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----------=
+--------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575=
+; text-decoration: none;">Thomas McMullan</a> in <a class=3D"email-link ema=
+il-textDarkerGray" href=3D"https://medium.com/gen?source=3Demail-9c3bd689d8=
+a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_8=
+091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: none;">GEN</a><=
+img src=3D"https://cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.p=
+ng" class=3D"email-inlineBlock email-marginLeft10" alt=3D"Member only conte=
+nt" width=3D"12" height=3D"12" style=3D"display: inline-block; margin-left:=
+ 10px;"><span class=3D"email-marginLeft10" style=3D"margin-left: 10px;">7 m=
+in read</span></div></td></tr></table><table class=3D"email-marginTop24 ema=
+il-xs-marginTop12 email-marginBottom36 email-xs-marginBottom32 email-border=
+Spacing0 email-fillWidth" style=3D"min-width: 100%; width: 100%; margin-top=
+: 24px; margin-bottom: 36px; border-spacing: 0;"><tr class=3D"email-vertica=
+lAlignTop" style=3D"vertical-align: top;"><td class=3D"email-width100 email=
+-xs-block email-xs-fillWidth email-xs-paddingBottom12" width=3D"100" style=
+=3D"width: 100px;"><a href=3D"https://medium.com/@adamkraymond/if-youre-onl=
+ine-you-re-getting-scammed-7cd91350722d?source=3Demail-9c3bd689d8a4-1573236=
+686908-digest.reader------1-50------------------73ebc871_6173_42c2_8091_6f0=
+ee7c08f69-12-----&amp;sectionName=3Dtopic" style=3D"color: #333332; text-de=
+coration: none;"><div class=3D"email-backgroundSizeCover email-backgroundNo=
+Repeat email-width100 email-height100 email-xs-fillWidth email-borderBlueGr=
+ey email-backgroundGrayLightest" style=3D"background-image: url(https://cdn=
+-images-1.medium.com/focal/420/420/49/54/1*qwa0iO9vmP8EqssORGqsLA.jpeg?q=3D=
+50); background-position: 49% 54%; width: 100px; max-height: 100px; height:=
+ 100px; border: 1px solid #f2f2f2; background-color: #f8f8f8; background-si=
+ze: cover; background-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]><img sr=
+c=3D"https://cdn-images-1.medium.com/fit/c/100/100/1*qwa0iO9vmP8EqssORGqsLA=
+.jpeg?q=3D50" width=3D"100" height=3D"100"><![endif]--></div></a></td><td c=
+lass=3D"email-paddingLeft20 email-xs-paddingLeft0 email-xs-block email-xs-f=
+illWidth" style=3D"padding-left: 20px;"><a href=3D"https://medium.com/@adam=
+kraymond/if-youre-online-you-re-getting-scammed-7cd91350722d?source=3Demail=
+-9c3bd689d8a4-1573236686908-digest.reader------1-50------------------73ebc8=
+71_6173_42c2_8091_6f0ee7c08f69-12-----&amp;sectionName=3Dtopic" style=3D"co=
+lor: #333332; text-decoration: none;"><div class=3D"email-bold email-digest=
+PostTitle" style=3D"font-size: 18px; line-height: 1.22; font-weight: 700;">=
+<a href=3D"https://medium.com/@adamkraymond/if-youre-online-you-re-getting-=
+scammed-7cd91350722d?source=3Demail-9c3bd689d8a4-1573236686908-digest.reade=
+r------1-50------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-12-----&a=
+mp;sectionName=3Dtopic" style=3D"color: #333332; text-decoration: none;">If=
+ You=E2=80=99re Online, You=E2=80=99re Getting Scammed</a></div><div class=
+=3D"email-digestPostSubtitle" style=3D"line-height: 1.33; font-size: 15px; =
+margin-top: 4px;">The five latest swindles=E2=80=8A=E2=80=94=E2=80=8Aand ho=
+w to avoid them</div></a><div class=3D"email-marginTop8 email-xs-marginTop1=
+0 email-fontSize15 email-textDarkerGray" style=3D"font-size: 15px; color: #=
+757575; margin-top: 8px;"><a class=3D"email-link email-textDarkerGray" href=
+=3D"https://medium.com/@adamkraymond?source=3Demail-9c3bd689d8a4-1573236686=
+908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08=
+f69" style=3D"color: #757575; text-decoration: none;">Adam K. Raymond</a> i=
+n <a class=3D"email-link email-textDarkerGray" href=3D"https://medium.com/o=
+ne-zero?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------------=
+-------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575;=
+ text-decoration: none;">OneZero</a><img src=3D"https://cdn-images-1.medium=
+.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email-inlineBlock email-m=
+arginLeft10" alt=3D"Member only content" width=3D"12" height=3D"12" style=
+=3D"display: inline-block; margin-left: 10px;"><span class=3D"email-marginL=
+eft10" style=3D"margin-left: 10px;">9 min read</span></div></td></tr></tabl=
+e><table class=3D"email-marginTop24 email-xs-marginTop12 email-marginBottom=
+36 email-xs-marginBottom32 email-borderSpacing0 email-fillWidth" style=3D"m=
+in-width: 100%; width: 100%; margin-top: 24px; margin-bottom: 36px; border-=
+spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"vertical-align: =
+top;"><td class=3D"email-width100 email-xs-block email-xs-fillWidth email-x=
+s-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a href=3D"https:/=
+/medium.com/@WillOremus/three-takeaways-from-the-hack-of-jack-dorseys-twitt=
+er-account-e9de7b8614d8?source=3Demail-9c3bd689d8a4-1573236686908-digest.re=
+ader------2-50------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-12----=
+-&amp;sectionName=3Dtopic" style=3D"color: #333332; text-decoration: none;"=
+><div class=3D"email-backgroundSizeCover email-backgroundNoRepeat email-wid=
+th100 email-height100 email-xs-fillWidth email-borderBlueGrey email-backgro=
+undGrayLightest" style=3D"background-image: url(https://cdn-images-1.medium=
+.com/focal/420/420/48/32/1*CWxkAHwl4LJPuKis14nWnA.jpeg?q=3D50); background-=
+position: 48% 32%; width: 100px; max-height: 100px; height: 100px; border: =
+1px solid #f2f2f2; background-color: #f8f8f8; background-size: cover; backg=
+round-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn=
+-images-1.medium.com/fit/c/100/100/1*CWxkAHwl4LJPuKis14nWnA.jpeg?q=3D50" wi=
+dth=3D"100" height=3D"100"><![endif]--></div></a></td><td class=3D"email-pa=
+ddingLeft20 email-xs-paddingLeft0 email-xs-block email-xs-fillWidth" style=
+=3D"padding-left: 20px;"><a href=3D"https://medium.com/@WillOremus/three-ta=
+keaways-from-the-hack-of-jack-dorseys-twitter-account-e9de7b8614d8?source=
+=3Demail-9c3bd689d8a4-1573236686908-digest.reader------2-50----------------=
+--73ebc871_6173_42c2_8091_6f0ee7c08f69-12-----&amp;sectionName=3Dtopic" sty=
+le=3D"color: #333332; text-decoration: none;"><div class=3D"email-bold emai=
+l-digestPostTitle" style=3D"font-size: 18px; line-height: 1.22; font-weight=
+: 700;"><a href=3D"https://medium.com/@WillOremus/three-takeaways-from-the-=
+hack-of-jack-dorseys-twitter-account-e9de7b8614d8?source=3Demail-9c3bd689d8=
+a4-1573236686908-digest.reader------2-50------------------73ebc871_6173_42c=
+2_8091_6f0ee7c08f69-12-----&amp;sectionName=3Dtopic" style=3D"color: #33333=
+2; text-decoration: none;">Three Takeaways From the Hack of Jack Dorsey=E2=
+=80=99s Twitter Account</a></div><div class=3D"email-digestPostSubtitle" st=
+yle=3D"line-height: 1.33; font-size: 15px; margin-top: 4px;">And how to kee=
+p it from happening to you</div></a><div class=3D"email-marginTop8 email-xs=
+-marginTop10 email-fontSize15 email-textDarkerGray" style=3D"font-size: 15p=
+x; color: #757575; margin-top: 8px;"><a class=3D"email-link email-textDarke=
+rGray" href=3D"https://medium.com/@WillOremus?source=3Demail-9c3bd689d8a4-1=
+573236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_=
+6f0ee7c08f69" style=3D"color: #757575; text-decoration: none;">Will Oremus<=
+/a> in <a class=3D"email-link email-textDarkerGray" href=3D"https://medium.=
+com/one-zero?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-------=
+------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #75=
+7575; text-decoration: none;">OneZero</a><img src=3D"https://cdn-images-1.m=
+edium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email-inlineBlock em=
+ail-marginLeft10" alt=3D"Member only content" width=3D"12" height=3D"12" st=
+yle=3D"display: inline-block; margin-left: 10px;"><span class=3D"email-marg=
+inLeft10" style=3D"margin-left: 10px;">4 min read</span></div></td></tr></t=
+able></td></tr><tr><td><div class=3D"email-fontSize18 email-xs-fontSize16 e=
+mail-bold email-marginTop24 email-marginBottom8" style=3D"font-size: 18px; =
+font-weight: 700; margin-bottom: 8px; margin-top: 24px;">Most read</div><di=
+v class=3D"email-borderBottomGrey email-digestDividerHeight" style=3D"heigh=
+t: 2px; border-bottom: 1px solid #e5e5e5;"></div><table class=3D"email-marg=
+inTop24 email-xs-marginTop12 email-marginBottom36 email-xs-marginBottom32 e=
+mail-borderSpacing0 email-fillWidth" style=3D"min-width: 100%; width: 100%;=
+ margin-top: 24px; margin-bottom: 36px; border-spacing: 0;"><tr class=3D"em=
+ail-verticalAlignTop" style=3D"vertical-align: top;"><td class=3D"email-wid=
+th100 email-xs-block email-xs-fillWidth email-xs-paddingBottom12" width=3D"=
+100" style=3D"width: 100px;"><a href=3D"https://medium.com/@thefatshadow/wh=
+at-i-appreciate-most-from-thinner-friends-2c1524ae09c9?source=3Demail-9c3bd=
+689d8a4-1573236686908-digest.reader------0-62------------------73ebc871_617=
+3_42c2_8091_6f0ee7c08f69-21-----&amp;sectionName=3Devergreen" style=3D"colo=
+r: #333332; text-decoration: none;"><div class=3D"email-backgroundSizeCover=
+ email-backgroundNoRepeat email-width100 email-height100 email-xs-fillWidth=
+ email-borderBlueGrey email-backgroundGrayLightest" style=3D"background-ima=
+ge: url(https://cdn-images-1.medium.com/focal/420/420/53/34/1*40YJe32nL9dF1=
+qsLFn0fkg.jpeg?q=3D50); background-position: 53% 34%; width: 100px; max-hei=
+ght: 100px; height: 100px; border: 1px solid #f2f2f2; background-color: #f8=
+f8f8; background-size: cover; background-repeat: no-repeat;"><!--[if (gte m=
+so 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/fit/c/100/100/1*40Y=
+Je32nL9dF1qsLFn0fkg.jpeg?q=3D50" width=3D"100" height=3D"100"><![endif]--><=
+/div></a></td><td class=3D"email-paddingLeft20 email-xs-paddingLeft0 email-=
+xs-block email-xs-fillWidth" style=3D"padding-left: 20px;"><a href=3D"https=
+://medium.com/@thefatshadow/what-i-appreciate-most-from-thinner-friends-2c1=
+524ae09c9?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------0-62=
+------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-21-----&amp;sectionN=
+ame=3Devergreen" style=3D"color: #333332; text-decoration: none;"><div clas=
+s=3D"email-bold email-digestPostTitle" style=3D"font-size: 18px; line-heigh=
+t: 1.22; font-weight: 700;"><a href=3D"https://medium.com/@thefatshadow/wha=
+t-i-appreciate-most-from-thinner-friends-2c1524ae09c9?source=3Demail-9c3bd6=
+89d8a4-1573236686908-digest.reader------0-62------------------73ebc871_6173=
+_42c2_8091_6f0ee7c08f69-21-----&amp;sectionName=3Devergreen" style=3D"color=
+: #333332; text-decoration: none;">How to Support Your Fat Friends, as a St=
+raight Size Person</a></div><div class=3D"email-digestPostSubtitle" style=
+=3D"line-height: 1.33; font-size: 15px; margin-top: 4px;">I appreciate when=
+ my thin or straight-size friends take the initiative to speak up against a=
+nti-fat bias</div></a><div class=3D"email-marginTop8 email-xs-marginTop10 e=
+mail-fontSize15 email-textDarkerGray" style=3D"font-size: 15px; color: #757=
+575; margin-top: 8px;"><a class=3D"email-link email-textDarkerGray" href=3D=
+"https://medium.com/@thefatshadow?source=3Demail-9c3bd689d8a4-1573236686908=
+-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69=
+" style=3D"color: #757575; text-decoration: none;">Your Fat Friend</a> in <=
+a class=3D"email-link email-textDarkerGray" href=3D"https://medium.com/huma=
+n-parts?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader------------=
+-------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575;=
+ text-decoration: none;">Human Parts</a><img src=3D"https://cdn-images-1.me=
+dium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email-inlineBlock ema=
+il-marginLeft10" alt=3D"Member only content" width=3D"12" height=3D"12" sty=
+le=3D"display: inline-block; margin-left: 10px;"><span class=3D"email-margi=
+nLeft10" style=3D"margin-left: 10px;">11 min read</span></div></td></tr></t=
+able><table class=3D"email-marginTop24 email-xs-marginTop12 email-marginBot=
+tom36 email-xs-marginBottom32 email-borderSpacing0 email-fillWidth" style=
+=3D"min-width: 100%; width: 100%; margin-top: 24px; margin-bottom: 36px; bo=
+rder-spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"vertical-al=
+ign: top;"><td class=3D"email-width100 email-xs-block email-xs-fillWidth em=
+ail-xs-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a href=3D"ht=
+tps://medium.com/@widow411/the-unexpected-benefit-of-writing-letters-to-my-=
+kids-every-month-1b42214bb49?source=3Demail-9c3bd689d8a4-1573236686908-dige=
+st.reader------1-62------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-2=
+1-----&amp;sectionName=3Devergreen" style=3D"color: #333332; text-decoratio=
+n: none;"><div class=3D"email-backgroundSizeCover email-backgroundNoRepeat =
+email-width100 email-height100 email-xs-fillWidth email-borderBlueGrey emai=
+l-backgroundGrayLightest" style=3D"background-image: url(https://cdn-images=
+-1.medium.com/focal/420/420/49/27/0*jPl_P691owxTuVyD?q=3D50); background-po=
+sition: 49% 27%; width: 100px; max-height: 100px; height: 100px; border: 1p=
+x solid #f2f2f2; background-color: #f8f8f8; background-size: cover; backgro=
+und-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-i=
+mages-1.medium.com/fit/c/100/100/0*jPl_P691owxTuVyD?q=3D50" width=3D"100" h=
+eight=3D"100"><![endif]--></div></a></td><td class=3D"email-paddingLeft20 e=
+mail-xs-paddingLeft0 email-xs-block email-xs-fillWidth" style=3D"padding-le=
+ft: 20px;"><a href=3D"https://medium.com/@widow411/the-unexpected-benefit-o=
+f-writing-letters-to-my-kids-every-month-1b42214bb49?source=3Demail-9c3bd68=
+9d8a4-1573236686908-digest.reader------1-62------------------73ebc871_6173_=
+42c2_8091_6f0ee7c08f69-21-----&amp;sectionName=3Devergreen" style=3D"color:=
+ #333332; text-decoration: none;"><div class=3D"email-bold email-digestPost=
+Title" style=3D"font-size: 18px; line-height: 1.22; font-weight: 700;"><a h=
+ref=3D"https://medium.com/@widow411/the-unexpected-benefit-of-writing-lette=
+rs-to-my-kids-every-month-1b42214bb49?source=3Demail-9c3bd689d8a4-157323668=
+6908-digest.reader------1-62------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69-21-----&amp;sectionName=3Devergreen" style=3D"color: #333332; text-=
+decoration: none;">The Unexpected Benefit of Writing Letters to My Kids Eve=
+ry Month</a></div><div class=3D"email-digestPostSubtitle" style=3D"line-hei=
+ght: 1.33; font-size: 15px; margin-top: 4px;">I was recording a memorial fo=
+r a story we never expected to end</div></a><div class=3D"email-marginTop8 =
+email-xs-marginTop10 email-fontSize15 email-textDarkerGray" style=3D"font-s=
+ize: 15px; color: #757575; margin-top: 8px;"><a class=3D"email-link email-t=
+extDarkerGray" href=3D"https://medium.com/@widow411?source=3Demail-9c3bd689=
+d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2=
+_8091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: none;">Kimber=
+lee Murray</a> in <a class=3D"email-link email-textDarkerGray" href=3D"http=
+s://medium.com/human-parts?source=3Demail-9c3bd689d8a4-1573236686908-digest=
+.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=
+=3D"color: #757575; text-decoration: none;">Human Parts</a><img src=3D"http=
+s://cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"em=
+ail-inlineBlock email-marginLeft10" alt=3D"Member only content" width=3D"12=
+" height=3D"12" style=3D"display: inline-block; margin-left: 10px;"><span c=
+lass=3D"email-marginLeft10" style=3D"margin-left: 10px;">8 min read</span><=
+/div></td></tr></table><table class=3D"email-marginTop24 email-xs-marginTop=
+12 email-marginBottom36 email-xs-marginBottom32 email-borderSpacing0 email-=
+fillWidth" style=3D"min-width: 100%; width: 100%; margin-top: 24px; margin-=
+bottom: 36px; border-spacing: 0;"><tr class=3D"email-verticalAlignTop" styl=
+e=3D"vertical-align: top;"><td class=3D"email-width100 email-xs-block email=
+-xs-fillWidth email-xs-paddingBottom12" width=3D"100" style=3D"width: 100px=
+;"><a href=3D"https://medium.com/@sophiacamille/the-questions-no-one-asks-w=
+hen-you-move-3-000-miles-across-the-country-2c856eac5924?source=3Demail-9c3=
+bd689d8a4-1573236686908-digest.reader------2-62------------------73ebc871_6=
+173_42c2_8091_6f0ee7c08f69-21-----&amp;sectionName=3Devergreen" style=3D"co=
+lor: #333332; text-decoration: none;"><div class=3D"email-backgroundSizeCov=
+er email-backgroundNoRepeat email-width100 email-height100 email-xs-fillWid=
+th email-borderBlueGrey email-backgroundGrayLightest" style=3D"background-i=
+mage: url(https://cdn-images-1.medium.com/focal/420/420/57/58/1*EWepxUivdpg=
+jmpoIVtZsAw.gif?q=3D50); background-position: 57% 58%; width: 100px; max-he=
+ight: 100px; height: 100px; border: 1px solid #f2f2f2; background-color: #f=
+8f8f8; background-size: cover; background-repeat: no-repeat;"><!--[if (gte =
+mso 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/fit/c/100/100/1*EW=
+epxUivdpgjmpoIVtZsAw.gif?q=3D50" width=3D"100" height=3D"100"><![endif]--><=
+/div></a></td><td class=3D"email-paddingLeft20 email-xs-paddingLeft0 email-=
+xs-block email-xs-fillWidth" style=3D"padding-left: 20px;"><a href=3D"https=
+://medium.com/@sophiacamille/the-questions-no-one-asks-when-you-move-3-000-=
+miles-across-the-country-2c856eac5924?source=3Demail-9c3bd689d8a4-157323668=
+6908-digest.reader------2-62------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69-21-----&amp;sectionName=3Devergreen" style=3D"color: #333332; text-=
+decoration: none;"><div class=3D"email-bold email-digestPostTitle" style=3D=
+"font-size: 18px; line-height: 1.22; font-weight: 700;"><a href=3D"https://=
+medium.com/@sophiacamille/the-questions-no-one-asks-when-you-move-3-000-mil=
+es-across-the-country-2c856eac5924?source=3Demail-9c3bd689d8a4-157323668690=
+8-digest.reader------2-62------------------73ebc871_6173_42c2_8091_6f0ee7c0=
+8f69-21-----&amp;sectionName=3Devergreen" style=3D"color: #333332; text-dec=
+oration: none;">The Questions No One Asks When You Move 3,000 Miles Across =
+the Country</a></div><div class=3D"email-digestPostSubtitle" style=3D"line-=
+height: 1.33; font-size: 15px; margin-top: 4px;">Must bravery or stupidity =
+underwrite every bold life decision?</div></a><div class=3D"email-marginTop=
+8 email-xs-marginTop10 email-fontSize15 email-textDarkerGray" style=3D"font=
+-size: 15px; color: #757575; margin-top: 8px;"><a class=3D"email-link email=
+-textDarkerGray" href=3D"https://medium.com/@sophiacamille?source=3Demail-9=
+c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_61=
+73_42c2_8091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: none;"=
+>Sophia Smith</a> in <a class=3D"email-link email-textDarkerGray" href=3D"h=
+ttps://medium.com/human-parts?source=3Demail-9c3bd689d8a4-1573236686908-dig=
+est.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" st=
+yle=3D"color: #757575; text-decoration: none;">Human Parts</a><img src=3D"h=
+ttps://cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D=
+"email-inlineBlock email-marginLeft10" alt=3D"Member only content" width=3D=
+"12" height=3D"12" style=3D"display: inline-block; margin-left: 10px;"><spa=
+n class=3D"email-marginLeft10" style=3D"margin-left: 10px;">6 min read</spa=
+n></div></td></tr></table></td></tr><tr><td><div class=3D"email-fontSize18 =
+email-xs-fontSize16 email-bold email-marginTop24 email-marginBottom8" style=
+=3D"font-size: 18px; font-weight: 700; margin-bottom: 8px; margin-top: 24px=
+;">Editors=E2=80=99 picks</div><div class=3D""></div><table class=3D"email-=
+marginTop16 email-marginBottom36 email-xs-marginBottom32 email-borderSpacin=
+g0 email-fillWidth" style=3D"min-width: 100%; width: 100%; margin-top: 16px=
+; margin-bottom: 36px; border-spacing: 0;"><tr><td class=3D"email-fillWidth=
+ email-paddingBottom16 email-xs-paddingBottom12" width=3D"100" style=3D"min=
+-width: 100%; width: 100%; padding-bottom: 16px;"><a href=3D"https://medium=
+.com/@kurlytlapoyawa/can-we-please-stop-using-latinx-thanx-423ac92a87dc?sou=
+rce=3Demail-9c3bd689d8a4-1573236686908-digest.reader------0-13-------------=
+-----73ebc871_6173_42c2_8091_6f0ee7c08f69-6-----&amp;sectionName=3Dsuggeste=
+d" style=3D"color: #333332; text-decoration: none;"><div class=3D"email-bac=
+kgroundSizeCover email-backgroundNoRepeat email-fillWidth email-height200 e=
+mail-borderBlueGrey email-backgroundGrayLightest" style=3D"background-image=
+: url(https://cdn-images-1.medium.com/focal/600/600/56/34/1*dBrN3O25x8_XCRn=
+SLF6kZw.jpeg?q=3D50); background-position: 56% 34%; min-width: 100%; width:=
+ 100%; max-height: 200px; height: 200px; border: 1px solid #f2f2f2; backgro=
+und-color: #f8f8f8; background-size: cover; background-repeat: no-repeat;">=
+<!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/fit/c=
+/600/200/1*dBrN3O25x8_XCRnSLF6kZw.jpeg?q=3D50" width=3D"600" height=3D"200"=
+><![endif]--></div></a></td></tr><tr class=3D"email-verticalAlignTop" style=
+=3D"vertical-align: top;"><td class=3D"email-xs-paddingLeft0 email-xs-block=
+ email-xs-fillWidth"><a href=3D"https://medium.com/@kurlytlapoyawa/can-we-p=
+lease-stop-using-latinx-thanx-423ac92a87dc?source=3Demail-9c3bd689d8a4-1573=
+236686908-digest.reader------0-13------------------73ebc871_6173_42c2_8091_=
+6f0ee7c08f69-6-----&amp;sectionName=3Dsuggested" style=3D"color: #333332; t=
+ext-decoration: none;"><div class=3D"email-bold email-digestPostTitle--hero=
+" style=3D"font-size: 22px; line-height: 1.27; font-weight: 700;"><a href=
+=3D"https://medium.com/@kurlytlapoyawa/can-we-please-stop-using-latinx-than=
+x-423ac92a87dc?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----=
+-0-13------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-6-----&amp;sect=
+ionName=3Dsuggested" style=3D"color: #333332; text-decoration: none;">Can W=
+e Please Stop Using =E2=80=98Latinx=E2=80=99? Thanx.</a></div><div class=3D=
+"email-digestPostSubtitle" style=3D"line-height: 1.33; font-size: 15px; mar=
+gin-top: 4px;">Gender inclusivity is important, but so is acknowledging our=
+ indigenous origins</div></a><div class=3D"email-marginTop12 email-xs-margi=
+nTop10 email-fontSize15 email-textDarkerGray" style=3D"font-size: 15px; col=
+or: #757575; margin-top: 12px;"><a class=3D"email-link email-textDarkerGray=
+" href=3D"https://medium.com/@kurlytlapoyawa?source=3Demail-9c3bd689d8a4-15=
+73236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_6=
+f0ee7c08f69" style=3D"color: #757575; text-decoration: none;">Kurly Tlapoya=
+wa</a> in <a class=3D"email-link email-textDarkerGray" href=3D"https://medi=
+um.com/human-parts?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-=
+------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"colo=
+r: #757575; text-decoration: none;">Human Parts</a><img src=3D"https://cdn-=
+images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email-inli=
+neBlock email-marginLeft10" alt=3D"Member only content" width=3D"12" height=
+=3D"12" style=3D"display: inline-block; margin-left: 10px;"><span class=3D"=
+email-marginLeft10" style=3D"margin-left: 10px;">6 min read</span></div></t=
+d></tr></table><table class=3D"email-marginTop24 email-xs-marginTop12 email=
+-marginBottom36 email-xs-marginBottom32 email-borderSpacing0 email-fillWidt=
+h" style=3D"min-width: 100%; width: 100%; margin-top: 24px; margin-bottom: =
+36px; border-spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"ver=
+tical-align: top;"><td class=3D"email-width100 email-xs-block email-xs-fill=
+Width email-xs-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a hr=
+ef=3D"https://medium.com/@jessicavalenti/attention-t-i-theres-no-such-thing=
+-as-virginity-30bcc5020a9c?source=3Demail-9c3bd689d8a4-1573236686908-digest=
+.reader------1-13------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-6--=
+---&amp;sectionName=3Dsuggested" style=3D"color: #333332; text-decoration: =
+none;"><div class=3D"email-backgroundSizeCover email-backgroundNoRepeat ema=
+il-width100 email-height100 email-xs-fillWidth email-borderBlueGrey email-b=
+ackgroundGrayLightest" style=3D"background-image: url(https://cdn-images-1.=
+medium.com/focal/420/420/50/32/1*NLsfkNVM9p3vYkxwLgeblA.jpeg?q=3D50); backg=
+round-position: 50% 32%; width: 100px; max-height: 100px; height: 100px; bo=
+rder: 1px solid #f2f2f2; background-color: #f8f8f8; background-size: cover;=
+ background-repeat: no-repeat;"><!--[if (gte mso 9)|(IE)]><img src=3D"https=
+://cdn-images-1.medium.com/fit/c/100/100/1*NLsfkNVM9p3vYkxwLgeblA.jpeg?q=3D=
+50" width=3D"100" height=3D"100"><![endif]--></div></a></td><td class=3D"em=
+ail-paddingLeft20 email-xs-paddingLeft0 email-xs-block email-xs-fillWidth" =
+style=3D"padding-left: 20px;"><a href=3D"https://medium.com/@jessicavalenti=
+/attention-t-i-theres-no-such-thing-as-virginity-30bcc5020a9c?source=3Demai=
+l-9c3bd689d8a4-1573236686908-digest.reader------1-13------------------73ebc=
+871_6173_42c2_8091_6f0ee7c08f69-6-----&amp;sectionName=3Dsuggested" style=
+=3D"color: #333332; text-decoration: none;"><div class=3D"email-bold email-=
+digestPostTitle" style=3D"font-size: 18px; line-height: 1.22; font-weight: =
+700;"><a href=3D"https://medium.com/@jessicavalenti/attention-t-i-theres-no=
+-such-thing-as-virginity-30bcc5020a9c?source=3Demail-9c3bd689d8a4-157323668=
+6908-digest.reader------1-13------------------73ebc871_6173_42c2_8091_6f0ee=
+7c08f69-6-----&amp;sectionName=3Dsuggested" style=3D"color: #333332; text-d=
+ecoration: none;">Attention, T.I.: There=E2=80=99s No Such Thing as Virgini=
+ty</a></div><div class=3D"email-digestPostSubtitle" style=3D"line-height: 1=
+.33; font-size: 15px; margin-top: 4px;">The rapper=E2=80=99s comments about=
+ his daughter=E2=80=99s hymen show that America is still obsessed over a pu=
+rity standard=E2=80=A6</div></a><div class=3D"email-marginTop8 email-xs-mar=
+ginTop10 email-fontSize15 email-textDarkerGray" style=3D"font-size: 15px; c=
+olor: #757575; margin-top: 8px;"><a class=3D"email-link email-textDarkerGra=
+y" href=3D"https://medium.com/@jessicavalenti?source=3Demail-9c3bd689d8a4-1=
+573236686908-digest.reader-------------------------73ebc871_6173_42c2_8091_=
+6f0ee7c08f69" style=3D"color: #757575; text-decoration: none;">Jessica Vale=
+nti</a> in <a class=3D"email-link email-textDarkerGray" href=3D"https://med=
+ium.com/gen?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader--------=
+-----------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757=
+575; text-decoration: none;">GEN</a><img src=3D"https://cdn-images-1.medium=
+.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email-inlineBlock email-m=
+arginLeft10" alt=3D"Member only content" width=3D"12" height=3D"12" style=
+=3D"display: inline-block; margin-left: 10px;"><span class=3D"email-marginL=
+eft10" style=3D"margin-left: 10px;">3 min read</span></div></td></tr></tabl=
+e><table class=3D"email-marginTop24 email-xs-marginTop12 email-marginBottom=
+36 email-xs-marginBottom32 email-borderSpacing0 email-fillWidth" style=3D"m=
+in-width: 100%; width: 100%; margin-top: 24px; margin-bottom: 36px; border-=
+spacing: 0;"><tr class=3D"email-verticalAlignTop" style=3D"vertical-align: =
+top;"><td class=3D"email-width100 email-xs-block email-xs-fillWidth email-x=
+s-paddingBottom12" width=3D"100" style=3D"width: 100px;"><a href=3D"https:/=
+/medium.com/@NickyWoolf/what-the-internet-does-to-bad-ideas-f8e3020cd3f4?so=
+urce=3Demail-9c3bd689d8a4-1573236686908-digest.reader------2-13------------=
+------73ebc871_6173_42c2_8091_6f0ee7c08f69-6-----&amp;sectionName=3Dsuggest=
+ed" style=3D"color: #333332; text-decoration: none;"><div class=3D"email-ba=
+ckgroundSizeCover email-backgroundNoRepeat email-width100 email-height100 e=
+mail-xs-fillWidth email-borderBlueGrey email-backgroundGrayLightest" style=
+=3D"background-image: url(https://cdn-images-1.medium.com/focal/420/420/50/=
+41/1*8WKwWuINHnqppoRltfVGGQ.jpeg?q=3D50); background-position: 50% 41%; wid=
+th: 100px; max-height: 100px; height: 100px; border: 1px solid #f2f2f2; bac=
+kground-color: #f8f8f8; background-size: cover; background-repeat: no-repea=
+t;"><!--[if (gte mso 9)|(IE)]><img src=3D"https://cdn-images-1.medium.com/f=
+it/c/100/100/1*8WKwWuINHnqppoRltfVGGQ.jpeg?q=3D50" width=3D"100" height=3D"=
+100"><![endif]--></div></a></td><td class=3D"email-paddingLeft20 email-xs-p=
+addingLeft0 email-xs-block email-xs-fillWidth" style=3D"padding-left: 20px;=
+"><a href=3D"https://medium.com/@NickyWoolf/what-the-internet-does-to-bad-i=
+deas-f8e3020cd3f4?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader--=
+----2-13------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-6-----&amp;s=
+ectionName=3Dsuggested" style=3D"color: #333332; text-decoration: none;"><d=
+iv class=3D"email-bold email-digestPostTitle" style=3D"font-size: 18px; lin=
+e-height: 1.22; font-weight: 700;"><a href=3D"https://medium.com/@NickyWool=
+f/what-the-internet-does-to-bad-ideas-f8e3020cd3f4?source=3Demail-9c3bd689d=
+8a4-1573236686908-digest.reader------2-13------------------73ebc871_6173_42=
+c2_8091_6f0ee7c08f69-6-----&amp;sectionName=3Dsuggested" style=3D"color: #3=
+33332; text-decoration: none;">What the Internet Does to Bad Ideas</a></div=
+><div class=3D"email-digestPostSubtitle" style=3D"line-height: 1.33; font-s=
+ize: 15px; margin-top: 4px;">Our Body Cultural is built upon our stories of=
+ ourselves, but that process is crumbling</div></a><div class=3D"email-marg=
+inTop8 email-xs-marginTop10 email-fontSize15 email-textDarkerGray" style=3D=
+"font-size: 15px; color: #757575; margin-top: 8px;"><a class=3D"email-link =
+email-textDarkerGray" href=3D"https://medium.com/@NickyWoolf?source=3Demail=
+-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871_=
+6173_42c2_8091_6f0ee7c08f69" style=3D"color: #757575; text-decoration: none=
+;">Nicky Woolf</a> in <a class=3D"email-link email-textDarkerGray" href=3D"=
+https://medium.com/one-zero?source=3Demail-9c3bd689d8a4-1573236686908-diges=
+t.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" styl=
+e=3D"color: #757575; text-decoration: none;">OneZero</a><img src=3D"https:/=
+/cdn-images-1.medium.com/proxy/1*dMba6LR4dsoQTHzQ5T7oaA.png" class=3D"email=
+-inlineBlock email-marginLeft10" alt=3D"Member only content" width=3D"12" h=
+eight=3D"12" style=3D"display: inline-block; margin-left: 10px;"><span clas=
+s=3D"email-marginLeft10" style=3D"margin-left: 10px;">15 min read</span></d=
+iv></td></tr></table></td></tr></table><div class=3D"email-digestColorBlock=
+ email-backgroundGrayLight" style=3D"max-width: 740px; margin-top: auto; ma=
+rgin-right: auto; margin-bottom: auto; margin-bottom: 30px; margin-left: au=
+to; padding-top: 35px; padding-bottom: 35px; background-color: #f0f0f0;"><t=
+able class=3D"email-digest email-paddingTop0" width=3D"600" style=3D"border=
+-spacing: 0; color: rgba(0 , 0 , 0 , 0.9); font-family: Arial , sans-serif;=
+ letter-spacing: 0em; line-height: 1.4; margin-top: 0; margin-right: auto; =
+margin-bottom: 0; margin-left: auto; padding-left: 24px; padding-right: 24p=
+x; width: 100%; max-width: 648px; padding-top: 0px;"><tr><td><div class=3D"=
+email-digestPostTitle" style=3D"font-size: 18px; line-height: 1.22;">Still =
+looking for something to read?</div><div class=3D"email-digestPostSubtitle =
+email-textDarkerGray email-fontSize17 email-marginTop4 email-marginBottom20=
+" style=3D"line-height: 1.33; font-size: 17px; margin-top: 4px; color: #757=
+575; margin-bottom: 20px;">Follow a trending topic to see what you=E2=80=99=
+re missing.</div><table class=3D"email-tableLayoutFixed email-borderCollaps=
+eCollapse" width=3D"100%" style=3D"table-layout: fixed; border-collapse: co=
+llapse;"><tr class=3D""><td class=3D"email-backgroundWhite email-borderGray=
+Light email-padding8 email-borderRight24 email-xs-border0 email-xs-block js=
+-digestFollowButton" style=3D"border-right-width: 24px; border-right-style:=
+ solid; border-color: #f0f0f0; padding-top: 8px; padding-right: 8px; paddin=
+g-bottom: 8px; padding-left: 8px; background-color: #ffffff;"><a class=3D"l=
+ink u-baseColor--link" href=3D"https://medium.com/_/api/requests/7d3014c732=
+0c?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----------------=
+--------73ebc871_6173_42c2_8091_6f0ee7c08f69-19" style=3D"color: #333332; t=
+ext-decoration: none;"><table width=3D"100%"><tr><td><div class=3D"email-fo=
+ntSize17 email-bold" style=3D"font-size: 17px; font-weight: 700;"><a href=
+=3D"https://medium.com/_/api/requests/7d3014c7320c?source=3Demail-9c3bd689d=
+8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42c2_=
+8091_6f0ee7c08f69-19" style=3D"color: #333332; text-decoration: none;">Phil=
+osophy</a></div><div class=3D"email-fontSize14 email-textDarkerGray" style=
+=3D"font-size: 14px; color: #757575;">Think about it.</div></td><td class=
+=3D"email-right" style=3D"text-align: right;"><span class=3D"email-fontSize=
+30 email-textColorGray" style=3D"color: #b3b3b1; font-size: 30px;">&#43;</s=
+pan></td></tr></table></a></td><td class=3D"email-backgroundWhite email-bor=
+derGrayLight email-padding8 email-xs-marginTop12 email-xs-block js-digestFo=
+llowButton" style=3D"border-color: #f0f0f0; padding-top: 8px; padding-right=
+: 8px; padding-bottom: 8px; padding-left: 8px; background-color: #ffffff;">=
+<a class=3D"link u-baseColor--link" href=3D"https://medium.com/_/api/reques=
+ts/d8a03542b60b?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader----=
+---------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-19" style=3D"colo=
+r: #333332; text-decoration: none;"><table width=3D"100%"><tr><td><div clas=
+s=3D"email-fontSize17 email-bold" style=3D"font-size: 17px; font-weight: 70=
+0;"><a href=3D"https://medium.com/_/api/requests/d8a03542b60b?source=3Demai=
+l-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc871=
+_6173_42c2_8091_6f0ee7c08f69-19" style=3D"color: #333332; text-decoration: =
+none;">Self</a></div><div class=3D"email-fontSize14 email-textDarkerGray" s=
+tyle=3D"font-size: 14px; color: #757575;">Live better.</div></td><td class=
+=3D"email-right" style=3D"text-align: right;"><span class=3D"email-fontSize=
+30 email-textColorGray" style=3D"color: #b3b3b1; font-size: 30px;">&#43;</s=
+pan></td></tr></table></a></td></tr><tr class=3D"email-borderTop12 email-bo=
+rderGrayLight email-xs-border0" style=3D"border-top-width: 12px; border-top=
+-style: solid; border-color: #f0f0f0;"><td class=3D"email-backgroundWhite e=
+mail-borderGrayLight email-padding8 email-borderRight24 email-xs-border0 em=
+ail-xs-marginTop12 email-xs-block js-digestFollowButton" style=3D"border-ri=
+ght-width: 24px; border-right-style: solid; border-color: #f0f0f0; padding-=
+top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px; backg=
+round-color: #ffffff;"><a class=3D"link u-baseColor--link" href=3D"https://=
+medium.com/_/api/requests/a9b5414ef6fb?source=3Demail-9c3bd689d8a4-15732366=
+86908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c=
+08f69-19" style=3D"color: #333332; text-decoration: none;"><table width=3D"=
+100%"><tr><td><div class=3D"email-fontSize17 email-bold" style=3D"font-size=
+: 17px; font-weight: 700;"><a href=3D"https://medium.com/_/api/requests/a9b=
+5414ef6fb?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader----------=
+---------------73ebc871_6173_42c2_8091_6f0ee7c08f69-19" style=3D"color: #33=
+3332; text-decoration: none;">Creativity</a></div><div class=3D"email-fontS=
+ize14 email-textDarkerGray" style=3D"font-size: 14px; color: #757575;">Of m=
+uses and mistakes.</div></td><td class=3D"email-right" style=3D"text-align:=
+ right;"><span class=3D"email-fontSize30 email-textColorGray" style=3D"colo=
+r: #b3b3b1; font-size: 30px;">&#43;</span></td></tr></table></a></td><td cl=
+ass=3D"email-backgroundWhite email-borderGrayLight email-padding8 email-xs-=
+marginTop12 email-xs-block js-digestFollowButton" style=3D"border-color: #f=
+0f0f0; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-l=
+eft: 8px; background-color: #ffffff;"><a class=3D"link u-baseColor--link" h=
+ref=3D"https://medium.com/_/api/requests/8987b481e68f?source=3Demail-9c3bd6=
+89d8a4-1573236686908-digest.reader-------------------------73ebc871_6173_42=
+c2_8091_6f0ee7c08f69-19" style=3D"color: #333332; text-decoration: none;"><=
+table width=3D"100%"><tr><td><div class=3D"email-fontSize17 email-bold" sty=
+le=3D"font-size: 17px; font-weight: 700;"><a href=3D"https://medium.com/_/a=
+pi/requests/8987b481e68f?source=3Demail-9c3bd689d8a4-1573236686908-digest.r=
+eader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-19" styl=
+e=3D"color: #333332; text-decoration: none;">Future</a></div><div class=3D"=
+email-fontSize14 email-textDarkerGray" style=3D"font-size: 14px; color: #75=
+7575;">Dispatches from tomorrow.</div></td><td class=3D"email-right" style=
+=3D"text-align: right;"><span class=3D"email-fontSize30 email-textColorGray=
+" style=3D"color: #b3b3b1; font-size: 30px;">&#43;</span></td></tr></table>=
+</a></td></tr><tr class=3D"email-borderTop12 email-borderGrayLight email-xs=
+-border0" style=3D"border-top-width: 12px; border-top-style: solid; border-=
+color: #f0f0f0;"><td class=3D"email-backgroundWhite email-borderGrayLight e=
+mail-padding8 email-borderRight24 email-xs-border0 email-xs-marginTop12 ema=
+il-xs-block js-digestFollowButton" style=3D"border-right-width: 24px; borde=
+r-right-style: solid; border-color: #f0f0f0; padding-top: 8px; padding-righ=
+t: 8px; padding-bottom: 8px; padding-left: 8px; background-color: #ffffff;"=
+><a class=3D"link u-baseColor--link" href=3D"https://medium.com/_/api/reque=
+sts/eca261125ce3?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader---=
+----------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-19" style=3D"col=
+or: #333332; text-decoration: none;"><table width=3D"100%"><tr><td><div cla=
+ss=3D"email-fontSize17 email-bold" style=3D"font-size: 17px; font-weight: 7=
+00;"><a href=3D"https://medium.com/_/api/requests/eca261125ce3?source=3Dema=
+il-9c3bd689d8a4-1573236686908-digest.reader-------------------------73ebc87=
+1_6173_42c2_8091_6f0ee7c08f69-19" style=3D"color: #333332; text-decoration:=
+ none;">Equality</a></div><div class=3D"email-fontSize14 email-textDarkerGr=
+ay" style=3D"font-size: 14px; color: #757575;">Typing truth to power.</div>=
+</td><td class=3D"email-right" style=3D"text-align: right;"><span class=3D"=
+email-fontSize30 email-textColorGray" style=3D"color: #b3b3b1; font-size: 3=
+0px;">&#43;</span></td></tr></table></a></td><td class=3D"email-backgroundW=
+hite email-borderGrayLight email-padding8 email-xs-marginTop12 email-xs-blo=
+ck js-digestFollowButton" style=3D"border-color: #f0f0f0; padding-top: 8px;=
+ padding-right: 8px; padding-bottom: 8px; padding-left: 8px; background-col=
+or: #ffffff;"><a class=3D"link u-baseColor--link" href=3D"https://medium.co=
+m/_/api/requests/479fcaf04f10?source=3Demail-9c3bd689d8a4-1573236686908-dig=
+est.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08f69-19"=
+ style=3D"color: #333332; text-decoration: none;"><table width=3D"100%"><tr=
+><td><div class=3D"email-fontSize17 email-bold" style=3D"font-size: 17px; f=
+ont-weight: 700;"><a href=3D"https://medium.com/_/api/requests/479fcaf04f10=
+?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-------------------=
+------73ebc871_6173_42c2_8091_6f0ee7c08f69-19" style=3D"color: #333332; tex=
+t-decoration: none;">Productivity</a></div><div class=3D"email-fontSize14 e=
+mail-textDarkerGray" style=3D"font-size: 14px; color: #757575;">Working wit=
+h purpose.</div></td><td class=3D"email-right" style=3D"text-align: right;"=
+><span class=3D"email-fontSize30 email-textColorGray" style=3D"color: #b3b3=
+b1; font-size: 30px;">&#43;</span></td></tr></table></a></td></tr></table><=
+/td></tr></table></div><table class=3D"email-digest" width=3D"600" style=3D=
+"border-spacing: 0; color: rgba(0 , 0 , 0 , 0.9); font-family: Arial , sans=
+-serif; letter-spacing: 0em; line-height: 1.4; margin-top: 0; margin-right:=
+ auto; margin-bottom: 0; margin-left: auto; padding-left: 24px; padding-rig=
+ht: 24px; width: 100%; max-width: 648px;"></table></div></td></tr></table><=
+div class=3D"email-fillWidth email-backgroundSky" style=3D"min-width: 100%;=
+ width: 100%; background-color: #E2Eff8;"><table class=3D"email email-backg=
+roundSky" style=3D"width: 100%; max-width: 600px; margin-left: auto; margin=
+-right: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px=
+; color: #333332; line-height: 1.4; font-family: -apple-system , BlinkMacSy=
+stemFont , &apos;Segoe UI&apos; , &apos;Roboto&apos; , &apos;Ubuntu&apos; ,=
+ &apos;Open Sans&apos; , &apos;Helvetica Neue&apos; , sans-serif; backgroun=
+d: #ffffff; background-color: #E2Eff8;"><tr><td><div class=3D"email-center =
+email-marginTop50 email-marginBottom50" style=3D"text-align: center; margin=
+-top: 50px; margin-bottom: 50px;"><div class=3D"email-fontSize22 email-bold=
+ email-marginBottom20" style=3D"font-size: 22px; font-weight: 700; margin-b=
+ottom: 20px;">Take Medium with you.</div><div class=3D"email-center" style=
+=3D"text-align: center;"><a class=3D"email-link email-inlineBlock email-mar=
+ginRight16" href=3D"https://itunes.apple.com/app/medium-everyones-stories/i=
+d828256236?pt=3D698524&amp;mt=3D8&amp;ct=3Demail_digestFooter" style=3D"col=
+or: #333332; text-decoration: none; display: inline-block; margin-right: 16=
+px;"><img src=3D"https://cdn-images-1.medium.com/proxy/1*CXKdDEfFShoF6Azy5V=
+8ZKQ@2x.png" alt=3D"Get Medium on the App Store" width=3D"144" height=3D"48=
+"></a><a class=3D"email-link email-inlineBlock" href=3D"https://play.google=
+.com/store/apps/details?id=3Dcom.medium.reader&amp;referrer=3Dutm_source%3D=
+email_digestFooter" style=3D"color: #333332; text-decoration: none; display=
+: inline-block;"><img src=3D"https://cdn-images-1.medium.com/proxy/1*D-oULO=
+aPtKR8A1jatsII4w@2x.png" alt=3D"Get Medium on Google Play" width=3D"161" he=
+ight=3D"48"></a></div></div><div class=3D"email-footer" style=3D"padding-to=
+p: 15px; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: =
+30px; color: rgba(0 , 0 , 0 , 0.68); font-size: 12px; text-align: center; b=
+order-top: 1px solid #8e8e8e;">Sent by <a class=3D"email-link email-textGra=
+y email-underline" href=3D"https://medium.com/?source=3Demail-9c3bd689d8a4-=
+1573236686908-digest.reader-------------------------73ebc871_6173_42c2_8091=
+_6f0ee7c08f69" style=3D"color: #8e8e8e; text-decoration: underline;">Medium=
+</a> &middot; P.O. Box 602, San Francisco, CA 94104-0602<div><a class=3D"em=
+ail-link email-textGray email-underline" href=3D"https://medium.com/me/emai=
+l-settings/9c3bd689d8a4/2b108308fdc4?source=3Demail-9c3bd689d8a4-1573236686=
+908-digest.reader-------------------------73ebc871_6173_42c2_8091_6f0ee7c08=
+f69&amp;type=3Dsocial" style=3D"color: #8e8e8e; text-decoration: underline;=
+">Unsubscribe</a> &middot; <a class=3D"email-link email-textGray email-unde=
+rline" href=3D"https://medium.com/me/email-settings/9c3bd689d8a4/2b108308fd=
+c4?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----------------=
+--------73ebc871_6173_42c2_8091_6f0ee7c08f69&amp;type=3Dsocial&amp;preferen=
+ce=3D2" style=3D"color: #8e8e8e; text-decoration: underline;">Switch to the=
+ Weekly Digest</a> &middot; <a class=3D"email-link email-textGray email-und=
+erline" href=3D"https://medium.com/jobs-at-medium/work-at-medium-959d1a8528=
+4e?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----------------=
+--------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #8e8e8e; text=
+-decoration: underline;">Careers</a> &middot; <a class=3D"email-link email-=
+textGray email-underline" href=3D"https://help.medium.com" style=3D"color: =
+#8e8e8e; text-decoration: underline;">Help center</a> &middot; <a class=3D"=
+email-link email-textGray email-underline" href=3D"https://medium.com/polic=
+y/f03bf92035c9?source=3Demail-9c3bd689d8a4-1573236686908-digest.reader-----=
+--------------------73ebc871_6173_42c2_8091_6f0ee7c08f69" style=3D"color: #=
+8e8e8e; text-decoration: underline;">Privacy policy</a></div></div></td></t=
+r></table></div>
+<img src=3D"https://u1823144.ct.sendgrid.net/wf/open?upn=3D5EuW0-2FJLkspeKQ=
+NHAERBBjUK3XHjTCqcqoJbddj0yRnROQe9ULfp3GyuepbeZvFc5UAjBTvHkADKbXYQVkriiXGKE=
+3NO15YCJNxlPas34g-2FdMR6px6AOAziUoKJPL9QMO2RRKGjFlzhCvbovwTkQl8LpSpC72TuJjk=
+lHm-2FVLHPq7LhhawIPrTPXScX-2FM33cy21jVyGO9ZSH4oEiH-2Fz90QJHA7BX2g7u0JHuzg0v=
+frH-2FWRWbz8yL3nLxvHL9Czf-2FcPbHT1DYVYicttl1CKB5B4bnytZir-2Bx5HL-2BjeBNZuZd=
+qliZqKl3P7vBtitpnYwtcSirROzTLQP9WKyXFgKZU2hPZ4KZ30kP3SdQeZQU5JC6gMoBhV1MzQn=
+ByFmcdpJhTHlQ3-2Fn7Gitv5jNe2Ov2BjDpjNbouXQLNo-2FrwOKV6uEmHAkH0j-2BGe9MScgOY=
+EFcBMO" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px =
+!important;width:1px !important;border-width:0 !important;margin-top:0 !imp=
+ortant;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !=
+important;padding-top:0 !important;padding-bottom:0 !important;padding-righ=
+t:0 !important;padding-left:0 !important;"/>
+</body></html>
+
+--5ee6098c224703466c93ceee47f29e4cc3575bbf22ebb624a2cdb884ad85--

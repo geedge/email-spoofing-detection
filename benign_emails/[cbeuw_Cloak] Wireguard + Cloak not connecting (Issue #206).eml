@@ -1,0 +1,312 @@
+X-Mda-Received: from <mx-14-109.mail.sina.com.cn>([<10.41.14.109>])
+ by <micagent-3-36.mda.fmail.dbl.sinanode.com> with LMTP id <3387456>
+ Oct 29 2022 23:40:26 +0800 (CST)
+X-Sina-MID:0423A1044CBFC8D94B5286C6F418E8435200000000000001
+X-Sina-Attnum:0
+Received: (qmail 19186 invoked by uid 544); 29 Oct 2022 23:40:26 +0800 (CST)
+X-SMAIL-SPAM-FILTER: 19182 OK; Sat, 29 Oct 2022 23:40:26 +0800 (CST)
+X-subc-flag: YES
+Received: from out-27.smtp.github.com (HELO out-27.smtp.github.com)([192.30.252.210])
+	by sina.com (10.41.14.109) with SMTP
+	id 635D496800004A9E; Sat, 29 Oct 2022 23:40:25 +0800 (CST)
+X-Sender: noreply@github.com
+Authentication-Results: sina.com; dkim=pass (Signature verified) header.i=github.com
+Received-SPF: Pass (sina.com: SPF record at github.com designates 192.30.252.210 as permitted sender) identity=from;
+	client-ip=192.30.252.210;
+	receiver=sina.com;
+	envelope-from=noreply@github.com;
+	helo=out-27.smtp.github.com
+X-SMAIL-MID: 17500876284271
+Received: from github-lowworker-b28ef28.ash1-iad.github.net (github-lowworker-b28ef28.ash1-iad.github.net [10.56.116.68])
+	by smtp.github.com (Postfix) with ESMTP id 508BB90075C
+	for <jas31@sina.com>; Sat, 29 Oct 2022 08:40:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1667058024;
+	bh=8XKI9YzrMMA5LuQT6+k2bfhbkhnNNq9DD6s2gC0+kAU=;
+	h=Date:From:Reply-To:To:Cc:Subject:List-ID:List-Archive:List-Post:
+	 List-Unsubscribe:From;
+	b=S33ncrvd8s906JXc2f1s4gssKA+7gnDJE+ppG8EJVhthXT3+FGf5HElePFOmjqtAR
+	 IG0ywudyFizGJdwtrgvr4tQCnLk8YhkAjLLKDYXstVC2vceHJYvg+MirZ7UZsCMaYO
+	 2cZ5O0HFEAyET5zhGg3PYqmwr2mWT1MGL34Qv1aY=
+Date: Sat, 29 Oct 2022 08:40:24 -0700
+From: Imfae <notifications@github.com>
+Reply-To: cbeuw/Cloak <reply+AD2VYONVIWM4ZBXWMBTRUMOBNJ56REVBNHHFKIT2CU@reply.github.com>
+To: cbeuw/Cloak <Cloak@noreply.github.com>
+Cc: Subscribed <subscribed@noreply.github.com>
+Message-ID: <cbeuw/Cloak/issues/206@github.com>
+Subject: [cbeuw/Cloak] Wireguard + Cloak not connecting (Issue #206)
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_635d496841ef5_4da2d4f814672";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Precedence: list
+X-GitHub-Sender: Imfae
+X-GitHub-Recipient: jas31
+X-GitHub-Reason: subscribed
+List-ID: cbeuw/Cloak <Cloak.cbeuw.github.com>
+List-Archive: https://github.com/cbeuw/Cloak
+List-Post: <mailto:reply+AD2VYONVIWM4ZBXWMBTRUMOBNJ56REVBNHHFKIT2CU@reply.github.com>
+List-Unsubscribe: <mailto:unsub+AD2VYONVIWM4ZBXWMBTRUMOBNJ56REVBNHHFKIT2CU@reply.github.com>,
+ <https://github.com/notifications/unsubscribe/AD2VYOPKPZHFGG6EJOSNKX3WFVAORANCNFSM6AAAAAARR23RP4>
+X-Auto-Response-Suppress: All
+X-GitHub-Recipient-Address: jas31@sina.com
+
+
+----==_mimepart_635d496841ef5_4da2d4f814672
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+**Issue Description**=0D
+=0D
+I've set up Wireguard + Cloak on a Debian 11 cloud server (Vultr) and con=
+nected it to my Windows 10 machine. The vpn works _occasionally_, but mos=
+t of the time, it doesn't, and the wireguard client logs uncompleted hand=
+shakes.=0D
+=0D
+=0D
+**To Reproduce**=0D
+=0D
+Setup Wireguard + Cloak server/client following instructions here: [https=
+://www.oilandfish.com/posts/wireguard-cloak.html](url)=0D
+=0D
+=0D
+**Expected Behavior**=0D
+=0D
+Traffic successfully tunneled between pc and server and encrypted by Wire=
+guard and obfuscated by Cloak.=0D
+=0D
+=0D
+**Additional Information**=0D
+=0D
+Two events can be observed after activating Wireguard client,=0D
+1. (Expected but rare) Wireguard connects and performs handshake with rem=
+ote peer. Traffic from and to server successfully tunneled.=0D
+2. Wireguard client records sending but not receiving handshakes. No conn=
+ection (and certainly no Internet) between pc and server, even though Wir=
+eshark records Cloaked traffic to and from server. I tentatively hypothes=
+ize that the issue occurs when packets are returned to my pc.=0D
+=0D
+=0D
+**Full log**=0D
+=0D
+Iptables log on port wireguard server is listening:=0D
+```=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D176 TOS=3D0x00 PREC=3D0x0>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D140 TOS=3D0x00 PREC=3D0x0>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D108 TOS=3D0x00 PREC=3D0x0>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D108 TOS=3D0x00 PREC=3D0x0>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D140 TOS=3D0x00 PREC=3D0x0>=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127>=0D
+```=0D
+=0D
+Output of `ck-client.exe -u -c ck-client.json -s XX.XX.XX.XX`:=0D
+```=0D
+time=3D"2022-10-29T23:06:38+08:00" level=3Dinfo msg=3D"Starting standalon=
+e mode"=0D
+time=3D"2022-10-29T23:06:38+08:00" level=3Dinfo msg=3D"Listening on UDP 1=
+27.0.0.1:1984 for wireguard client"=0D
+time=3D"2022-10-29T23:06:42+08:00" level=3Dinfo msg=3D"Attempting to star=
+t a new session"=0D
+time=3D"2022-10-29T23:06:42+08:00" level=3Dinfo msg=3D"Session 1578975802=
+ established"=0D
+```=0D
+=0D
+Output of `systemctl status cloak`:=0D
+```=0D
+ESCOD=0D
+=E2=97=8F cloak.service - Cloak Server=0D
+     Loaded: loaded (/lib/systemd/system/cloak.service; enabled; vendor p=
+reset: enabled)=0D
+     Active: active (running) since Sat 2022-10-29 12:28:52 UTC; 2h 54min=
+ ago=0D
+   Main PID: 13290 (ck-server)=0D
+      Tasks: 4 (limit: 527)=0D
+     Memory: 2.3M=0D
+        CPU: 120ms=0D
+     CGroup: /system.slice/cloak.service=0D
+             =E2=94=94=E2=94=8013290 /usr/local/bin/ck-server -c /etc/clo=
+ak/ckserver.json=0D
+=0D
+9T14:14:46Z" level=3Dwarning msg=3D"error reading first packet: unrecogni=
+sed protocol" remoteAddr=3D"43.153.208.98:44054"=0D
+9T14:14:57Z" level=3Dwarning msg=3D"error reading first packet: unrecogni=
+sed protocol" remoteAddr=3D"43.153.208.98:56152"=0D
+9T14:41:03Z" level=3Dinfo msg=3D"New session" UID=3D"X" sessionID=3D39427=
+35673=0D
+9T14:41:40Z" level=3Dinfo msg=3D"New session" UID=3D"X" sessionID=3D39583=
+90639=0D
+9T14:42:10Z" level=3Dinfo msg=3D"Session closed" UID=3D"X" reason=3Dtimeo=
+ut sessionID=3D3958390639=0D
+9T14:44:05Z" level=3Dinfo msg=3D"Session closed" UID=3D"X" reason=3D"a co=
+nnection has dropped unexpected>=0D
+9T14:44:05Z" level=3Dinfo msg=3D"Terminating active user" UID=3D"X" reaso=
+n=3D"no session left"=0D
+9T15:06:42Z" level=3Dinfo msg=3D"New session" UID=3D"X" sessionID=3D15789=
+75802=0D
+9T15:07:10Z" level=3Dinfo msg=3D"Session closed" UID=3D"X" reason=3D"a co=
+nnection has dropped unexpected>=0D
+9T15:07:10Z" level=3Dinfo msg=3D"Terminating active user" UID=3D"X" reaso=
+n=3D"no session left"=0D
+```=0D
+=0D
+=0D
+=0D
+-- =0D
+Reply to this email directly or view it on GitHub:=0D
+https://github.com/cbeuw/Cloak/issues/206=0D
+You are receiving this because you are subscribed to this thread.=0D
+=0D
+Message ID: <cbeuw/Cloak/issues/206@github.com>=
+
+----==_mimepart_635d496841ef5_4da2d4f814672
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<p></p>=0D
+<p dir=3D"auto"><strong>Issue Description</strong></p>=0D
+<p dir=3D"auto">I've set up Wireguard + Cloak on a Debian 11 cloud server=
+ (Vultr) and connected it to my Windows 10 machine. The vpn works <em>occ=
+asionally</em>, but most of the time, it doesn't, and the wireguard clien=
+t logs uncompleted handshakes.</p>=0D
+<p dir=3D"auto"><strong>To Reproduce</strong></p>=0D
+<p dir=3D"auto">Setup Wireguard + Cloak server/client following instructi=
+ons here: <a href=3D"url">https://www.oilandfish.com/posts/wireguard-cloa=
+k.html</a></p>=0D
+<p dir=3D"auto"><strong>Expected Behavior</strong></p>=0D
+<p dir=3D"auto">Traffic successfully tunneled between pc and server and e=
+ncrypted by Wireguard and obfuscated by Cloak.</p>=0D
+<p dir=3D"auto"><strong>Additional Information</strong></p>=0D
+<p dir=3D"auto">Two events can be observed after activating Wireguard cli=
+ent,</p>=0D
+<ol dir=3D"auto">=0D
+<li>(Expected but rare) Wireguard connects and performs handshake with re=
+mote peer. Traffic from and to server successfully tunneled.</li>=0D
+<li>Wireguard client records sending but not receiving handshakes. No con=
+nection (and certainly no Internet) between pc and server, even though Wi=
+reshark records Cloaked traffic to and from server. I tentatively hypothe=
+size that the issue occurs when packets are returned to my pc.</li>=0D
+</ol>=0D
+<p dir=3D"auto"><strong>Full log</strong></p>=0D
+<p dir=3D"auto">Iptables log on port wireguard server is listening:</p>=0D=
+
+<pre class=3D"notranslate"><code class=3D"notranslate">Oct 29 14:41:04 sp=
+acestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=3D127.0.0.1 DST=3D=
+127.0.0.1 LEN=3D176 TOS=3D0x00 PREC=3D0x0&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D140 TOS=3D0x00 PREC=3D0x0&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D108 TOS=3D0x00 PREC=3D0x0&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D108 TOS=3D0x00 PREC=3D0x0&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3D OUT=3Dlo SRC=
+=3D127.0.0.1 DST=3D127.0.0.1 LEN=3D140 TOS=3D0x00 PREC=3D0x0&gt;=0D
+Oct 29 14:41:04 spacestone kernel: wireguard iptables: IN=3Dlo OUT=3D MAC=
+=3D00:00:00:00:00:00:00:00:00:00:00:00:08:00 SRC=3D127&gt;=0D
+</code></pre>=0D
+<p dir=3D"auto">Output of <code class=3D"notranslate">ck-client.exe -u -c=
+ ck-client.json -s XX.XX.XX.XX</code>:</p>=0D
+<pre class=3D"notranslate"><code class=3D"notranslate">time=3D"2022-10-29=
+T23:06:38+08:00" level=3Dinfo msg=3D"Starting standalone mode"=0D
+time=3D"2022-10-29T23:06:38+08:00" level=3Dinfo msg=3D"Listening on UDP 1=
+27.0.0.1:1984 for wireguard client"=0D
+time=3D"2022-10-29T23:06:42+08:00" level=3Dinfo msg=3D"Attempting to star=
+t a new session"=0D
+time=3D"2022-10-29T23:06:42+08:00" level=3Dinfo msg=3D"Session 1578975802=
+ established"=0D
+</code></pre>=0D
+<p dir=3D"auto">Output of <code class=3D"notranslate">systemctl status cl=
+oak</code>:</p>=0D
+<pre class=3D"notranslate"><code class=3D"notranslate">ESCOD=0D
+=E2=97=8F cloak.service - Cloak Server=0D
+     Loaded: loaded (/lib/systemd/system/cloak.service; enabled; vendor p=
+reset: enabled)=0D
+     Active: active (running) since Sat 2022-10-29 12:28:52 UTC; 2h 54min=
+ ago=0D
+   Main PID: 13290 (ck-server)=0D
+      Tasks: 4 (limit: 527)=0D
+     Memory: 2.3M=0D
+        CPU: 120ms=0D
+     CGroup: /system.slice/cloak.service=0D
+             =E2=94=94=E2=94=8013290 /usr/local/bin/ck-server -c /etc/clo=
+ak/ckserver.json=0D
+=0D
+9T14:14:46Z" level=3Dwarning msg=3D"error reading first packet: unrecogni=
+sed protocol" remoteAddr=3D"43.153.208.98:44054"=0D
+9T14:14:57Z" level=3Dwarning msg=3D"error reading first packet: unrecogni=
+sed protocol" remoteAddr=3D"43.153.208.98:56152"=0D
+9T14:41:03Z" level=3Dinfo msg=3D"New session" UID=3D"X" sessionID=3D39427=
+35673=0D
+9T14:41:40Z" level=3Dinfo msg=3D"New session" UID=3D"X" sessionID=3D39583=
+90639=0D
+9T14:42:10Z" level=3Dinfo msg=3D"Session closed" UID=3D"X" reason=3Dtimeo=
+ut sessionID=3D3958390639=0D
+9T14:44:05Z" level=3Dinfo msg=3D"Session closed" UID=3D"X" reason=3D"a co=
+nnection has dropped unexpected&gt;=0D
+9T14:44:05Z" level=3Dinfo msg=3D"Terminating active user" UID=3D"X" reaso=
+n=3D"no session left"=0D
+9T15:06:42Z" level=3Dinfo msg=3D"New session" UID=3D"X" sessionID=3D15789=
+75802=0D
+9T15:07:10Z" level=3Dinfo msg=3D"Session closed" UID=3D"X" reason=3D"a co=
+nnection has dropped unexpected&gt;=0D
+9T15:07:10Z" level=3Dinfo msg=3D"Terminating active user" UID=3D"X" reaso=
+n=3D"no session left"=0D
+</code></pre>=0D
+=0D
+<p style=3D"font-size:small;-webkit-text-size-adjust:none;color:#666;">&m=
+dash;<br />Reply to this email directly, <a href=3D"https://github.com/cb=
+euw/Cloak/issues/206">view it on GitHub</a>, or <a href=3D"https://github=
+.com/notifications/unsubscribe-auth/AD2VYOO4HQTFTSDYNA7LQHLWFVAORANCNFSM6=
+AAAAAARR23RP4">unsubscribe</a>.<br />You are receiving this because you a=
+re subscribed to this thread.<img src=3D"https://github.com/notifications=
+/beacon/AD2VYOIUYWQEGNK6NVFJS3TWFVAORA5CNFSM6AAAAAARR23RP6WGG33NNVSW45C7O=
+R4XAZNFJFZXG5LFVJRW63LNMVXHIX3JMTHFKIT2CU.gif" height=3D"1" width=3D"1" a=
+lt=3D"" /><span style=3D"color: transparent; font-size: 0; display: none;=
+ visibility: hidden; overflow: hidden; opacity: 0; width: 0; height: 0; m=
+ax-width: 0; max-height: 0; mso-hide: all">Message ID: <span>&lt;cbeuw/Cl=
+oak/issues/206</span><span>@</span><span>github</span><span>.</span><span=
+>com&gt;</span></span></p>=0D
+<script type=3D"application/ld+json">[=0D
+{=0D
+"@context": "http://schema.org",=0D
+"@type": "EmailMessage",=0D
+"potentialAction": {=0D
+"@type": "ViewAction",=0D
+"target": "https://github.com/cbeuw/Cloak/issues/206",=0D
+"url": "https://github.com/cbeuw/Cloak/issues/206",=0D
+"name": "View Issue"=0D
+},=0D
+"description": "View this Issue on GitHub",=0D
+"publisher": {=0D
+"@type": "Organization",=0D
+"name": "GitHub",=0D
+"url": "https://github.com"=0D
+}=0D
+}=0D
+]</script>=
+
+----==_mimepart_635d496841ef5_4da2d4f814672--

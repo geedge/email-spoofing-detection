@@ -1,0 +1,1425 @@
+Delivered-To: lily.lawrence2019@gmail.com
+Received: by 2002:a17:906:3599:0:0:0:0 with SMTP id o25csp2502946ejb;
+        Mon, 16 Aug 2021 16:00:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLa0pAjvHxaQXk/s5Z7dI8Uey4M5v3Cx5VCgu13wDjNZQ7BWhAPhWpn2lGkYR5gbEO/hyY
+X-Received: by 2002:a05:622a:96:: with SMTP id o22mr355070qtw.79.1629154805181;
+        Mon, 16 Aug 2021 16:00:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629154805; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CFy5sVOisF8WH91S1LCoYhaLGYh3XTJpmwx44KSyutihDhNCJhIbTYz+7NdUnzKADz
+         lwU/eIWjUEdFNUQPHyOeaFNDVc2Kat+EbYtyYVoc5ggiPcJXtZw7kFJKfAEpYyHDGvTx
+         I2riAcTDS5GKurMBR6gFqnzmFl7mZ9UxiE9o5JVjt6UCLmzfFuPeXB6KdbTVkSep9C2R
+         8i3Z8AOgh4AEtkpmXt7nNvD1qYs05NDkU5TZVOJxvy6DdB63ze7quqpZdtWoBjQJkT0Y
+         p2YNw6Bv4Qh/01BMNrZkDytVqDcFMGLUPKYAwWstnrOkzn95uudShsM96B9ylqQ4OkLd
+         bK5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:subject:message-id:to:reply-to:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=5vAYXQrEdZcPY51iXiIsu0sItW59iTSSOV9OK2AxXdc=;
+        b=eQ3/whsaFFLhZxlyufs/3c3xfMkCnaF0rWRFirjnnk8+YF1ivX2B3hIPyO35n+xFYe
+         iMWbjROyxRcQWwN7iS19kyeMeZCqQZgRKGyNz12tk8P8BNXXQoCQrvsF6N2xLnZ1p7jZ
+         8/V1TVvlVjjSLp6UFTWqVUrH7YbCJ1uthxoIIfZffOPSuau6SGhnDad3K95zJ+a99Csu
+         Iy+7EZbMcLDgW2oWY/dPRXlAw6Bc5LYwsaNmT1u1u67fxxn8lyFpAn+mOwbAwqIj/fot
+         UnsJd01DEsaLkvcjjSsMW1r7HBBeWSuCtCBB7wqc8LOIgdt0w/mP01fs83J0ziqQYk16
+         pSGA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@medium.com header.s=m1 header.b=YysFrXb0;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=geHMe7xE;
+       spf=pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 167.89.15.48 as permitted sender) smtp.mailfrom="bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+Return-Path: <bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com>
+Received: from o6.email.medium.com (o6.email.medium.com. [167.89.15.48])
+        by mx.google.com with ESMTPS id m21si248997qtn.235.2021.08.16.16.00.04
+        for <lily.lawrence2019@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Aug 2021 16:00:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 167.89.15.48 as permitted sender) client-ip=167.89.15.48;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@medium.com header.s=m1 header.b=YysFrXb0;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=geHMe7xE;
+       spf=pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 167.89.15.48 as permitted sender) smtp.mailfrom="bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=medium.com; 
+	h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe; 
+	s=m1; bh=5vAYXQrEdZcPY51iXiIsu0sItW59iTSSOV9OK2AxXdc=; b=YysFrXb
+	0LR/l9YYtTqcz2Ouf8q+Ak6o1cjpYvXF1+I67BGZEQKgq31bK4QyfnnW7sJK81KG
+	bbjBs4R7Mdfvc2mFV3Xy/ZvA7CacyI4vNPYrEJIJc++UN/v0RmSswjfSf9LYA23r
+	p8xgStd+l5g2peBT22mY3rXI0SZjhyKeETCM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; 
+	d=sendgrid.info; 
+	h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe:x-feedback-id; 
+	s=smtpapi; bh=5vAYXQrEdZcPY51iXiIsu0sItW59iTSSOV9OK2AxXdc=; b=ge
+	HMe7xE5cSyVggfO3U/dOGlyPvOgE45k0LrcB8Vyirwf0uatI8i4SHwEkPzj4XVZZ
+	nW77SwQWnN5JPYoWorY652hfM6N/Amq0PTACH0qVJ9gx2hv0mCgI+41DI3mozFbT
+	GzUgG96FzBenuUzWYYHgogXlH50Pm39M0KT5c6Z/Q=
+Received: by filter2544p1mdw1.sendgrid.net with SMTP id filter2544p1mdw1-7367-611AA942-29
+        2021-08-16 18:06:58.564538864 +0000 UTC m=+1555618.146658732
+Received: from MTgyMzE0NA (unknown)
+	by ismtpd0197p1mdw1.sendgrid.net (SG) with HTTP id JXwTMmF0TUGZjdr_J2emEQ
+	Mon, 16 Aug 2021 18:06:58.560 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=ec87f17826488955bce310cb094eac2c06337daf04bb0617f8511c639adf
+Date: Mon, 16 Aug 2021 23:00:00 +0000 (UTC)
+From: "Medium Daily Digest" <noreply@medium.com>
+Mime-Version: 1.0
+Reply-to: noreply@medium.com
+To: lily.lawrence2019@gmail.com
+Message-ID: <JXwTMmF0TUGZjdr_J2emEQ@ismtpd0197p1mdw1.sendgrid.net>
+Subject: =?UTF-8?B?VGhlIEJlc3QgUGljay1VcCBMaW5lcyBJ4oCZdmUgSGVhcmQuIHwgRC5BLiBSdXRoZXJmb3JkIGluIEx1bmNoIE1lYXQ=?=
+List-Unsubscribe: <https://medium.com/me/email-settings/9c3bd689d8a4/26671c9a3516?source=email-9c3bd689d8a4-1629137217586-digest.reader-------------------------a0666937_fbeb_4c32_ae33_675db516455b&type=social>
+X-SG-EID: pQ0Om+Ta8VX2X5lVOLqHqyWQdYH0p5FuHQUe1VZJYYRqOhU8CwwvQXZW6IKSJY5+I+6FBi9l2x/E3U
+ xrjvNZ/wNJW7YovRaZ/GsaOMSVw9gOaJz3QOd8MA2peALo2RL0nV6t7mZpYPfgyy91rU+sci5r4VvP
+ govOh7D/DXheVPT1pHhhMNNBPtXuTNo9Ly9ZbRF4SHt5/TWMW+PwPplugKphyhSfEWLTP9S4Fjlek2
+ g76TUDeZyRZy8GNxE8r0oM
+X-SG-ID: D6Z+UOEZAHNtlrjTKHUMD7k1732F+PM5WrJ8TLj/iTsx+J2o94HXltmqtqh3xdV0iAqgpgTyTMYl2r
+ Kjwj74D/XYyFe668QGsVYhIbYN+lxs+jfw9r8RJ8tQa9pAErUi1roOLcKBa9jQca7cWBZFM3w9Etpc
+ wxEy8JVAmL1rbjjvEu7JqR9pk8FNDXBoohm+58FXbCitvgjwX5jTyJXZmg==
+X-Entity-ID: cpc5D047Jdd+RNni7tePhw==
+X-Feedback-ID: 1823144:rksEbNtEQ6Bnz0TsDXX13UBrU6m1i9dl8uXhN1gSydA=:CZ/pKfOzmNDe1pfdb7RS5r3BtifnYSeAIqL52d1Ytoc=:SG
+
+--ec87f17826488955bce310cb094eac2c06337daf04bb0617f8511c639adf
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+Stories for Lily Lawrence
+@lily.lawrence2019 (https://medium.com/@lily.lawrence2019?source=3Demail-9c=
+3bd689d8a4-1629137217586-digest.reader-------------------------a0666937_fbe=
+b_4c32_ae33_675db516455b)
+=C2=B7Become a member (https://medium.com/plans?source=3Demail-9c3bd689d8a4=
+-1629137217586-digest.reader-------------------------a0666937_fbeb_4c32_ae3=
+3_675db516455b)
+
+Today's highlights
+
+The Best Pick-Up Lines I've Heard.
+
+And the worst. A comedic piece on hunting for love.
+
+D.A. Rutherford (https://medium.com/@da-rutherford?source=3Demail-9c3bd689d=
+8a4-1629137217586-digest.reader-3178caacedd4-c3d6aafe1831----0-73----------=
+--------a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cc=
+a5b3b89e)
+ in Lunch Meat (https://medium.com/lunch-meat?source=3Demail-9c3bd689d8a4-1=
+629137217586-digest.reader-3178caacedd4-c3d6aafe1831----0-73---------------=
+---a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b=
+89e)
+=C2=B76 min read
+
+3 Python Packages That Make Data Science Simple
+
+1.Mito
+
+Jake from Mito (https://medium.com/@jjdiamondreivich?source=3Demail-9c3bd68=
+9d8a4-1629137217586-digest.reader-a807b2fd9fc4-25695dc565d----1-73---------=
+---------a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92c=
+ca5b3b89e)
+ in trymito (https://medium.com/trymito?source=3Demail-9c3bd689d8a4-1629137=
+217586-digest.reader-a807b2fd9fc4-25695dc565d----1-73------------------a066=
+6937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e)
+=C2=B74 min read
+
+How to Make $1,000,000 a Year In Data Science and Machine Learning=E2=80=8A=
+-=E2=80=8AA Fool=E2=80=A6
+
+Now I know what you are thinking, "Jase, a million dollars! Come on!". Hear=
+ me out, if you follow these rules=E2=80=A6
+
+Jason Bell (https://medium.com/@jasebell?source=3Demail-9c3bd689d8a4-162913=
+7217586-digest.reader--59f50665f6e9----2-73------------------a0666937_fbeb_=
+4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e)
+=C2=B73 min read
+
+Why Don't Europeans Have the Same Reaction to Dairy?
+
+Culture shock is sometimes subjective=E2=80=8A-=E2=80=8Abut in this case, t=
+here's plenty of cold, hard evidence to prove it.
+
+Pedram Shojai (https://medium.com/@pedramshojai?source=3Demail-9c3bd689d8a4=
+-1629137217586-digest.reader--71c07d0ca1d2----3-73------------------a066693=
+7_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e)
+=C2=B74 min read
+
+Quick reads
+
+Increase Your Fat Burning During Exercise by 29% With This Simple Practice
+
+A recent study has found a way to turn up our body's fat-burning abilities.
+
+Ashley Richmond (https://medium.com/@ashley-richmond?source=3Demail-9c3bd68=
+9d8a4-1629137217586-digest.reader-87a312b0cb05-abc950add083----0-72--------=
+----------a0666937_fbeb_4c32_ae33_675db516455b-28-)
+ in In Fitness And In Health (https://medium.com/in-fitness-and-in-health?s=
+ource=3Demail-9c3bd689d8a4-1629137217586-digest.reader-87a312b0cb05-abc950a=
+dd083----0-72------------------a0666937_fbeb_4c32_ae33_675db516455b-28-)
+=C2=B72 min read
+
+What killed Anthony Bourdain?
+
+"Roadrunner" sheds light on the sad end of a triumphant life
+
+Mike Troiano (https://medium.com/@miketrap?source=3Demail-9c3bd689d8a4-1629=
+137217586-digest.reader--2ec5b606977d----1-72------------------a0666937_fbe=
+b_4c32_ae33_675db516455b-28-)
+=C2=B74 min read
+
+Text Alignment Best Practises
+
+Make your UI more effective and easy to read with text alignment.
+
+Buninux (https://medium.com/@bunindmitry?source=3Demail-9c3bd689d8a4-162913=
+7217586-digest.reader-eb297ea1161a-c4114daf1a9b----2-72------------------a0=
+666937_fbeb_4c32_ae33_675db516455b-28-)
+ in Prototypr (https://medium.com/front-end-dev?source=3Demail-9c3bd689d8a4=
+-1629137217586-digest.reader-eb297ea1161a-c4114daf1a9b----2-72-------------=
+-----a0666937_fbeb_4c32_ae33_675db516455b-28-)
+=C2=B74 min read
+
+Based on your reading history
+
+FROM Pre-trained Word Embeddings TO Pre-trained Language Models=E2=80=8A-=
+=E2=80=8AFocus on BERT
+
+FROM Static Word Embedding TO Dynamic (Contextualized) Word Embedding
+
+Adrien Sieg (https://medium.com/@adriensieg?source=3Demail-9c3bd689d8a4-162=
+9137217586-digest.reader-7f60cf5620c9-343815627598----0-59-----------------=
+-a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c=
+22)
+ in Towards Data Science (https://medium.com/towards-data-science?source=3D=
+email-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-343815627598---=
+-0-59------------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d=
+3_44fd_8e61_9dd0f5de2c22)
+=C2=B723 min read
+
+Word embeddings in 2020. Review with code examples
+
+Brief overview of current word embedding methods: from Word2vec to Transfor=
+mers
+
+Rostyslav Neskorozhenyi (https://medium.com/@slanjr?source=3Demail-9c3bd689=
+d8a4-1629137217586-digest.reader-7f60cf5620c9-11eb39a1ee6d----1-59---------=
+---------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9d=
+d0f5de2c22)
+ in Towards Data Science (https://medium.com/towards-data-science?source=3D=
+email-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-11eb39a1ee6d---=
+-1-59------------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d=
+3_44fd_8e61_9dd0f5de2c22)
+=C2=B713 min read
+
+Art of Vector Representation of Words
+
+Different models from count based to prediction based discussed for vectori=
+zation process. Detailed=E2=80=A6
+
+ASHISH RANA (https://medium.com/@ashishrana160796?source=3Demail-9c3bd689d8=
+a4-1629137217586-digest.reader-7f60cf5620c9-5e85c59fee5----2-59------------=
+------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f=
+5de2c22)
+ in Towards Data Science (https://medium.com/towards-data-science?source=3D=
+email-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-5e85c59fee5----=
+2-59------------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3=
+_44fd_8e61_9dd0f5de2c22)
+=C2=B715 min read
+
+Best in Data Science
+
+'Giving Each Other Some Slack' With Sarah Esther Lageson, PhD
+
+On the serious social ramifications and new forms of 'digital punishment' m=
+eted out by the growth of online=E2=80=A6
+
+Douglas Rushkoff (https://medium.com/@rushkoff?source=3Demail-9c3bd689d8a4-=
+1629137217586-digest.reader-51175c73eeca-e69a2978fcfb----0-50----------ae5d=
+4995e225--------a0666937_fbeb_4c32_ae33_675db516455b-12-)
+ in Team Human (https://medium.com/team-human?source=3Demail-9c3bd689d8a4-1=
+629137217586-digest.reader-51175c73eeca-e69a2978fcfb----0-50----------ae5d4=
+995e225--------a0666937_fbeb_4c32_ae33_675db516455b-12-)
+=C2=B72 min read
+
+See more of what you like and less of what you don't.
+Control your recommendations (https://medium.com/me/missioncontrol?source=
+=3Demail-9c3bd689d8a4-1629137217586-digest.reader-------------------------a=
+0666937_fbeb_4c32_ae33_675db516455b)
+
+Read or write from anywhere.
+
+Sent by Medium (https://medium.com/?source=3Demail-9c3bd689d8a4-16291372175=
+86-digest.reader-------------------------a0666937_fbeb_4c32_ae33_675db51645=
+5b)
+=C2=B7P.O. Box 602, San Francisco, CA 94104-0602
+Unsubscribe (https://medium.com/me/email-settings/9c3bd689d8a4/26671c9a3516=
+?type=3Dsocial&source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-----=
+--------------------a0666937_fbeb_4c32_ae33_675db516455b)
+ from this type of email=C2=B7Switch to the Weekly Digest (https://medium.c=
+om/me/email-settings/9c3bd689d8a4/26671c9a3516?type=3Dsocial&preference=3D2=
+&source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-------------------=
+------a0666937_fbeb_4c32_ae33_675db516455b)
+=C2=B7Careers (https://medium.com/jobs-at-medium/work-at-medium-959d1a85284=
+e?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader------------------=
+-------a0666937_fbeb_4c32_ae33_675db516455b)
+=C2=B7Help Center (https://help.medium.com/hc/en-us?source=3Demail-9c3bd689=
+d8a4-1629137217586-digest.reader-------------------------a0666937_fbeb_4c32=
+_ae33_675db516455b)
+=C2=B7Privacy Policy (https://policy.medium.com/medium-privacy-policy-f03bf=
+92035c9?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader------------=
+-------------a0666937_fbeb_4c32_ae33_675db516455b)
+=C2=B7Terms of service (https://policy.medium.com/medium-terms-of-service-9=
+db0094a1e0f?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader--------=
+-----------------a0666937_fbeb_4c32_ae33_675db516455b)=
+
+--ec87f17826488955bce310cb094eac2c06337daf04bb0617f8511c639adf
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<html lang=3D"en" style=3D"box-sizing: border-box;"><head><meta http-equiv=
+=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><meta name=3D"view=
+port" content=3D"width=3Ddevice-width, initial-scale=3D1, maximum-scale=3D5=
+"><meta name=3D"robots" content=3D"none"><style>
+.fi:hover {
+  background: rgba(15, 115, 12, 1) !important;
+}
+.fj:hover {
+  border-color: rgba(15, 115, 12, 1) !important;
+}
+</style><style>
+@media all and (min-width: 728px) and (max-width: 903.98px) {
+  .d {
+    background-color: rgba(242, 242, 242, 1) !important;
+  }
+
+  .e {
+    padding: 6px 0 40px 0;
+  }
+
+  .o {
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .p {
+    border-radius: 4px;
+  }
+
+  .v {
+    padding: 28px 40px 0 40px !important;
+  }
+
+  .an {
+    font-size: 13px;
+  }
+
+  .ao {
+    line-height: 18px;
+  }
+
+  .az {
+    margin-bottom: 5px !important;
+  }
+
+  .ba {
+    margin-top: 25px !important;
+  }
+
+  .bm {
+    padding: 20px 40px 40px !important;
+  }
+
+  .bt {
+    font-size: 16px !important;
+  }
+
+  .bu {
+    line-height: 24px !important;
+  }
+
+  .ce {
+    margin-bottom: 24px !important;
+  }
+
+  .cf {
+    margin-top: 24px !important;
+  }
+
+  .cp {
+    height: 144px !important;
+  }
+
+  .cq {
+    width: 144px !important;
+  }
+
+  .cx {
+    width: 72% !important;
+  }
+
+  .db {
+    min-height: 0 !important;
+  }
+
+  .dg {
+    font-size: 18px !important;
+  }
+
+  .dm {
+    width: 100% !important;
+  }
+
+  .ds {
+    width: 88% !important;
+  }
+
+  .dz {
+    font-size: 14px;
+  }
+
+  .ea {
+    line-height: 20px;
+  }
+
+  .ej {
+    padding: 0px 40px 60px !important;
+  }
+
+  .er {
+    font-size: 24px;
+  }
+
+  .es {
+    line-height: 28px;
+  }
+
+  .fq {
+    padding: 40px !important;
+  }
+
+  .ft {
+    padding-bottom: 0 !important;
+  }
+
+  .fu {
+    padding-top: 10px;
+  }
+
+  .ga {
+    display: inline-block !important;
+  }
+
+  .gb {
+    float: right !important;
+  }
+
+  .gi {
+    padding-top: 34px;
+  }
+}
+</style><style>
+@media all and (min-width: 904px) and (max-width: 1079.98px) {
+  .f {
+    background-color: rgba(242, 242, 242, 1) !important;
+  }
+
+  .g {
+    padding: 6px 0 40px 0;
+  }
+
+  .q {
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .r {
+    border-radius: 4px;
+  }
+
+  .w {
+    padding: 28px 40px 0 40px !important;
+  }
+
+  .ap {
+    font-size: 13px;
+  }
+
+  .aq {
+    line-height: 18px;
+  }
+
+  .bb {
+    margin-bottom: 5px !important;
+  }
+
+  .bc {
+    margin-top: 25px !important;
+  }
+
+  .bn {
+    padding: 20px 40px 40px !important;
+  }
+
+  .bv {
+    font-size: 16px !important;
+  }
+
+  .bw {
+    line-height: 24px !important;
+  }
+
+  .cg {
+    margin-bottom: 24px !important;
+  }
+
+  .ch {
+    margin-top: 24px !important;
+  }
+
+  .cr {
+    height: 144px !important;
+  }
+
+  .cs {
+    width: 144px !important;
+  }
+
+  .cy {
+    width: 72% !important;
+  }
+
+  .dc {
+    min-height: 0 !important;
+  }
+
+  .dh {
+    font-size: 18px !important;
+  }
+
+  .dn {
+    width: 100% !important;
+  }
+
+  .dt {
+    width: 88% !important;
+  }
+
+  .eb {
+    font-size: 14px;
+  }
+
+  .ec {
+    line-height: 20px;
+  }
+
+  .ek {
+    padding: 0px 40px 60px !important;
+  }
+
+  .et {
+    font-size: 24px;
+  }
+
+  .eu {
+    line-height: 28px;
+  }
+
+  .fr {
+    padding: 40px !important;
+  }
+
+  .fv {
+    padding-bottom: 0 !important;
+  }
+
+  .fw {
+    padding-top: 10px;
+  }
+
+  .gc {
+    display: inline-block !important;
+  }
+
+  .gd {
+    float: right !important;
+  }
+
+  .gj {
+    padding-top: 34px;
+  }
+}
+</style><style>
+@media all and (min-width: 1080px) {
+  .h {
+    background-color: rgba(242, 242, 242, 1) !important;
+  }
+
+  .i {
+    padding: 6px 0 40px 0;
+  }
+
+  .s {
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .t {
+    border-radius: 4px;
+  }
+
+  .x {
+    padding: 28px 40px 0 40px !important;
+  }
+
+  .ar {
+    font-size: 13px;
+  }
+
+  .as {
+    line-height: 18px;
+  }
+
+  .bd {
+    margin-bottom: 5px !important;
+  }
+
+  .be {
+    margin-top: 25px !important;
+  }
+
+  .bo {
+    padding: 20px 40px 40px !important;
+  }
+
+  .bx {
+    font-size: 16px !important;
+  }
+
+  .by {
+    line-height: 24px !important;
+  }
+
+  .ci {
+    margin-bottom: 24px !important;
+  }
+
+  .cj {
+    margin-top: 24px !important;
+  }
+
+  .ct {
+    height: 144px !important;
+  }
+
+  .cu {
+    width: 144px !important;
+  }
+
+  .cz {
+    width: 72% !important;
+  }
+
+  .dd {
+    min-height: 0 !important;
+  }
+
+  .di {
+    font-size: 18px !important;
+  }
+
+  .do {
+    width: 100% !important;
+  }
+
+  .du {
+    width: 88% !important;
+  }
+
+  .ed {
+    font-size: 14px;
+  }
+
+  .ee {
+    line-height: 20px;
+  }
+
+  .el {
+    padding: 0px 40px 60px !important;
+  }
+
+  .ev {
+    font-size: 24px;
+  }
+
+  .ew {
+    line-height: 28px;
+  }
+
+  .fs {
+    padding: 40px !important;
+  }
+
+  .fx {
+    padding-bottom: 0 !important;
+  }
+
+  .fy {
+    padding-top: 10px;
+  }
+
+  .ge {
+    display: inline-block !important;
+  }
+
+  .gf {
+    float: right !important;
+  }
+
+  .gk {
+    padding-top: 34px;
+  }
+}
+</style><style>
+@media all and (max-width: 551.98px) {
+  .aj {
+    font-size: 11px;
+  }
+
+  .ak {
+    line-height: 14px;
+  }
+
+  .dv {
+    font-size: 16px;
+  }
+
+  .dw {
+    line-height: 24px;
+  }
+
+  .en {
+    font-size: 18px;
+  }
+
+  .eo {
+    line-height: 21px;
+  }
+}
+</style><style>
+@media all and (min-width: 552px) and (max-width: 727.98px) {
+  .al {
+    font-size: 11px;
+  }
+
+  .am {
+    line-height: 14px;
+  }
+
+  .dx {
+    font-size: 16px;
+  }
+
+  .dy {
+    line-height: 24px;
+  }
+
+  .ep {
+    font-size: 18px;
+  }
+
+  .eq {
+    line-height: 21px;
+  }
+}
+</style></head><body style=3D"margin: 0; padding: 0;"><div class=3D"c d e f=
+ g h i" style=3D"background-color: rgba(255, 255, 255, 1);"><table class=3D=
+"j k l m" role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"margin-left: auto; margin-right: auto; width: 100%; max-width: 680px;" =
+width=3D"100%"><tbody><tr><td class=3D"l n" style=3D"width: 100%; min-width=
+: 100%;" width=3D"100%"><img src=3D"https://medium.com/_/stat?event=3Demail=
+.opened&amp;emailId=3Da0666937-fbeb-4c32-ae33-675db516455b&amp;source=3Dema=
+il-9c3bd689d8a4-1629137217586-digest.reader-------------------------a066693=
+7_fbeb_4c32_ae33_675db516455b" width=3D"1" height=3D"1" alt><div class=3D"a=
+ b" style=3D"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; c=
+olor: rgba(25, 25, 25, 1);"><div class=3D"c o p q r s t" style=3D"backgroun=
+d-color: rgba(255, 255, 255, 1);"><div class=3D"u v w x" style=3D"padding: =
+12px 27px 0 27px;"><div class=3D"y" style=3D"text-align: left;"><div class>=
+<div class=3D"z ab" style=3D"display: inline-block; vertical-align: middle;=
+"><a href=3D"https://medium.com/@lily.lawrence2019?source=3Demail-9c3bd689d=
+8a4-1629137217586-digest.reader-------------------------a0666937_fbeb_4c32_=
+ae33_675db516455b" style=3D"color: inherit; text-decoration: none;"><img al=
+t=3D"Lily Lawrence" class=3D"ac ae af ag" src=3D"https://miro.medium.com/fi=
+t/c/64/64/0*TIIn9r8IlOZfswzp.jpg" width=3D"32" height=3D"32" style=3D"displ=
+ay: block; border-radius: 50%; height: 32px; width: 32px;"></a></div><div c=
+lass=3D"z ah ab" style=3D"display: inline-block; vertical-align: middle; pa=
+dding-left: 9px;"><div class=3D"ai aj ak al am an ao ap aq ar as at" style=
+=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><a href=3D"https://mediu=
+m.com/@lily.lawrence2019?source=3Demail-9c3bd689d8a4-1629137217586-digest.r=
+eader-------------------------a0666937_fbeb_4c32_ae33_675db516455b" style=
+=3D"color: inherit; text-decoration: none;">Stories for <span style=3D"font=
+-weight:700">Lily Lawrence</span></a></div><div class=3D"ai aj ak al am an =
+ao ap aq ar as at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">=
+<span class=3D"ai aj ak al am an ao ap aq ar as au" style=3D"font-weight: 4=
+00; color: rgba(117, 117, 117, 1);"><a href=3D"https://medium.com/@lily.law=
+rence2019?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader----------=
+---------------a0666937_fbeb_4c32_ae33_675db516455b" style=3D"color: inheri=
+t; text-decoration: none;">@lily.lawrence2019</a><span class=3D"av aw" styl=
+e=3D"padding-left: 4px; padding-right: 4px;">=C2=B7</span></span><span clas=
+s=3D"ai aj ak al am an ao ap aq ar as ax" style=3D"font-weight: 400; color:=
+ rgba(26, 137, 23, 1);"><a href=3D"https://medium.com/plans?source=3Demail-=
+9c3bd689d8a4-1629137217586-digest.reader-------------------------a0666937_f=
+beb_4c32_ae33_675db516455b" style=3D"color: inherit; text-decoration: none;=
+">Become a member</a></span></div></div></div></div><div class=3D"ay az ba =
+bb bc bd be bf bg" style=3D"margin-bottom: 8px; margin-top: 22px; text-alig=
+n: center;"><img alt=3D"Medium daily digest" class=3D"l bh" src=3D"https://=
+miro.medium.com/max/1200/4*pUIfRlZh07mLXKHFllcZSw.png" width=3D"600" style=
+=3D"width: 100%; min-width: 400px;"></div></div><div class=3D"bi bj l" styl=
+e=3D"width: 100%; border-bottom: 1px solid rgba(230, 230, 230, 1); height: =
+0px;"></div><div class=3D"bk bl bm bn bo" style=3D"background-color: #FAFAF=
+A; padding: 20px 27px 40px;"><div class=3D"bp bq" style=3D"margin-bottom: 1=
+1px; margin-top: 11px;"><p class=3D"br bs bt bu bv bw bx by bz at ca" style=
+=3D"margin: 0; color: rgba(41, 41, 41, 1); font-weight: 700; font-size: 18p=
+x; line-height: 24px; text-transform: uppercase;">Today=E2=80=99s highlight=
+s</p></div><div class=3D"cb bj l" style=3D"width: 100%; height: 0px; border=
+-bottom: 1px solid rgba(117, 117, 117, 1);"></div><div><div class=3D"cc cd =
+ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margi=
+n-top: 20px;"><a href=3D"https://medium.com/@da-rutherford/the-best-pick-up=
+-lines-ive-heard-c3d6aafe1831?source=3Demail-9c3bd689d8a4-1629137217586-dig=
+est.reader-3178caacedd4-c3d6aafe1831----0-73------------------a0666937_fbeb=
+_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" aria-labell=
+edby=3D"SVkJkJI5" style=3D"color: inherit; text-decoration: none;"><div cla=
+ss=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline-block; floa=
+t: right; vertical-align: top; height: 100px; width: 100px; background-imag=
+e: url(https://miro.medium.com/fit/c/960/960/1*PLEpNebh9_HBqjurCPO6ZQ.jpeg)=
+; background-position: -1% -1%; background-repeat: no-repeat; background-si=
+ze: cover;"></div></a><div class=3D"z cv cw cx cy cz" style=3D"display: inl=
+ine-block; padding-bottom: 12px; width: 72%;"><div class=3D"z cv da db dc d=
+d cm" style=3D"display: inline-block; vertical-align: top; padding-bottom: =
+12px; min-height: 100px;"><a href=3D"https://medium.com/@da-rutherford/the-=
+best-pick-up-lines-ive-heard-c3d6aafe1831?source=3Demail-9c3bd689d8a4-16291=
+37217586-digest.reader-3178caacedd4-c3d6aafe1831----0-73------------------a=
+0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e"=
+ style=3D"color: inherit; text-decoration: none;"><div class=3D"de" style=
+=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" style=
+=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-hei=
+ght: 28px;"><b id=3D"SVkJkJI5">The Best Pick-Up Lines I=E2=80=99ve Heard.</=
+b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-we=
+ight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20px;"=
+>And the worst. A comedic piece on hunting for love.</div></a></div><div cl=
+ass=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"=
+display: inline-block; vertical-align: middle; margin-right: 12px;"><a href=
+=3D"https://medium.com/lunch-meat?source=3Demail-9c3bd689d8a4-1629137217586=
+-digest.reader-3178caacedd4-c3d6aafe1831----0-73------------------a0666937_=
+fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" style=
+=3D"color: inherit; text-decoration: none;"><img alt=3D"Lunch Meat" class=
+=3D"dq ag af ac" src=3D"https://miro.medium.com/fit/c/64/64/1*NSPZdhaxt01Ew=
+MbMjjkY3w.png" width=3D"32" height=3D"32" style=3D"display: block; height: =
+32px; width: 32px; border-radius: 4px;"></a></div><div class=3D"z dr ds dt =
+du ab" style=3D"display: inline-block; vertical-align: middle; width: 85%;"=
+><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 4=
+00; color: rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.com/@da-ruthe=
+rford?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-3178caacedd4-=
+c3d6aafe1831----0-73------------------a0666937_fbeb_4c32_ae33_675db516455b-=
+1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color: inherit; text-decor=
+ation: none;">D.A. Rutherford</a> in <a href=3D"https://medium.com/lunch-me=
+at?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-3178caacedd4-c3d=
+6aafe1831----0-73------------------a0666937_fbeb_4c32_ae33_675db516455b-1-a=
+a17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color: inherit; text-decorati=
+on: none;">Lunch Meat</a></b><span class=3D"ef eg" style=3D"padding-left: 6=
+px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"display: in=
+line-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"f=
+ont-weight: 400; color: rgba(41, 41, 41, 1);">6 min read</span><div class=
+=3D"z eh" style=3D"display: inline-block; margin-left: 6px;"><img alt=3D"Me=
+mber only content" class src=3D"https://miro.medium.com/fit/c/24/24/4*MKBko=
+6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></div></div></div></div><=
+/div></div></div><div class=3D"bi bj l" style=3D"width: 100%; border-bottom=
+: 1px solid rgba(230, 230, 230, 1); height: 0px;"></div></div><div><div cla=
+ss=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bottom:=
+ 20px; margin-top: 20px;"><a href=3D"https://medium.com/@jjdiamondreivich/3=
+-python-packages-that-make-data-science-simple-25695dc565d?source=3Demail-9=
+c3bd689d8a4-1629137217586-digest.reader-a807b2fd9fc4-25695dc565d----1-73---=
+---------------a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd=
+71_92cca5b3b89e" aria-labelledby=3D"9NvrW8sk" style=3D"color: inherit; text=
+-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D=
+"display: inline-block; float: right; vertical-align: top; height: 100px; w=
+idth: 100px; background-image: url(https://miro.medium.com/fit/c/960/960/0*=
+ZF5QpZ3FiK6_Ey5z.png); background-position: -1% -1%; background-repeat: no-=
+repeat; background-size: cover;"></div></a><div class=3D"z cv cw cx cy cz" =
+style=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><div cla=
+ss=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-align: =
+top; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://medium.co=
+m/@jjdiamondreivich/3-python-packages-that-make-data-science-simple-25695dc=
+565d?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-a807b2fd9fc4-2=
+5695dc565d----1-73------------------a0666937_fbeb_4c32_ae33_675db516455b-1-=
+aa17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color: inherit; text-decorat=
+ion: none;"><div class=3D"de" style=3D"margin-bottom: 4px;"><div class=3D"a=
+i df dg bu dh bw di by dj at" style=3D"font-weight: 400; color: rgba(41, 41=
+, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"9NvrW8sk">3 Python =
+Packages That Make Data Science Simple</b></div></div><div class=3D"ai dk b=
+t bu bv bw bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, =
+1); line-height: 28px; font-size: 20px;">1.Mito</div></a></div><div class=
+=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"dis=
+play: inline-block; vertical-align: middle; margin-right: 12px;"><a href=3D=
+"https://medium.com/trymito?source=3Demail-9c3bd689d8a4-1629137217586-diges=
+t.reader-a807b2fd9fc4-25695dc565d----1-73------------------a0666937_fbeb_4c=
+32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color=
+: inherit; text-decoration: none;"><img alt=3D"trymito" class=3D"dq ag af a=
+c" src=3D"https://miro.medium.com/fit/c/64/64/1*oTtG8Kmv3UU8P4HSpOJU3g.png"=
+ width=3D"32" height=3D"32" style=3D"display: block; height: 32px; width: 3=
+2px; border-radius: 4px;"></a></div><div class=3D"z dr ds dt du ab" style=
+=3D"display: inline-block; vertical-align: middle; width: 85%;"><div class=
+=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: =
+rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.com/@jjdiamondreivich?so=
+urce=3Demail-9c3bd689d8a4-1629137217586-digest.reader-a807b2fd9fc4-25695dc5=
+65d----1-73------------------a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e02=
+8_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color: inherit; text-decoration: no=
+ne;">Jake from Mito</a> in <a href=3D"https://medium.com/trymito?source=3De=
+mail-9c3bd689d8a4-1629137217586-digest.reader-a807b2fd9fc4-25695dc565d----1=
+-73------------------a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4=
+bac_bd71_92cca5b3b89e" style=3D"color: inherit; text-decoration: none;">try=
+mito</a></b><span class=3D"ef eg" style=3D"padding-left: 6px; padding-right=
+: 6px;">=C2=B7</span><div class=3D"z" style=3D"display: inline-block;"><spa=
+n class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; =
+color: rgba(41, 41, 41, 1);">4 min read</span></div></div></div></div></div=
+></div><div class=3D"bi bj l" style=3D"width: 100%; border-bottom: 1px soli=
+d rgba(230, 230, 230, 1); height: 0px;"></div></div><div><div class=3D"cc c=
+d ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bottom: 20px; mar=
+gin-top: 20px;"><a href=3D"https://medium.com/@jasebell/how-to-make-1-000-0=
+00-a-year-in-data-science-and-machine-learning-a-fool-proof-method-59f50665=
+f6e9?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader--59f50665f6e9-=
+---2-73------------------a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d=
+2a_4bac_bd71_92cca5b3b89e" aria-labelledby=3D"Am6b3ChV" style=3D"color: inh=
+erit; text-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu=
+" style=3D"display: inline-block; float: right; vertical-align: top; height=
+: 100px; width: 100px; background-image: url(https://miro.medium.com/fit/c/=
+960/960/1*vh-7paX9yH4sDh-B1mxpeA.jpeg); background-position: -1% -1%; backg=
+round-repeat: no-repeat; background-size: cover;"></div></a><div class=3D"z=
+ cv cw cx cy cz" style=3D"display: inline-block; padding-bottom: 12px; widt=
+h: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: inline-block;=
+ vertical-align: top; padding-bottom: 12px; min-height: 100px;"><a href=3D"=
+https://medium.com/@jasebell/how-to-make-1-000-000-a-year-in-data-science-a=
+nd-machine-learning-a-fool-proof-method-59f50665f6e9?source=3Demail-9c3bd68=
+9d8a4-1629137217586-digest.reader--59f50665f6e9----2-73------------------a0=
+666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" =
+style=3D"color: inherit; text-decoration: none;"><div class=3D"de" style=3D=
+"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D=
+"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-height=
+: 28px;"><b id=3D"Am6b3ChV">How to Make $1,000,000 a Year In Data Science a=
+nd Machine Learning=E2=80=8A=E2=80=94=E2=80=8AA Fool=E2=80=A6</b></div></di=
+v><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-weight: 400; c=
+olor: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20px;">Now I know =
+what you are thinking, =E2=80=9CJase, a million dollars! Come on!=E2=80=9D.=
+ Hear me out, if you follow these rules=E2=80=A6</div></a></div><div class=
+=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"dis=
+play: inline-block; vertical-align: middle; margin-right: 12px;"><a href=3D=
+"https://medium.com/@jasebell?source=3Demail-9c3bd689d8a4-1629137217586-dig=
+est.reader--59f50665f6e9----2-73------------------a0666937_fbeb_4c32_ae33_6=
+75db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color: inherit=
+; text-decoration: none;"><img alt=3D"Jason Bell" class=3D"ac ae af ag" src=
+=3D"https://miro.medium.com/fit/c/64/64/1*PgQZHCO5Zfq0Co5RDRbC9g.jpeg" widt=
+h=3D"32" height=3D"32" style=3D"display: block; border-radius: 50%; height:=
+ 32px; width: 32px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"dis=
+play: inline-block; vertical-align: middle; width: 85%;"><div class=3D"ai d=
+v dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41,=
+ 41, 41, 1);"><b><a href=3D"https://medium.com/@jasebell?source=3Demail-9c3=
+bd689d8a4-1629137217586-digest.reader--59f50665f6e9----2-73----------------=
+--a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b8=
+9e" style=3D"color: inherit; text-decoration: none;">Jason Bell</a></b><spa=
+n class=3D"ef eg" style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</=
+span><div class=3D"z" style=3D"display: inline-block;"><span class=3D"ai dv=
+ dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, =
+41, 41, 1);">3 min read</span></div></div></div></div></div></div><div clas=
+s=3D"bi bj l" style=3D"width: 100%; border-bottom: 1px solid rgba(230, 230,=
+ 230, 1); height: 0px;"></div></div><div><div class=3D"cc cd ce cf cg ch ci=
+ cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margin-top: 20px;">=
+<a href=3D"https://medium.com/@pedramshojai/why-dont-europeans-have-the-sam=
+e-reaction-to-dairy-71c07d0ca1d2?source=3Demail-9c3bd689d8a4-1629137217586-=
+digest.reader--71c07d0ca1d2----3-73------------------a0666937_fbeb_4c32_ae3=
+3_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" aria-labelledby=3D"O=
+vQkSllA" style=3D"color: inherit; text-decoration: none;"><div class=3D"z c=
+l cm cn co cp cq cr cs ct cu" style=3D"display: inline-block; float: right;=
+ vertical-align: top; height: 100px; width: 100px; background-image: url(ht=
+tps://miro.medium.com/fit/c/960/960/0*ntiOyZL8YKA4YfYR.jpg); background-pos=
+ition: -1% -1%; background-repeat: no-repeat; background-size: cover;"></di=
+v></a><div class=3D"z cv cw cx cy cz" style=3D"display: inline-block; paddi=
+ng-bottom: 12px; width: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"d=
+isplay: inline-block; vertical-align: top; padding-bottom: 12px; min-height=
+: 100px;"><a href=3D"https://medium.com/@pedramshojai/why-dont-europeans-ha=
+ve-the-same-reaction-to-dairy-71c07d0ca1d2?source=3Demail-9c3bd689d8a4-1629=
+137217586-digest.reader--71c07d0ca1d2----3-73------------------a0666937_fbe=
+b_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"c=
+olor: inherit; text-decoration: none;"><div class=3D"de" style=3D"margin-bo=
+ttom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D"font-weig=
+ht: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-height: 28px;"><=
+b id=3D"OvQkSllA">Why Don=E2=80=99t Europeans Have the Same Reaction to Dai=
+ry?</b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"fo=
+nt-weight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 2=
+0px;">Culture shock is sometimes subjective=E2=80=8A=E2=80=94=E2=80=8Abut i=
+n this case, there=E2=80=99s plenty of cold, hard evidence to prove it.</di=
+v></a></div><div class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D=
+"z dp ab" style=3D"display: inline-block; vertical-align: middle; margin-ri=
+ght: 12px;"><a href=3D"https://medium.com/@pedramshojai?source=3Demail-9c3b=
+d689d8a4-1629137217586-digest.reader--71c07d0ca1d2----3-73-----------------=
+-a0666937_fbeb_4c32_ae33_675db516455b-1-aa17e028_3d2a_4bac_bd71_92cca5b3b89=
+e" style=3D"color: inherit; text-decoration: none;"><img alt=3D"Pedram Shoj=
+ai" class=3D"ac ae af ag" src=3D"https://miro.medium.com/fit/c/64/64/1*dewA=
+owtP-MM83_8MUcPeBQ.jpeg" width=3D"32" height=3D"32" style=3D"display: block=
+; border-radius: 50%; height: 32px; width: 32px;"></a></div><div class=3D"z=
+ dr ds dt du ab" style=3D"display: inline-block; vertical-align: middle; wi=
+dth: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font=
+-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.com=
+/@pedramshojai?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader--71c=
+07d0ca1d2----3-73------------------a0666937_fbeb_4c32_ae33_675db516455b-1-a=
+a17e028_3d2a_4bac_bd71_92cca5b3b89e" style=3D"color: inherit; text-decorati=
+on: none;">Pedram Shojai</a></b><span class=3D"ef eg" style=3D"padding-left=
+: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"display:=
+ inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=
+=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">4 min read</span></div><=
+/div></div></div></div></div></div><div class=3D"bp bq" style=3D"margin-bot=
+tom: 11px; margin-top: 11px;"><p class=3D"br bs bt bu bv bw bx by bz at ca"=
+ style=3D"margin: 0; color: rgba(41, 41, 41, 1); font-weight: 700; font-siz=
+e: 18px; line-height: 24px; text-transform: uppercase;">Quick reads</p></di=
+v><div class=3D"cb bj l" style=3D"width: 100%; height: 0px; border-bottom: =
+1px solid rgba(117, 117, 117, 1);"></div><div><div class=3D"cc cd ce cf cg =
+ch ci cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margin-top: 20=
+px;"><a href=3D"https://medium.com/@ashley-richmond/increase-your-fat-burni=
+ng-during-exercise-by-29-with-this-simple-practice-abc950add083?source=3Dem=
+ail-9c3bd689d8a4-1629137217586-digest.reader-87a312b0cb05-abc950add083----0=
+-72------------------a0666937_fbeb_4c32_ae33_675db516455b-28-" aria-labelle=
+dby=3D"7ivO9DeJ" style=3D"color: inherit; text-decoration: none;"><div clas=
+s=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline-block; float=
+: right; vertical-align: top; height: 100px; width: 100px; background-image=
+: url(https://miro.medium.com/fit/c/960/960/0*v6n5bplaPHSmilFJ); background=
+-position: -1% -1%; background-repeat: no-repeat; background-size: cover;">=
+</div></a><div class=3D"z cv cw cx cy cz" style=3D"display: inline-block; p=
+adding-bottom: 12px; width: 72%;"><div class=3D"z cv da db dc dd cm" style=
+=3D"display: inline-block; vertical-align: top; padding-bottom: 12px; min-h=
+eight: 100px;"><a href=3D"https://medium.com/@ashley-richmond/increase-your=
+-fat-burning-during-exercise-by-29-with-this-simple-practice-abc950add083?s=
+ource=3Demail-9c3bd689d8a4-1629137217586-digest.reader-87a312b0cb05-abc950a=
+dd083----0-72------------------a0666937_fbeb_4c32_ae33_675db516455b-28-" st=
+yle=3D"color: inherit; text-decoration: none;"><div class=3D"de" style=3D"m=
+argin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D"f=
+ont-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-height: =
+28px;"><b id=3D"7ivO9DeJ">Increase Your Fat Burning During Exercise by 29% =
+With This Simple Practice</b></div></div><div class=3D"ai dk bt bu bv bw bx=
+ by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-heig=
+ht: 28px; font-size: 20px;">A recent study has found a way to turn up our b=
+ody=E2=80=99s fat-burning abilities.</div></a></div><div class=3D"dl dm dn =
+do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"display: inline-=
+block; vertical-align: middle; margin-right: 12px;"><a href=3D"https://medi=
+um.com/in-fitness-and-in-health?source=3Demail-9c3bd689d8a4-1629137217586-d=
+igest.reader-87a312b0cb05-abc950add083----0-72------------------a0666937_fb=
+eb_4c32_ae33_675db516455b-28-" style=3D"color: inherit; text-decoration: no=
+ne;"><img alt=3D"In Fitness And In Health" class=3D"dq ag af ac" src=3D"htt=
+ps://miro.medium.com/fit/c/64/64/1*BAfznIuyq9GqRfKvT5FofQ.jpeg" width=3D"32=
+" height=3D"32" style=3D"display: block; height: 32px; width: 32px; border-=
+radius: 4px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"display: i=
+nline-block; vertical-align: middle; width: 85%;"><div class=3D"ai dv dw dx=
+ dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41=
+, 1);"><b><a href=3D"https://medium.com/@ashley-richmond?source=3Demail-9c3=
+bd689d8a4-1629137217586-digest.reader-87a312b0cb05-abc950add083----0-72----=
+--------------a0666937_fbeb_4c32_ae33_675db516455b-28-" style=3D"color: inh=
+erit; text-decoration: none;">Ashley Richmond</a> in <a href=3D"https://med=
+ium.com/in-fitness-and-in-health?source=3Demail-9c3bd689d8a4-1629137217586-=
+digest.reader-87a312b0cb05-abc950add083----0-72------------------a0666937_f=
+beb_4c32_ae33_675db516455b-28-" style=3D"color: inherit; text-decoration: n=
+one;">In Fitness And In Health</a></b><span class=3D"ef eg" style=3D"paddin=
+g-left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"di=
+splay: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" s=
+tyle=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">2 min read</span><di=
+v class=3D"z eh" style=3D"display: inline-block; margin-left: 6px;"><img al=
+t=3D"Member only content" class src=3D"https://miro.medium.com/fit/c/24/24/=
+4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></div></div></div>=
+</div></div></div></div><div class=3D"bi bj l" style=3D"width: 100%; border=
+-bottom: 1px solid rgba(230, 230, 230, 1); height: 0px;"></div></div><div><=
+div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-=
+bottom: 20px; margin-top: 20px;"><a href=3D"https://medium.com/@miketrap/wh=
+at-killed-anthony-bourdain-2ec5b606977d?source=3Demail-9c3bd689d8a4-1629137=
+217586-digest.reader--2ec5b606977d----1-72------------------a0666937_fbeb_4=
+c32_ae33_675db516455b-28-" aria-labelledby=3D"S3A0-IH2" style=3D"color: inh=
+erit; text-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu=
+" style=3D"display: inline-block; float: right; vertical-align: top; height=
+: 100px; width: 100px; background-image: url(https://miro.medium.com/fit/c/=
+960/960/1*r_61sU4y2ZpAtJLGDoBRaw.png); background-position: -1% -1%; backgr=
+ound-repeat: no-repeat; background-size: cover;"></div></a><div class=3D"z =
+cv cw cx cy cz" style=3D"display: inline-block; padding-bottom: 12px; width=
+: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: inline-block; =
+vertical-align: top; padding-bottom: 12px; min-height: 100px;"><a href=3D"h=
+ttps://medium.com/@miketrap/what-killed-anthony-bourdain-2ec5b606977d?sourc=
+e=3Demail-9c3bd689d8a4-1629137217586-digest.reader--2ec5b606977d----1-72---=
+---------------a0666937_fbeb_4c32_ae33_675db516455b-28-" style=3D"color: in=
+herit; text-decoration: none;"><div class=3D"de" style=3D"margin-bottom: 4p=
+x;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D"font-weight: 400;=
+ color: rgba(41, 41, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"=
+S3A0-IH2">What killed Anthony Bourdain?</b></div></div><div class=3D"ai dk =
+bt bu bv bw bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41,=
+ 1); line-height: 28px; font-size: 20px;">=E2=80=9CRoadrunner=E2=80=9D shed=
+s light on the sad end of a triumphant life</div></a></div><div class=3D"dl=
+ dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"display: =
+inline-block; vertical-align: middle; margin-right: 12px;"><a href=3D"https=
+://medium.com/@miketrap?source=3Demail-9c3bd689d8a4-1629137217586-digest.re=
+ader--2ec5b606977d----1-72------------------a0666937_fbeb_4c32_ae33_675db51=
+6455b-28-" style=3D"color: inherit; text-decoration: none;"><img alt=3D"Mik=
+e Troiano" class=3D"ac ae af ag" src=3D"https://miro.medium.com/fit/c/64/64=
+/0*SeFz_axvFGBhNAmq.jpeg" width=3D"32" height=3D"32" style=3D"display: bloc=
+k; border-radius: 50%; height: 32px; width: 32px;"></a></div><div class=3D"=
+z dr ds dt du ab" style=3D"display: inline-block; vertical-align: middle; w=
+idth: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"fon=
+t-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.co=
+m/@miketrap?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader--2ec5b6=
+06977d----1-72------------------a0666937_fbeb_4c32_ae33_675db516455b-28-" s=
+tyle=3D"color: inherit; text-decoration: none;">Mike Troiano</a></b><span c=
+lass=3D"ef eg" style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</spa=
+n><div class=3D"z" style=3D"display: inline-block;"><span class=3D"ai dv dw=
+ dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41,=
+ 41, 1);">4 min read</span><div class=3D"z eh" style=3D"display: inline-blo=
+ck; margin-left: 6px;"><img alt=3D"Member only content" class src=3D"https:=
+//miro.medium.com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" he=
+ight=3D"12"></div></div></div></div></div></div></div><div class=3D"bi bj l=
+" style=3D"width: 100%; border-bottom: 1px solid rgba(230, 230, 230, 1); he=
+ight: 0px;"></div></div><div><div class=3D"cc cd ce cf cg ch ci cj ck" styl=
+e=3D"overflow: hidden; margin-bottom: 20px; margin-top: 20px;"><a href=3D"h=
+ttps://medium.com/@bunindmitry/text-alignment-best-practises-c4114daf1a9b?s=
+ource=3Demail-9c3bd689d8a4-1629137217586-digest.reader-eb297ea1161a-c4114da=
+f1a9b----2-72------------------a0666937_fbeb_4c32_ae33_675db516455b-28-" ar=
+ia-labelledby=3D"pKCqw56S" style=3D"color: inherit; text-decoration: none;"=
+><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline-bl=
+ock; float: right; vertical-align: top; height: 100px; width: 100px; backgr=
+ound-image: url(https://miro.medium.com/fit/c/960/960/1*pRnzhE0TaWVFcAcxLEi=
+S9Q.jpeg); background-position: -1% -1%; background-repeat: no-repeat; back=
+ground-size: cover;"></div></a><div class=3D"z cv cw cx cy cz" style=3D"dis=
+play: inline-block; padding-bottom: 12px; width: 72%;"><div class=3D"z cv d=
+a db dc dd cm" style=3D"display: inline-block; vertical-align: top; padding=
+-bottom: 12px; min-height: 100px;"><a href=3D"https://medium.com/@bunindmit=
+ry/text-alignment-best-practises-c4114daf1a9b?source=3Demail-9c3bd689d8a4-1=
+629137217586-digest.reader-eb297ea1161a-c4114daf1a9b----2-72---------------=
+---a0666937_fbeb_4c32_ae33_675db516455b-28-" style=3D"color: inherit; text-=
+decoration: none;"><div class=3D"de" style=3D"margin-bottom: 4px;"><div cla=
+ss=3D"ai df dg bu dh bw di by dj at" style=3D"font-weight: 400; color: rgba=
+(41, 41, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"pKCqw56S">Te=
+xt Alignment Best Practises</b></div></div><div class=3D"ai dk bt bu bv bw =
+bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-he=
+ight: 28px; font-size: 20px;">Make your UI more effective and easy to read =
+with text alignment.</div></a></div><div class=3D"dl dm dn do" style=3D"wid=
+th: 138%;"><div class=3D"z dp ab" style=3D"display: inline-block; vertical-=
+align: middle; margin-right: 12px;"><a href=3D"https://medium.com/front-end=
+-dev?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-eb297ea1161a-c=
+4114daf1a9b----2-72------------------a0666937_fbeb_4c32_ae33_675db516455b-2=
+8-" style=3D"color: inherit; text-decoration: none;"><img alt=3D"Prototypr"=
+ class=3D"dq ag af ac" src=3D"https://miro.medium.com/fit/c/64/64/1*qyQKDMM=
+D6-X_8biF_U-N-g.png" width=3D"32" height=3D"32" style=3D"display: block; he=
+ight: 32px; width: 32px; border-radius: 4px;"></a></div><div class=3D"z dr =
+ds dt du ab" style=3D"display: inline-block; vertical-align: middle; width:=
+ 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-wei=
+ght: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.com/@bu=
+nindmitry?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-eb297ea11=
+61a-c4114daf1a9b----2-72------------------a0666937_fbeb_4c32_ae33_675db5164=
+55b-28-" style=3D"color: inherit; text-decoration: none;">Buninux</a> in <a=
+ href=3D"https://medium.com/front-end-dev?source=3Demail-9c3bd689d8a4-16291=
+37217586-digest.reader-eb297ea1161a-c4114daf1a9b----2-72------------------a=
+0666937_fbeb_4c32_ae33_675db516455b-28-" style=3D"color: inherit; text-deco=
+ration: none;">Prototypr</a></b><span class=3D"ef eg" style=3D"padding-left=
+: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"display:=
+ inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=
+=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">4 min read</span></div><=
+/div></div></div></div></div></div><div class=3D"bp bq" style=3D"margin-bot=
+tom: 11px; margin-top: 11px;"><p class=3D"br bs bt bu bv bw bx by bz at ca"=
+ style=3D"margin: 0; color: rgba(41, 41, 41, 1); font-weight: 700; font-siz=
+e: 18px; line-height: 24px; text-transform: uppercase;">Based on your readi=
+ng history</p></div><div class=3D"cb bj l" style=3D"width: 100%; height: 0p=
+x; border-bottom: 1px solid rgba(117, 117, 117, 1);"></div><div><div class=
+=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bottom: 2=
+0px; margin-top: 20px;"><a href=3D"https://medium.com/@adriensieg/from-pre-=
+trained-word-embeddings-to-pre-trained-language-models-focus-on-bert-343815=
+627598?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9=
+-343815627598----0-59------------------a0666937_fbeb_4c32_ae33_675db516455b=
+-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22" aria-labelledby=3D"jaDqKXCA" styl=
+e=3D"color: inherit; text-decoration: none;"><div class=3D"z cl cm cn co cp=
+ cq cr cs ct cu" style=3D"display: inline-block; float: right; vertical-ali=
+gn: top; height: 100px; width: 100px; background-image: url(https://miro.me=
+dium.com/fit/c/960/960/0*Bi_keA0uuKsQCJ07.png); background-position: -1% -1=
+%; background-repeat: no-repeat; background-size: cover;"></div></a><div cl=
+ass=3D"z cv cw cx cy cz" style=3D"display: inline-block; padding-bottom: 12=
+px; width: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: inlin=
+e-block; vertical-align: top; padding-bottom: 12px; min-height: 100px;"><a =
+href=3D"https://medium.com/@adriensieg/from-pre-trained-word-embeddings-to-=
+pre-trained-language-models-focus-on-bert-343815627598?source=3Demail-9c3bd=
+689d8a4-1629137217586-digest.reader-7f60cf5620c9-343815627598----0-59------=
+------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61=
+_9dd0f5de2c22" style=3D"color: inherit; text-decoration: none;"><div class=
+=3D"de" style=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by=
+ dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 2=
+2px; line-height: 28px;"><b id=3D"jaDqKXCA">FROM Pre-trained Word Embedding=
+s TO Pre-trained Language Models=E2=80=8A=E2=80=94=E2=80=8AFocus on BERT</b=
+></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-wei=
+ght: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20px;">=
+FROM Static Word Embedding TO Dynamic (Contextualized) Word Embedding</div>=
+</a></div><div class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z=
+ dp ab" style=3D"display: inline-block; vertical-align: middle; margin-righ=
+t: 12px;"><a href=3D"https://medium.com/towards-data-science?source=3Demail=
+-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-343815627598----0-59=
+------------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44f=
+d_8e61_9dd0f5de2c22" style=3D"color: inherit; text-decoration: none;"><img =
+alt=3D"Towards Data Science" class=3D"dq ag af ac" src=3D"https://miro.medi=
+um.com/fit/c/64/64/1*eLxNtw6hQ4-3HrHda5BCCw.png" width=3D"32" height=3D"32"=
+ style=3D"display: block; height: 32px; width: 32px; border-radius: 4px;"><=
+/a></div><div class=3D"z dr ds dt du ab" style=3D"display: inline-block; ve=
+rtical-align: middle; width: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec=
+ ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><b><a hr=
+ef=3D"https://medium.com/@adriensieg?source=3Demail-9c3bd689d8a4-1629137217=
+586-digest.reader-7f60cf5620c9-343815627598----0-59------------------a06669=
+37_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22" sty=
+le=3D"color: inherit; text-decoration: none;">Adrien Sieg</a> in <a href=3D=
+"https://medium.com/towards-data-science?source=3Demail-9c3bd689d8a4-162913=
+7217586-digest.reader-7f60cf5620c9-343815627598----0-59------------------a0=
+666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22"=
+ style=3D"color: inherit; text-decoration: none;">Towards Data Science</a><=
+/b><span class=3D"ef eg" style=3D"padding-left: 6px; padding-right: 6px;">=
+=C2=B7</span><div class=3D"z" style=3D"display: inline-block;"><span class=
+=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: =
+rgba(41, 41, 41, 1);">23 min read</span><div class=3D"z eh" style=3D"displa=
+y: inline-block; margin-left: 6px;"><img alt=3D"Member only content" class =
+src=3D"https://miro.medium.com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" wi=
+dth=3D"12" height=3D"12"></div></div></div></div></div></div></div><div cla=
+ss=3D"bi bj l" style=3D"width: 100%; border-bottom: 1px solid rgba(230, 230=
+, 230, 1); height: 0px;"></div></div><div><div class=3D"cc cd ce cf cg ch c=
+i cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margin-top: 20px;"=
+><a href=3D"https://medium.com/@slanjr/word-embeddings-in-2020-review-with-=
+code-examples-11eb39a1ee6d?source=3Demail-9c3bd689d8a4-1629137217586-digest=
+.reader-7f60cf5620c9-11eb39a1ee6d----1-59------------------a0666937_fbeb_4c=
+32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22" aria-labelled=
+by=3D"m0SRgzBb" style=3D"color: inherit; text-decoration: none;"><div class=
+=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline-block; float:=
+ right; vertical-align: top; height: 100px; width: 100px; background-image:=
+ url(https://miro.medium.com/fit/c/960/960/1*1Kr-mgVDevo63WPYm37gBA.png); b=
+ackground-position: -1% -1%; background-repeat: no-repeat; background-size:=
+ cover;"></div></a><div class=3D"z cv cw cx cy cz" style=3D"display: inline=
+-block; padding-bottom: 12px; width: 72%;"><div class=3D"z cv da db dc dd c=
+m" style=3D"display: inline-block; vertical-align: top; padding-bottom: 12p=
+x; min-height: 100px;"><a href=3D"https://medium.com/@slanjr/word-embedding=
+s-in-2020-review-with-code-examples-11eb39a1ee6d?source=3Demail-9c3bd689d8a=
+4-1629137217586-digest.reader-7f60cf5620c9-11eb39a1ee6d----1-59------------=
+------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f=
+5de2c22" style=3D"color: inherit; text-decoration: none;"><div class=3D"de"=
+ style=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at"=
+ style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; li=
+ne-height: 28px;"><b id=3D"m0SRgzBb">Word embeddings in 2020. Review with c=
+ode examples</b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" st=
+yle=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; fon=
+t-size: 20px;">Brief overview of current word embedding methods: from Word2=
+vec to Transformers</div></a></div><div class=3D"dl dm dn do" style=3D"widt=
+h: 138%;"><div class=3D"z dp ab" style=3D"display: inline-block; vertical-a=
+lign: middle; margin-right: 12px;"><a href=3D"https://medium.com/towards-da=
+ta-science?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-7f60cf56=
+20c9-11eb39a1ee6d----1-59------------------a0666937_fbeb_4c32_ae33_675db516=
+455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22" style=3D"color: inherit; text=
+-decoration: none;"><img alt=3D"Towards Data Science" class=3D"dq ag af ac"=
+ src=3D"https://miro.medium.com/fit/c/64/64/1*eLxNtw6hQ4-3HrHda5BCCw.png" w=
+idth=3D"32" height=3D"32" style=3D"display: block; height: 32px; width: 32p=
+x; border-radius: 4px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"=
+display: inline-block; vertical-align: middle; width: 85%;"><div class=3D"a=
+i dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(=
+41, 41, 41, 1);"><b><a href=3D"https://medium.com/@slanjr?source=3Demail-9c=
+3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-11eb39a1ee6d----1-59---=
+---------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8=
+e61_9dd0f5de2c22" style=3D"color: inherit; text-decoration: none;">Rostysla=
+v Neskorozhenyi</a> in <a href=3D"https://medium.com/towards-data-science?s=
+ource=3Demail-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-11eb39a=
+1ee6d----1-59------------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d=
+1098_62d3_44fd_8e61_9dd0f5de2c22" style=3D"color: inherit; text-decoration:=
+ none;">Towards Data Science</a></b><span class=3D"ef eg" style=3D"padding-=
+left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"disp=
+lay: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" sty=
+le=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">13 min read</span><div=
+ class=3D"z eh" style=3D"display: inline-block; margin-left: 6px;"><img alt=
+=3D"Member only content" class src=3D"https://miro.medium.com/fit/c/24/24/4=
+*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></div></div></div><=
+/div></div></div></div><div class=3D"bi bj l" style=3D"width: 100%; border-=
+bottom: 1px solid rgba(230, 230, 230, 1); height: 0px;"></div></div><div><d=
+iv class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-b=
+ottom: 20px; margin-top: 20px;"><a href=3D"https://medium.com/@ashishrana16=
+0796/art-of-vector-representation-of-words-5e85c59fee5?source=3Demail-9c3bd=
+689d8a4-1629137217586-digest.reader-7f60cf5620c9-5e85c59fee5----2-59-------=
+-----------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_=
+9dd0f5de2c22" aria-labelledby=3D"GyyT2K2e" style=3D"color: inherit; text-de=
+coration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"di=
+splay: inline-block; float: right; vertical-align: top; height: 100px; widt=
+h: 100px; background-image: url(https://miro.medium.com/fit/c/960/960/1*i2H=
+jyxgNly5_2YWPvrgpPQ.png); background-position: -1% -1%; background-repeat: =
+no-repeat; background-size: cover;"></div></a><div class=3D"z cv cw cx cy c=
+z" style=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><div =
+class=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-alig=
+n: top; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://medium=
+.com/@ashishrana160796/art-of-vector-representation-of-words-5e85c59fee5?so=
+urce=3Demail-9c3bd689d8a4-1629137217586-digest.reader-7f60cf5620c9-5e85c59f=
+ee5----2-59------------------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d10=
+98_62d3_44fd_8e61_9dd0f5de2c22" style=3D"color: inherit; text-decoration: n=
+one;"><div class=3D"de" style=3D"margin-bottom: 4px;"><div class=3D"ai df d=
+g bu dh bw di by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, =
+1); font-size: 22px; line-height: 28px;"><b id=3D"GyyT2K2e">Art of Vector R=
+epresentation of Words</b></div></div><div class=3D"ai dk bt bu bv bw bx by=
+ dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-height:=
+ 28px; font-size: 20px;">Different models from count based to prediction ba=
+sed discussed for vectorization process. Detailed=E2=80=A6</div></a></div><=
+div class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" sty=
+le=3D"display: inline-block; vertical-align: middle; margin-right: 12px;"><=
+a href=3D"https://medium.com/towards-data-science?source=3Demail-9c3bd689d8=
+a4-1629137217586-digest.reader-7f60cf5620c9-5e85c59fee5----2-59------------=
+------a0666937_fbeb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f=
+5de2c22" style=3D"color: inherit; text-decoration: none;"><img alt=3D"Towar=
+ds Data Science" class=3D"dq ag af ac" src=3D"https://miro.medium.com/fit/c=
+/64/64/1*eLxNtw6hQ4-3HrHda5BCCw.png" width=3D"32" height=3D"32" style=3D"di=
+splay: block; height: 32px; width: 32px; border-radius: 4px;"></a></div><di=
+v class=3D"z dr ds dt du ab" style=3D"display: inline-block; vertical-align=
+: middle; width: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" s=
+tyle=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D"https:=
+//medium.com/@ashishrana160796?source=3Demail-9c3bd689d8a4-1629137217586-di=
+gest.reader-7f60cf5620c9-5e85c59fee5----2-59------------------a0666937_fbeb=
+_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22" style=3D"c=
+olor: inherit; text-decoration: none;">ASHISH RANA</a> in <a href=3D"https:=
+//medium.com/towards-data-science?source=3Demail-9c3bd689d8a4-1629137217586=
+-digest.reader-7f60cf5620c9-5e85c59fee5----2-59------------------a0666937_f=
+beb_4c32_ae33_675db516455b-16-1b8d1098_62d3_44fd_8e61_9dd0f5de2c22" style=
+=3D"color: inherit; text-decoration: none;">Towards Data Science</a></b><sp=
+an class=3D"ef eg" style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7<=
+/span><div class=3D"z" style=3D"display: inline-block;"><span class=3D"ai d=
+v dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41,=
+ 41, 41, 1);">15 min read</span></div></div></div></div></div></div></div><=
+div class=3D"bp bq" style=3D"margin-bottom: 11px; margin-top: 11px;"><p cla=
+ss=3D"br bs bt bu bv bw bx by bz at ca" style=3D"margin: 0; color: rgba(41,=
+ 41, 41, 1); font-weight: 700; font-size: 18px; line-height: 24px; text-tra=
+nsform: uppercase;">Best in Data Science</p></div><div class=3D"cb bj l" st=
+yle=3D"width: 100%; height: 0px; border-bottom: 1px solid rgba(117, 117, 11=
+7, 1);"></div><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overf=
+low: hidden; margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://med=
+ium.com/@rushkoff/giving-each-other-some-slack-with-sarah-esther-lageson-ph=
+d-e69a2978fcfb?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-5117=
+5c73eeca-e69a2978fcfb----0-50----------ae5d4995e225--------a0666937_fbeb_4c=
+32_ae33_675db516455b-12-" aria-labelledby=3D"34ZPV6n8" style=3D"color: inhe=
+rit; text-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu"=
+ style=3D"display: inline-block; float: right; vertical-align: top; height:=
+ 100px; width: 100px; background-image: url(https://miro.medium.com/focal/9=
+60/960/48/41/1*-BMxqfSTs52brUCb3dPi4A.jpeg); background-position: 48% 41%; =
+background-repeat: no-repeat; background-size: cover;"></div></a><div class=
+=3D"z cv cw cx cy cz" style=3D"display: inline-block; padding-bottom: 12px;=
+ width: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: inline-b=
+lock; vertical-align: top; padding-bottom: 12px; min-height: 100px;"><a hre=
+f=3D"https://medium.com/@rushkoff/giving-each-other-some-slack-with-sarah-e=
+sther-lageson-phd-e69a2978fcfb?source=3Demail-9c3bd689d8a4-1629137217586-di=
+gest.reader-51175c73eeca-e69a2978fcfb----0-50----------ae5d4995e225--------=
+a0666937_fbeb_4c32_ae33_675db516455b-12-" style=3D"color: inherit; text-dec=
+oration: none;"><div class=3D"de" style=3D"margin-bottom: 4px;"><div class=
+=3D"ai df dg bu dh bw di by dj at" style=3D"font-weight: 400; color: rgba(4=
+1, 41, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"34ZPV6n8">=E2=
+=80=98Giving Each Other Some Slack=E2=80=99 With Sarah Esther Lageson, PhD<=
+/b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-w=
+eight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20px;=
+">On the serious social ramifications and new forms of =E2=80=98digital pun=
+ishment=E2=80=99 meted out by the growth of online=E2=80=A6</div></a></div>=
+<div class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" st=
+yle=3D"display: inline-block; vertical-align: middle; margin-right: 12px;">=
+<a href=3D"https://medium.com/team-human?source=3Demail-9c3bd689d8a4-162913=
+7217586-digest.reader-51175c73eeca-e69a2978fcfb----0-50----------ae5d4995e2=
+25--------a0666937_fbeb_4c32_ae33_675db516455b-12-" style=3D"color: inherit=
+; text-decoration: none;"><img alt=3D"Team Human" class=3D"dq ag af ac" src=
+=3D"https://miro.medium.com/fit/c/64/64/1*YYM_6yg3STjnQ2kl6Kd_LQ.jpeg" widt=
+h=3D"32" height=3D"32" style=3D"display: block; height: 32px; width: 32px; =
+border-radius: 4px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"dis=
+play: inline-block; vertical-align: middle; width: 85%;"><div class=3D"ai d=
+v dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41,=
+ 41, 41, 1);"><b><a href=3D"https://medium.com/@rushkoff?source=3Demail-9c3=
+bd689d8a4-1629137217586-digest.reader-51175c73eeca-e69a2978fcfb----0-50----=
+------ae5d4995e225--------a0666937_fbeb_4c32_ae33_675db516455b-12-" style=
+=3D"color: inherit; text-decoration: none;">Douglas Rushkoff</a> in <a href=
+=3D"https://medium.com/team-human?source=3Demail-9c3bd689d8a4-1629137217586=
+-digest.reader-51175c73eeca-e69a2978fcfb----0-50----------ae5d4995e225-----=
+---a0666937_fbeb_4c32_ae33_675db516455b-12-" style=3D"color: inherit; text-=
+decoration: none;">Team Human</a></b><span class=3D"ef eg" style=3D"padding=
+-left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"dis=
+play: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" st=
+yle=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">2 min read</span><div=
+ class=3D"z eh" style=3D"display: inline-block; margin-left: 6px;"><img alt=
+=3D"Member only content" class src=3D"https://miro.medium.com/fit/c/24/24/4=
+*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></div></div></div><=
+/div></div></div></div></div></div><div class=3D"bk ei ej ek el bg" style=
+=3D"text-align: center; background-color: #FAFAFA; padding: 0px 27px 54px;"=
+><h2 class=3D"ai em en eo ep eq er es et eu ev ew ex" style=3D"margin: 0; f=
+ont-weight: 400; font-family: Georgia, serif; color: rgba(8, 8, 8, 1);">See=
+ more of what you like and less of what you don=E2=80=99t.</h2><div class=
+=3D"ey" style=3D"padding-top: 16px;"><a class=3D"ez fa fb z fc fd fe ff fg =
+fh fi fj fk ai fl bz" href=3D"https://medium.com/me/missioncontrol?source=
+=3Demail-9c3bd689d8a4-1629137217586-digest.reader-------------------------a=
+0666937_fbeb_4c32_ae33_675db516455b" style=3D"display: inline-block; font-w=
+eight: 400; line-height: 24px; border-width: 1px; border-style: solid; box-=
+sizing: border-box; text-decoration: none; padding: 9px 20px; background: r=
+gba(26, 137, 23, 1); border-color: rgba(26, 137, 23, 1); color: rgba(255, 2=
+55, 255, 1); fill: rgba(255, 255, 255, 1); border-radius: 99em; font-size: =
+16px;">Control your recommendations</a></div></div><div class=3D"fn fo fp f=
+q fr fs" style=3D"background-color: rgba(0, 0, 0, 1); border-radius: 0 0 4p=
+x 4px; padding: 32px 27px;"><div class=3D"z cv ft fu fv fw fx fy" style=3D"=
+display: inline-block; padding-bottom: 12px;"><h2 class=3D"br fl fz fg" sty=
+le=3D"margin: 0; font-weight: 700; color: rgba(255, 255, 255, 1); font-size=
+: 16px; line-height: 20px;">Read or write from anywhere.</h2></div><div cla=
+ss=3D"ac ga gb gc gd ge gf gg" style=3D"display: block; float: none;"><div =
+class=3D"z gh" style=3D"display: inline-block; padding-right: 12px;"><a cla=
+ss=3D"z" href=3D"https://itunes.apple.com/app/medium-everyones-stories/id82=
+8256236?pt=3D698524&amp;mt=3D8&amp;source=3Demail-9c3bd689d8a4-162913721758=
+6-digest.reader-------------------------a0666937_fbeb_4c32_ae33_675db516455=
+b" style=3D"color: inherit; text-decoration: none; display: inline-block;">=
+<img alt=3D"Get Medium on the App Store" class src=3D"https://miro.medium.c=
+om/proxy/1*CXKdDEfFShoF6Azy5V8ZKQ@2x.png" width=3D"120" height=3D"40"></a><=
+/div><a class=3D"z" href=3D"https://play.google.com/store/apps/details?id=
+=3Dcom.medium.reader&amp;source=3Demail-9c3bd689d8a4-1629137217586-digest.r=
+eader-------------------------a0666937_fbeb_4c32_ae33_675db516455b" style=
+=3D"color: inherit; text-decoration: none; display: inline-block;"><img alt=
+=3D"Get Medium on Google Play" class src=3D"https://miro.medium.com/proxy/1=
+*D-oULOaPtKR8A1jatsII4w@2x.png" width=3D"134.17" height=3D"40"></a></div><d=
+iv class=3D"gi gj gk gl" style=3D"padding: 20px 0px;"><div class=3D"cb bj l=
+" style=3D"width: 100%; height: 0px; border-bottom: 1px solid rgba(117, 117=
+, 117, 1);"></div></div><div class=3D"fm" style=3D"clear: both;"><div class=
+=3D"y" style=3D"text-align: left;"><div class=3D"ai gm fz fg" style=3D"font=
+-weight: 400; color: rgba(255, 255, 255, 1); line-height: 20px; font-size: =
+13px;"><div class>Sent by <a href=3D"https://medium.com/?source=3Demail-9c3=
+bd689d8a4-1629137217586-digest.reader-------------------------a0666937_fbeb=
+_4c32_ae33_675db516455b" style=3D"color: inherit; text-decoration: none;">M=
+edium</a><span class=3D"av aw" style=3D"padding-left: 4px; padding-right: 4=
+px;">=C2=B7</span>P.O. Box 602, San Francisco, CA 94104-0602</div><a class=
+=3D"gn" href=3D"https://medium.com/me/email-settings/9c3bd689d8a4/26671c9a3=
+516?type=3Dsocial&amp;source=3Demail-9c3bd689d8a4-1629137217586-digest.read=
+er-------------------------a0666937_fbeb_4c32_ae33_675db516455b" style=3D"c=
+olor: inherit; text-decoration: underline;">Unsubscribe</a> from this type =
+of email<span class=3D"av aw" style=3D"padding-left: 4px; padding-right: 4p=
+x;">=C2=B7</span><a class=3D"gn" href=3D"https://medium.com/me/email-settin=
+gs/9c3bd689d8a4/26671c9a3516?type=3Dsocial&amp;preference=3D2&amp;source=3D=
+email-9c3bd689d8a4-1629137217586-digest.reader-------------------------a066=
+6937_fbeb_4c32_ae33_675db516455b" style=3D"color: inherit; text-decoration:=
+ underline;">Switch to the Weekly Digest</a><span class=3D"av aw" style=3D"=
+padding-left: 4px; padding-right: 4px;">=C2=B7</span><a class=3D"gn" href=
+=3D"https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e?source=3D=
+email-9c3bd689d8a4-1629137217586-digest.reader-------------------------a066=
+6937_fbeb_4c32_ae33_675db516455b" style=3D"color: inherit; text-decoration:=
+ underline;">Careers</a><span class=3D"av aw" style=3D"padding-left: 4px; p=
+adding-right: 4px;">=C2=B7</span><a class=3D"gn" href=3D"https://help.mediu=
+m.com/hc/en-us?source=3Demail-9c3bd689d8a4-1629137217586-digest.reader-----=
+--------------------a0666937_fbeb_4c32_ae33_675db516455b" style=3D"color: i=
+nherit; text-decoration: underline;">Help Center</a><span class=3D"av aw" s=
+tyle=3D"padding-left: 4px; padding-right: 4px;">=C2=B7</span><a class=3D"gn=
+" href=3D"https://policy.medium.com/medium-privacy-policy-f03bf92035c9?sour=
+ce=3Demail-9c3bd689d8a4-1629137217586-digest.reader------------------------=
+-a0666937_fbeb_4c32_ae33_675db516455b" style=3D"color: inherit; text-decora=
+tion: underline;">Privacy Policy</a><span class=3D"av aw" style=3D"padding-=
+left: 4px; padding-right: 4px;">=C2=B7</span><a class=3D"gn" href=3D"https:=
+//policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=3Demail-9c3=
+bd689d8a4-1629137217586-digest.reader-------------------------a0666937_fbeb=
+_4c32_ae33_675db516455b" style=3D"color: inherit; text-decoration: underlin=
+e;">Terms of service</a></div></div></div></div></div></div></td></tr></tbo=
+dy></table></div>
+<img src=3D"https://u1823144.ct.sendgrid.net/wf/open?upn=3D5EuW0-2FJLkspeKQ=
+NHAERBBjUK3XHjTCqcqoJbddj0yRnROQe9ULfp3GyuepbeZvFcHrL8hKfPscPTZ3ww8KaxxffU-=
+2FH0Rw5RTlJKrdWPJdeAX3TzuQkKuVhX3zRu2ALWX4xox42nUPuMPKi8D8i47ovrStgX2tgf2dt=
+kqDgyhvdQlSmT6UGzenvsVUG9yIlZXtntY93HDzXa3SxG5VdZOz-2BXPnw50Xw3KFvr3o8f34ev=
+jFQYH2KB-2FIuzQpVi-2BuUht2cOybt3SE95U-2FKRbdh-2Bmdjkh6wXGhoBRLcEjTLffnKUkiL=
+KIg-2F-2FIdI2m211BZoDj2Cl9OhqJmARAlY4sU-2Bmgn0El5vjr2VEx1SdsD3NCxObJnmXss0j=
+Kq9WJA6QXFr0gyiIEvyrj3J-2Fe0MRtxgzuAutA7dpQQpV2NFPYcZsp00Z61I1OAdfx3X7eoGow=
+-2BZ4q" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px =
+!important;width:1px !important;border-width:0 !important;margin-top:0 !imp=
+ortant;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !=
+important;padding-top:0 !important;padding-bottom:0 !important;padding-righ=
+t:0 !important;padding-left:0 !important;"/>
+</body></html>
+
+--ec87f17826488955bce310cb094eac2c06337daf04bb0617f8511c639adf--

@@ -1,0 +1,181 @@
+X-Mda-Received: from <mx-14-106.mail.sina.com.cn>([<10.41.14.106>])
+ by <micagent-3-36.mda.fmail.dbl.sinanode.com> with LMTP id <98973>
+ Oct 31 2022 11:30:19 +0800 (CST)
+X-Sina-MID:045C7C4C65E7F76BB8F6D61CF880819AD100000000000001
+X-Sina-Attnum:0
+Received: (qmail 25568 invoked by uid 544); 31 Oct 2022 11:30:18 +0800 (CST)
+X-SMAIL-SPAM-FILTER: 25560 OK; Mon, 31 Oct 2022 11:30:18 +0800 (CST)
+X-subc-flag: YES
+Received: from out-21.smtp.github.com (HELO smtp.github.com)([192.30.252.204])
+	by sina.com (10.41.14.106) with SMTP
+	id 635F414800005FAA; Mon, 31 Oct 2022 11:30:18 +0800 (CST)
+X-Sender: noreply@github.com
+Authentication-Results: sina.com; dkim=pass (Signature verified) header.i=github.com
+Received-SPF: Pass (sina.com: SPF record at github.com designates 192.30.252.204 as permitted sender) identity=from;
+	client-ip=192.30.252.204;
+	receiver=sina.com;
+	envelope-from=noreply@github.com;
+	helo=smtp.github.com
+X-SMAIL-MID: 5773768913685
+Received: from github-lowworker-f2ae909.ash1-iad.github.net (github-lowworker-f2ae909.ash1-iad.github.net [10.56.112.82])
+	by smtp.github.com (Postfix) with ESMTP id 8F0E2520366
+	for <jas31@sina.com>; Sun, 30 Oct 2022 20:30:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1667187015;
+	bh=7EHY26GGWYiBm3TrXdGl/WVxDScLT6ZwoUNmCa9BZF8=;
+	h=Date:From:Reply-To:To:Cc:Subject:List-ID:List-Archive:List-Post:
+	 List-Unsubscribe:From;
+	b=og45eYxPPzv4+xLnjFGoCVCtzn3AM9EUES6Nho7RlA5XsPNPoRtj8h04E6kBNIEkk
+	 L53jistal1foAkeOPrClLVVu9aF8jbX68vYW3H1wANIhXCU92RF9/5bBAJporPAz4K
+	 ocMfISmYgYKMEsRJxe7i41p1sniNHu4qRBJ62+GY=
+Date: Sun, 30 Oct 2022 20:30:15 -0700
+From: Nick Triantos <notifications@github.com>
+Reply-To: AdguardTeam/AdGuardHome <reply+AD2VYON6IEL67DFCRZ3BM2WBNRZ4PEVBNHHFKL6FWE@reply.github.com>
+To: AdguardTeam/AdGuardHome <AdGuardHome@noreply.github.com>
+Cc: Subscribed <subscribed@noreply.github.com>
+Message-ID: <AdguardTeam/AdGuardHome/issues/5081@github.com>
+Subject: [AdguardTeam/AdGuardHome] documentation: AdGuardHome wont start on
+ FreeBSD with 'adguardhome -s start', must use 'adguardhome -s run' (Issue
+ #5081)
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_635f41477f4e9_5d79c670762a3";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Precedence: list
+X-GitHub-Sender: triantos
+X-GitHub-Recipient: jas31
+X-GitHub-Reason: subscribed
+List-ID: AdguardTeam/AdGuardHome <AdGuardHome.AdguardTeam.github.com>
+List-Archive: https://github.com/AdguardTeam/AdGuardHome
+List-Post: <mailto:reply+AD2VYON6IEL67DFCRZ3BM2WBNRZ4PEVBNHHFKL6FWE@reply.github.com>
+List-Unsubscribe: <mailto:unsub+AD2VYON6IEL67DFCRZ3BM2WBNRZ4PEVBNHHFKL6FWE@reply.github.com>,
+ <https://github.com/notifications/unsubscribe/AD2VYON4HTYIVYLEOUIBJC3WF44MPANCNFSM6AAAAAARSVOZIE>
+X-Auto-Response-Suppress: All
+X-GitHub-Recipient-Address: jas31@sina.com
+
+
+----==_mimepart_635f41477f4e9_5d79c670762a3
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+### Prerequisites
+
+- [X] I have checked the [Wiki](https://github.com/AdguardTeam/AdGuardHome/wiki) and [Discussions](https://github.com/AdguardTeam/AdGuardHome/discussions) and found no answer
+
+- [X] I have searched other issues and found no duplicates
+
+- [X] I want to report a bug and not ask a question
+
+
+### Operating system type
+
+FreeBSD
+
+### CPU architecture
+
+AMD64
+
+### Installation
+
+GitHub releases or script from README
+
+### Setup
+
+On a router, DHCP is handled by the router
+
+### AdGuard Home version
+
+AdGuard Home, version v0.108.0-b.19
+
+### Description
+
+#### What did you do?
+I had to manually update (the auto-update failed and said to manually update). Docs say to use 'AdGuardHome -s start' but on my system, at least, the correct command is 'AdGuardHome -s run'
+
+#### Expected result
+I expcted 'AdGuardHome -s start' to start the service
+
+#### Actual result
+root@opnsense:/usr/local/AdGuardHome # ./AdGuardHome -s start
+2022/10/30 14:29:41 [info] AdGuard Home, version v0.107.16
+2022/10/30 14:29:41 [info] service: control action: start
+2022/10/30 14:29:41 [fatal] service: executing action "start": Failed to start AdGuard Home service: exit status 1
+
+Note that even with verbose logging, nothing is written to the log file.
+
+#### Screenshots (if applicable)
+
+#### Additional information
+From looking in /etc/rc.d/adguardhome, I see that the correct syntax on FreeBSD is to run with '-s run'
+
+-- 
+Reply to this email directly or view it on GitHub:
+https://github.com/AdguardTeam/AdGuardHome/issues/5081
+You are receiving this because you are subscribed to this thread.
+
+Message ID: <AdguardTeam/AdGuardHome/issues/5081@github.com>
+----==_mimepart_635f41477f4e9_5d79c670762a3
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p></p>
+<h3 dir="auto">Prerequisites</h3>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have checked the <a href="https://github.com/AdguardTeam/AdGuardHome/wiki">Wiki</a> and <a href="https://github.com/AdguardTeam/AdGuardHome/discussions">Discussions</a> and found no answer</p>
+</li>
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have searched other issues and found no duplicates</p>
+</li>
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I want to report a bug and not ask a question</p>
+</li>
+</ul>
+<h3 dir="auto">Operating system type</h3>
+<p dir="auto">FreeBSD</p>
+<h3 dir="auto">CPU architecture</h3>
+<p dir="auto">AMD64</p>
+<h3 dir="auto">Installation</h3>
+<p dir="auto">GitHub releases or script from README</p>
+<h3 dir="auto">Setup</h3>
+<p dir="auto">On a router, DHCP is handled by the router</p>
+<h3 dir="auto">AdGuard Home version</h3>
+<p dir="auto">AdGuard Home, version v0.108.0-b.19</p>
+<h3 dir="auto">Description</h3>
+<h4 dir="auto">What did you do?</h4>
+<p dir="auto">I had to manually update (the auto-update failed and said to manually update). Docs say to use 'AdGuardHome -s start' but on my system, at least, the correct command is 'AdGuardHome -s run'</p>
+<h4 dir="auto">Expected result</h4>
+<p dir="auto">I expcted 'AdGuardHome -s start' to start the service</p>
+<h4 dir="auto">Actual result</h4>
+<p dir="auto">root@opnsense:/usr/local/AdGuardHome # ./AdGuardHome -s start<br>
+2022/10/30 14:29:41 [info] AdGuard Home, version v0.107.16<br>
+2022/10/30 14:29:41 [info] service: control action: start<br>
+2022/10/30 14:29:41 [fatal] service: executing action "start": Failed to start AdGuard Home service: exit status 1</p>
+<p dir="auto">Note that even with verbose logging, nothing is written to the log file.</p>
+<h4 dir="auto">Screenshots (if applicable)</h4>
+<h4 dir="auto">Additional information</h4>
+<p dir="auto">From looking in /etc/rc.d/adguardhome, I see that the correct syntax on FreeBSD is to run with '-s run'</p>
+
+<p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">&mdash;<br />Reply to this email directly, <a href="https://github.com/AdguardTeam/AdGuardHome/issues/5081">view it on GitHub</a>, or <a href="https://github.com/notifications/unsubscribe-auth/AD2VYOLOIKHPCQ34ZB2HCLDWF44MPANCNFSM6AAAAAARSVOZIE">unsubscribe</a>.<br />You are receiving this because you are subscribed to this thread.<img src="https://github.com/notifications/beacon/AD2VYOJ3Z5X7ZSYZFTXQGRLWF44MPA5CNFSM6AAAAAARSVOZIGWGG33NNVSW45C7OR4XAZNFJFZXG5LFVJRW63LNMVXHIX3JMTHFKL6FWE.gif" height="1" width="1" alt="" /><span style="color: transparent; font-size: 0; display: none; visibility: hidden; overflow: hidden; opacity: 0; width: 0; height: 0; max-width: 0; max-height: 0; mso-hide: all">Message ID: <span>&lt;AdguardTeam/AdGuardHome/issues/5081</span><span>@</span><span>github</span><span>.</span><span>com&gt;</span></span></p>
+<script type="application/ld+json">[
+{
+"@context": "http://schema.org",
+"@type": "EmailMessage",
+"potentialAction": {
+"@type": "ViewAction",
+"target": "https://github.com/AdguardTeam/AdGuardHome/issues/5081",
+"url": "https://github.com/AdguardTeam/AdGuardHome/issues/5081",
+"name": "View Issue"
+},
+"description": "View this Issue on GitHub",
+"publisher": {
+"@type": "Organization",
+"name": "GitHub",
+"url": "https://github.com"
+}
+}
+]</script>
+----==_mimepart_635f41477f4e9_5d79c670762a3--

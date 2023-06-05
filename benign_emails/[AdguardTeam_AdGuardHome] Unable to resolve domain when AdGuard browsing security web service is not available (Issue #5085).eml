@@ -1,0 +1,161 @@
+X-Mda-Received: from <mx-14-110.mail.sina.com.cn>([<10.41.14.110>])
+ by <micagent-3-36.mda.fmail.dbl.sinanode.com> with LMTP id <840764>
+ Nov 01 2022 06:08:28 +0800 (CST)
+X-Sina-MID:043A2322A534BD49D0F5C31088CC3CD09500000000000001
+X-Sina-Attnum:0
+Received: (qmail 17203 invoked by uid 544); 1 Nov 2022 06:08:28 +0800 (CST)
+X-SMAIL-SPAM-FILTER: 17193 OK; Tue,  1 Nov 2022 06:08:28 +0800 (CST)
+X-subc-flag: YES
+Received: from out-22.smtp.github.com (HELO smtp.github.com)([192.30.252.205])
+	by sina.com (10.41.14.110) with SMTP
+	id 6360475B000042B9; Mon, 1 Nov 2022 06:08:28 +0800 (CST)
+X-Sender: noreply@github.com
+Authentication-Results: sina.com; dkim=pass (Signature verified) header.i=github.com
+Received-SPF: Pass (sina.com: SPF record at github.com designates 192.30.252.205 as permitted sender) identity=from;
+	client-ip=192.30.252.205;
+	receiver=sina.com;
+	envelope-from=noreply@github.com;
+	helo=smtp.github.com
+X-SMAIL-MID: 74188140370592
+Received: from github-lowworker-d92125f.va3-iad.github.net (github-lowworker-d92125f.va3-iad.github.net [10.48.121.72])
+	by smtp.github.com (Postfix) with ESMTP id DC09B721FB0
+	for <jas31@sina.com>; Mon, 31 Oct 2022 15:08:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1667254106;
+	bh=sZxApV7B1T329LFRYdQzFHlNRIHiDeIfe4Rxim6EMWg=;
+	h=Date:From:Reply-To:To:Cc:Subject:List-ID:List-Archive:List-Post:
+	 List-Unsubscribe:From;
+	b=QI5Mcpseh2vCdfg+kgBlG4iA88SNaCy20az6LhCQMJdIFeKcr7EXViWeSae2K2bv8
+	 86pe1XzMH95Vweq34usaoxKRWs1mNhIADc4+X5YBgRwpACMenbioz7OCZwQ616Wm/Y
+	 VeOtfGQh+Cqz7NjexrQymc7ZAuSIG1bY5v7s7A7I=
+Date: Mon, 31 Oct 2022 15:08:26 -0700
+From: Ajin <notifications@github.com>
+Reply-To: AdguardTeam/AdGuardHome <reply+AD2VYOOVIB66RSB5UX2JCZ6BNV45VEVBNHHFKREYFQ@reply.github.com>
+To: AdguardTeam/AdGuardHome <AdGuardHome@noreply.github.com>
+Cc: Subscribed <subscribed@noreply.github.com>
+Message-ID: <AdguardTeam/AdGuardHome/issues/5085@github.com>
+Subject: [AdguardTeam/AdGuardHome] Unable to resolve domain when AdGuard
+ browsing security web service is not available (Issue #5085)
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6360475ace47d_7f24d4f84505ab";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Precedence: list
+X-GitHub-Sender: ajin
+X-GitHub-Recipient: jas31
+X-GitHub-Reason: subscribed
+List-ID: AdguardTeam/AdGuardHome <AdGuardHome.AdguardTeam.github.com>
+List-Archive: https://github.com/AdguardTeam/AdGuardHome
+List-Post: <mailto:reply+AD2VYOOVIB66RSB5UX2JCZ6BNV45VEVBNHHFKREYFQ@reply.github.com>
+List-Unsubscribe: <mailto:unsub+AD2VYOOVIB66RSB5UX2JCZ6BNV45VEVBNHHFKREYFQ@reply.github.com>,
+ <https://github.com/notifications/unsubscribe/AD2VYOIMKD4BQ3EQSVA7R7LWGA7NVANCNFSM6AAAAAARTQLE2Y>
+X-Auto-Response-Suppress: All
+X-GitHub-Recipient-Address: jas31@sina.com
+
+
+----==_mimepart_6360475ace47d_7f24d4f84505ab
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+### Prerequisites
+
+- [X] I have checked the [Wiki](https://github.com/AdguardTeam/AdGuardHome/wiki) and [Discussions](https://github.com/AdguardTeam/AdGuardHome/discussions) and found no answer
+
+- [X] I have searched other issues and found no duplicates
+
+- [X] I want to report a bug and not ask a question
+
+
+### Operating system type
+
+Linux, Other (please mention the version in the description)
+
+### CPU architecture
+
+x86
+
+### Installation
+
+Snapcraft
+
+### Setup
+
+On one machine
+
+### AdGuard Home version
+
+v0.107.16
+
+### Description
+
+It appears that AdGuardHome (DNS server) is not responding if the "AdGuard browsing security web service" is enabled and the security web service is not reachable. 
+
+The following entry is seen in the logs. 
+
+`2022-10-31T22:45:14+01:00 adguard-home.adguard-home[7953]: 2022/10/31 22:45:14.067994 7953#670 [debug] https://family.adguard-dns.com:443/dns-query: response: requesting https://family.adguard-dns.com:443/dns-query: Get "https://family.adguard-dns.com:443/dns-query?dns=AAABAAABAAAAAAAABDY4ZDcEZTA2ZQQwZmEyAnNiA2RucwdhZGd1YXJkA2NvbQAAEAAB": all dialers failed: 4 errors: "dial tcp 94.140.14.15:443: connect: connection refused", "dial tcp 94.140.15.16:443: connect: connection refused", "dial tcp [2a10:50c0::bad1:ff]:443: connect: network is unreachable", "dial tcp [2a10:50c0::bad2:ff]:443: connect: network is unreachable"`
+
+Workaround is to temporary disable the "AdGuard browsing security web service" in the General settings option. 
+
+
+-- 
+Reply to this email directly or view it on GitHub:
+https://github.com/AdguardTeam/AdGuardHome/issues/5085
+You are receiving this because you are subscribed to this thread.
+
+Message ID: <AdguardTeam/AdGuardHome/issues/5085@github.com>
+----==_mimepart_6360475ace47d_7f24d4f84505ab
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p></p>
+<h3 dir="auto">Prerequisites</h3>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have checked the <a href="https://github.com/AdguardTeam/AdGuardHome/wiki">Wiki</a> and <a href="https://github.com/AdguardTeam/AdGuardHome/discussions">Discussions</a> and found no answer</p>
+</li>
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have searched other issues and found no duplicates</p>
+</li>
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I want to report a bug and not ask a question</p>
+</li>
+</ul>
+<h3 dir="auto">Operating system type</h3>
+<p dir="auto">Linux, Other (please mention the version in the description)</p>
+<h3 dir="auto">CPU architecture</h3>
+<p dir="auto">x86</p>
+<h3 dir="auto">Installation</h3>
+<p dir="auto">Snapcraft</p>
+<h3 dir="auto">Setup</h3>
+<p dir="auto">On one machine</p>
+<h3 dir="auto">AdGuard Home version</h3>
+<p dir="auto">v0.107.16</p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">It appears that AdGuardHome (DNS server) is not responding if the "AdGuard browsing security web service" is enabled and the security web service is not reachable.</p>
+<p dir="auto">The following entry is seen in the logs.</p>
+<p dir="auto"><code class="notranslate">2022-10-31T22:45:14+01:00 adguard-home.adguard-home[7953]: 2022/10/31 22:45:14.067994 7953#670 [debug] https://family.adguard-dns.com:443/dns-query: response: requesting https://family.adguard-dns.com:443/dns-query: Get "https://family.adguard-dns.com:443/dns-query?dns=AAABAAABAAAAAAAABDY4ZDcEZTA2ZQQwZmEyAnNiA2RucwdhZGd1YXJkA2NvbQAAEAAB": all dialers failed: 4 errors: "dial tcp 94.140.14.15:443: connect: connection refused", "dial tcp 94.140.15.16:443: connect: connection refused", "dial tcp [2a10:50c0::bad1:ff]:443: connect: network is unreachable", "dial tcp [2a10:50c0::bad2:ff]:443: connect: network is unreachable"</code></p>
+<p dir="auto">Workaround is to temporary disable the "AdGuard browsing security web service" in the General settings option.</p>
+
+<p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">&mdash;<br />Reply to this email directly, <a href="https://github.com/AdguardTeam/AdGuardHome/issues/5085">view it on GitHub</a>, or <a href="https://github.com/notifications/unsubscribe-auth/AD2VYOILTXJWLE2OBXV77XLWGA7NVANCNFSM6AAAAAARTQLE2Y">unsubscribe</a>.<br />You are receiving this because you are subscribed to this thread.<img src="https://github.com/notifications/beacon/AD2VYONQBUI5H6SRNVVA3WLWGA7NVA5CNFSM6AAAAAARTQLE22WGG33NNVSW45C7OR4XAZNFJFZXG5LFVJRW63LNMVXHIX3JMTHFKREYFQ.gif" height="1" width="1" alt="" /><span style="color: transparent; font-size: 0; display: none; visibility: hidden; overflow: hidden; opacity: 0; width: 0; height: 0; max-width: 0; max-height: 0; mso-hide: all">Message ID: <span>&lt;AdguardTeam/AdGuardHome/issues/5085</span><span>@</span><span>github</span><span>.</span><span>com&gt;</span></span></p>
+<script type="application/ld+json">[
+{
+"@context": "http://schema.org",
+"@type": "EmailMessage",
+"potentialAction": {
+"@type": "ViewAction",
+"target": "https://github.com/AdguardTeam/AdGuardHome/issues/5085",
+"url": "https://github.com/AdguardTeam/AdGuardHome/issues/5085",
+"name": "View Issue"
+},
+"description": "View this Issue on GitHub",
+"publisher": {
+"@type": "Organization",
+"name": "GitHub",
+"url": "https://github.com"
+}
+}
+]</script>
+----==_mimepart_6360475ace47d_7f24d4f84505ab--

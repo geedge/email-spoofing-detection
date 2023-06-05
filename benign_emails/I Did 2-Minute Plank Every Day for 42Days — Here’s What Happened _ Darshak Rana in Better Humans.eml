@@ -1,0 +1,1357 @@
+Delivered-To: lily.lawrence2019@gmail.com
+Received: by 2002:a17:906:348b:0:0:0:0 with SMTP id g11csp2525292ejb;
+        Sat, 11 Dec 2021 15:00:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwnPJo0anEFEVe0FH2klvTVzp552wf+3nrVznNI6SlKFKHd4aGL86lzukpW4PNa+SCM61Hr
+X-Received: by 2002:a05:6214:19e5:: with SMTP id q5mr33224238qvc.74.1639263601682;
+        Sat, 11 Dec 2021 15:00:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639263601; cv=none;
+        d=google.com; s=arc-20160816;
+        b=x1mN/8+dWHSSmasQn4ir1t/OvJarFVCn/a/BcORRmFHztTirHawIr3A6Zyy3FSmrvw
+         awBZP2coRF6uft/QJ5ve64JzXwmixOKb4PIHt79k5NaV5GFNPK+Ybr4V4bMFjzx/Wiy6
+         etmPty0rn0KvAazU6iWg9vo40gnr9819/fzQanWx++eepJlmhBwrJSwR38uuBwOYdPnE
+         ddwWGVeIFKGLoWs3C9/DKlSxyS/gBPqb4fk4mOXTG0pBDAkUwrJ7V1OKd5GHThHE3Lj9
+         r0wtiHVQ9dLAlF7EBpRsLQSev4a8ogLwolbtVc3Gilj+c3nJjeA4GkDTDbdWCXNFLum/
+         Enpg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:reply-to:subject:message-id:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=oymoSIvtuERaqhmmLbNoOyz81xngAw3NLYSOUVM2WSY=;
+        b=za8DbP7hDNUzwOvqslW8aObAYCcIgfObwPNrpbq48h2qXmg6+FBZxhgreeLKLmpCiN
+         FfotetQ7vD6fnxq+HYz7l1sFkmXxftjYjeAngQmK2OeGwX6Oi8sQVmX9DuYmsLXYVxBi
+         mJWb9DrguNtAsQDqXu3wWBgu3DPsmjxKP1Fmfs8e21AllYv9fvJD6kYZi8OVgJJSZfNW
+         ALJ8i7fAg4/2gfXB0VFJw7LJ8gEFPTETVMxBwMvxKSi/2Jf/krrca8kGIQL7yXF8TuYM
+         JOTmjFmbC36tvoyTWN0jSpDw/7di9wutQa8ByPPi+Vj+GqtmfTL9Sa0dzSn+oeGUY7V6
+         Fy1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@medium.com header.s=m1 header.b=CISJhLOg;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=C9LVJEVk;
+       spf=pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 167.89.15.48 as permitted sender) smtp.mailfrom="bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+Return-Path: <bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com>
+Received: from o6.email.medium.com (o6.email.medium.com. [167.89.15.48])
+        by mx.google.com with ESMTPS id 82si6875691qkn.153.2021.12.11.15.00.00
+        for <lily.lawrence2019@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 11 Dec 2021 15:00:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 167.89.15.48 as permitted sender) client-ip=167.89.15.48;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@medium.com header.s=m1 header.b=CISJhLOg;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=C9LVJEVk;
+       spf=pass (google.com: domain of bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com designates 167.89.15.48 as permitted sender) smtp.mailfrom="bounces+1823144-ca2c-lily.lawrence2019=gmail.com@email.medium.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=medium.com;
+	h=content-type:from:mime-version:subject:reply-to:list-unsubscribe:
+	x-feedback-id:to;
+	s=m1; bh=oymoSIvtuERaqhmmLbNoOyz81xngAw3NLYSOUVM2WSY=;
+	b=CISJhLOgHmt++QEkaqB3pgfKtEAymyNyO/oFk1gLPCdywlSPmA4snfMFSz6MQQbaqIxH
+	6dbECXC832cbMgTyMNyx2qLcgITewVsAZS4HkRK5OLzhyqB/UOHyUxr91NfY1qyeuy6iyV
+	kS2vn+qaaOhSHnwNdevARkexlXda0ysNs=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:reply-to:list-unsubscribe:
+	x-feedback-id:to;
+	s=smtpapi; bh=oymoSIvtuERaqhmmLbNoOyz81xngAw3NLYSOUVM2WSY=;
+	b=C9LVJEVk1RNFCsadcfow0RcCPE+thXZ7MClf2nelo4jrLiRiIS3aJeosmj4jYxsAcsfz
+	fZcOHbOZhKBs0IjFn02CBwoUki6VepejgOAkfWxb1aXRT6oMBpCJGPy7kJ5k1nzfszQ382
+	WPHMvQQS7RzFei938/3XfDz0pZBymM9Ys=
+Received: by filterdrecv-d4898dd76-wk55v with SMTP id filterdrecv-d4898dd76-wk55v-1-61B4E81E-4A
+        2021-12-11 18:04:14.377419219 +0000 UTC m=+7668443.011292671
+Received: from MTgyMzE0NA (unknown)
+	by ismtpd0188p1iad2.sendgrid.net (SG)
+	with HTTP
+	id J7EUcUhzToWpn9pDR9QpLw
+	Sat, 11 Dec 2021 18:04:14.332 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=969cc9a1b3f2020f52369d7d9943acf20020feb734dc730f20047503be21
+Date: Sat, 11 Dec 2021 23:00:00 +0000 (UTC)
+From: Medium Daily Digest <noreply@medium.com>
+Mime-Version: 1.0
+Message-ID: <J7EUcUhzToWpn9pDR9QpLw@ismtpd0188p1iad2.sendgrid.net>
+Subject: I Did 2-Minute Plank Every Day for 42
+ =?UTF-8?B?RGF5c+KAiuKAlOKAikhlcmXigJlz?= What Happened | Darshak Rana in
+ Better Humans
+Reply-To: noreply@medium.com
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Chttps=3A=2F=2Fmedium=2Ecom=2Fme=2Femail-settings=2F9c3bd689d8a4=2Fb5774658e54?=
+ =?us-ascii?Q?9=3Fsource=3Demail-9c3bd689d8a4-16392458481?=
+ =?us-ascii?Q?85-digest=2Ereader-----------------------?=
+ =?us-ascii?Q?--d1ec47eb=5Fe422=5F4e4f=5Fba16=5F40d51cf19bc5&?=
+ =?us-ascii?Q?type=3Dsocial=3E?=
+X-Feedback-ID: 1823144:SG
+X-SG-EID: 
+ =?us-ascii?Q?EycFin8l6jglS6Ld5Ew7zNa2Eu2nnb7TWjVmXXZRSLZ85bUUhKP=2FZL++S+x4eO?=
+ =?us-ascii?Q?D0nq2F8xRXKBd5eYmzkI+Qgt0hvoOl5uUhMIsd+?=
+ =?us-ascii?Q?dO+QDzusHaLyKItpgA3+C5S+rP0o+JTaWaMXtGB?=
+ =?us-ascii?Q?wJHdBihBo8y6p1RYrlhqAuV4YuvfYUcYxHyxsLd?=
+ =?us-ascii?Q?6ShOiRDfr=2F9unLDOv9ooUT62uclbeqmup1dZLSL?=
+ =?us-ascii?Q?POu0sGoIfdjguyUxGqe3ftad9kh9te4RidaeDHJ?=
+ =?us-ascii?Q?zaW3bmsoVC+JD7VINWmZQ=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb2Jb2lSifPkScYJRz07RegtCc4Zf6q9mRgH+DiPxUW?=
+ =?us-ascii?Q?P7pV7eE=2FJuoyEOTpx6roSNihlGjcxrQhKGt9bTr?=
+ =?us-ascii?Q?zmLVGhQdKN=2FM9lnA80ldIHFE9C+FfpFlI3YGaP3?=
+ =?us-ascii?Q?vN4pKItpKfiuxtZtaAtFrx88A6FbFxjwi31Jv1v?=
+ =?us-ascii?Q?xLwbxBb0hfvHifNZLuLZd0HkSNSi1bMFtOA=3D=3D?=
+To: lily.lawrence2019@gmail.com
+X-Entity-ID: cpc5D047Jdd+RNni7tePhw==
+
+--969cc9a1b3f2020f52369d7d9943acf20020feb734dc730f20047503be21
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Stories for Lily Lawrence
+@lily.lawrence2019 (https://medium.com/@lily.lawrence2019?source=3Demail-9c=
+3bd689d8a4-1639245848185-digest.reader-------------------------d1ec47eb_e42=
+2_4e4f_ba16_40d51cf19bc5)
+=C2=B7Become a member (https://medium.com/plans?source=3Demail-9c3bd689d8a4=
+-1639245848185-digest.reader-------------------------d1ec47eb_e422_4e4f_ba1=
+6_40d51cf19bc5)
+
+Today's highlights
+
+I Did 2-Minute Plank Every Day for 42 Days=E2=80=8A-=E2=80=8AHere's What Ha=
+ppened
+
+No, I didn't get six-pack abs-but I didn't realize that it would make such =
+a difference in other ways
+
+Darshak Rana (https://medium.com/@darshakrana?source=3Demail-9c3bd689d8a4-1=
+639245848185-digest.reader-7038e003d060-6688767fad69----0-96---------------=
+---d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a=
+3f6)
+ in Better Humans (https://medium.com/better-humans?source=3Demail-9c3bd689=
+d8a4-1639245848185-digest.reader-7038e003d060-6688767fad69----0-96---------=
+---------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce=
+89251a3f6)
+=C2=B78 min read
+
+How My Crypto Cold Wallet Was Hacked
+
+And it Was All My Fault
+
+Hotse Langeraar (https://medium.com/@hotslang?source=3Demail-9c3bd689d8a4-1=
+639245848185-digest.reader-e38916e60487-a301a0e9bf49----1-73---------------=
+---d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a=
+3f6)
+ in Changeling Lore (https://medium.com/changeling-lore?source=3Demail-9c3b=
+d689d8a4-1639245848185-digest.reader-e38916e60487-a301a0e9bf49----1-73-----=
+-------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59=
+_dce89251a3f6)
+=C2=B73 min read
+
+10 Things Good Men Never Do In Relationships
+
+Good men live by a code.
+
+James Michael Sama (https://medium.com/@jamesmsama?source=3Demail-9c3bd689d=
+8a4-1639245848185-digest.reader--6cf640f8a678----2-73------------------d1ec=
+47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6)
+=C2=B76 min read
+
+No Poetry This Time
+
+Disclosures, self and otherwise
+
+MacKenzie Scott (https://medium.com/@mackenzie-scott?source=3Demail-9c3bd68=
+9d8a4-1639245848185-digest.reader--c991fdb836c4----3-98------------------d1=
+ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6)
+=C2=B72 min read
+
+Quick reads
+
+BUILDING $BLOKS=E2=80=A6
+
+There are now lots of ways to earn from your $BLOK
+
+Bloktopia (https://medium.com/@bloktopia?source=3Demail-9c3bd689d8a4-163924=
+5848185-digest.reader--a73c6b6bf621----0-72------------------d1ec47eb_e422_=
+4e4f_ba16_40d51cf19bc5-28-)
+=C2=B74 min read
+
+One-Sided Polyamory: You Can't Have Your Cake and Eat Mine Too
+
+Some partners have an issue with their own behavior being reflected back at=
+ them.
+
+Melissa Alvarez (https://medium.com/@melannealva?source=3Demail-9c3bd689d8a=
+4-1639245848185-digest.reader-c89c77d90298-433f93fa4ba7----1-72------------=
+------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-)
+ in Polyamory Today (https://medium.com/polyamory-today?source=3Demail-9c3b=
+d689d8a4-1639245848185-digest.reader-c89c77d90298-433f93fa4ba7----1-72-----=
+-------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-)
+=C2=B74 min read
+
+My Ex's Rich Parents Are Buying Him a House but Wouldn't Pay My Child Suppo=
+rt
+
+When I first left my husband, he wasn't working and couldn't help me. His r=
+ich parents could have but=E2=80=A6
+
+Elle Silver (https://medium.com/@ellesilver?source=3Demail-9c3bd689d8a4-163=
+9245848185-digest.reader-3b2e302f79ca-be2d52b86168----2-72-----------------=
+-d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-)
+ in Heart Affairs (https://medium.com/heart-affairs?source=3Demail-9c3bd689=
+d8a4-1639245848185-digest.reader-3b2e302f79ca-be2d52b86168----2-72---------=
+---------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-)
+=C2=B73 min read
+
+Editors' picks
+
+Harsh Reality: When You Leave a Job, Nobody Will Miss You
+
+Don't collect business connections like empty beer bottles
+
+Tim Denning (https://medium.com/@timdenning?source=3Demail-9c3bd689d8a4-163=
+9245848185-digest.reader-40187e704f1c-e413a014e997----0-74-----------------=
+-d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-)
+ in Index (https://medium.com/index?source=3Demail-9c3bd689d8a4-16392458481=
+85-digest.reader-40187e704f1c-e413a014e997----0-74------------------d1ec47e=
+b_e422_4e4f_ba16_40d51cf19bc5-6-)
+=C2=B74 min read
+
+23 Things to Quit for an Easier, Happier Life
+
+All based on research-backed psychology and ideas from therapy
+
+Alexander M. Combstrong (https://medium.com/@AlexComb?source=3Demail-9c3bd6=
+89d8a4-1639245848185-digest.reader-3f6ecf56618-60a3a78f0b7b----1-74--------=
+----------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-)
+ in Forge (https://medium.com/forge?source=3Demail-9c3bd689d8a4-16392458481=
+85-digest.reader-3f6ecf56618-60a3a78f0b7b----1-74------------------d1ec47eb=
+_e422_4e4f_ba16_40d51cf19bc5-6-)
+=C2=B719 min read
+
+5 Health Appointments Americans Should Schedule Now
+
+Critical exams and scans are dangerously overdue for millions of people
+
+Robert Roy Britt (https://medium.com/@robertroybritt?source=3Demail-9c3bd68=
+9d8a4-1639245848185-digest.reader-8d6b8a439e32-91c37f195cd4----2-74--------=
+----------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-)
+ in Elemental (https://medium.com/elemental-by-medium?source=3Demail-9c3bd6=
+89d8a4-1639245848185-digest.reader-8d6b8a439e32-91c37f195cd4----2-74-------=
+-----------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-)
+=C2=B79 min read
+
+See more of what you like and less of what you don't.
+Control your recommendations (https://medium.com/me/missioncontrol?source=
+=3Demail-9c3bd689d8a4-1639245848185-digest.reader-------------------------d=
+1ec47eb_e422_4e4f_ba16_40d51cf19bc5)
+
+Read or write from anywhere.
+
+Sent by Medium (https://medium.com/?source=3Demail-9c3bd689d8a4-16392458481=
+85-digest.reader-------------------------d1ec47eb_e422_4e4f_ba16_40d51cf19b=
+c5)
+=C2=B7P.O. Box 602, San Francisco, CA 94104-0602
+Unsubscribe (https://medium.com/me/email-settings/9c3bd689d8a4/b5774658e549=
+?type=3Dsocial&source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-----=
+--------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5)
+ from this type of email=C2=B7Switch to the Weekly Digest (https://medium.c=
+om/me/email-settings/9c3bd689d8a4/b5774658e549?type=3Dsocial&preference=3D2=
+&source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-------------------=
+------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5)
+=C2=B7Careers (https://medium.com/jobs-at-medium/work-at-medium-959d1a85284=
+e?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader------------------=
+-------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5)
+=C2=B7Help Center (https://help.medium.com/hc/en-us?source=3Demail-9c3bd689=
+d8a4-1639245848185-digest.reader-------------------------d1ec47eb_e422_4e4f=
+_ba16_40d51cf19bc5)
+=C2=B7Privacy Policy (https://policy.medium.com/medium-privacy-policy-f03bf=
+92035c9?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader------------=
+-------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5)
+=C2=B7Terms of service (https://policy.medium.com/medium-terms-of-service-9=
+db0094a1e0f?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader--------=
+-----------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5)
+--969cc9a1b3f2020f52369d7d9943acf20020feb734dc730f20047503be21
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<html lang=3D"en" style=3D"box-sizing: border-box;"><head><meta http-equiv=
+=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><meta name=3D"view=
+port" content=3D"width=3Ddevice-width, initial-scale=3D1, maximum-scale=3D5=
+"><meta name=3D"robots" content=3D"none"><style>
+.fi:hover {
+  background: rgba(15, 115, 12, 1) !important;
+}
+.fj:hover {
+  border-color: rgba(15, 115, 12, 1) !important;
+}
+</style><style>
+@media all and (min-width: 728px) and (max-width: 903.98px) {
+  .d {
+    background-color: rgba(242, 242, 242, 1) !important;
+  }
+
+  .e {
+    padding: 6px 0 40px 0;
+  }
+
+  .o {
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .p {
+    border-radius: 4px;
+  }
+
+  .v {
+    padding: 28px 40px 0 40px !important;
+  }
+
+  .an {
+    font-size: 13px;
+  }
+
+  .ao {
+    line-height: 18px;
+  }
+
+  .az {
+    margin-bottom: 5px !important;
+  }
+
+  .ba {
+    margin-top: 25px !important;
+  }
+
+  .bm {
+    padding: 20px 40px 40px !important;
+  }
+
+  .bt {
+    font-size: 16px !important;
+  }
+
+  .bu {
+    line-height: 24px !important;
+  }
+
+  .ce {
+    margin-bottom: 24px !important;
+  }
+
+  .cf {
+    margin-top: 24px !important;
+  }
+
+  .cp {
+    height: 144px !important;
+  }
+
+  .cq {
+    width: 144px !important;
+  }
+
+  .cx {
+    width: 72% !important;
+  }
+
+  .db {
+    min-height: 0 !important;
+  }
+
+  .dg {
+    font-size: 18px !important;
+  }
+
+  .dm {
+    width: 100% !important;
+  }
+
+  .ds {
+    width: 88% !important;
+  }
+
+  .dz {
+    font-size: 14px;
+  }
+
+  .ea {
+    line-height: 20px;
+  }
+
+  .ej {
+    padding: 0px 40px 60px !important;
+  }
+
+  .er {
+    font-size: 24px;
+  }
+
+  .es {
+    line-height: 28px;
+  }
+
+  .fq {
+    padding: 40px !important;
+  }
+
+  .ft {
+    padding-bottom: 0 !important;
+  }
+
+  .fu {
+    padding-top: 10px;
+  }
+
+  .ga {
+    display: inline-block !important;
+  }
+
+  .gb {
+    float: right !important;
+  }
+
+  .gi {
+    padding-top: 34px;
+  }
+}
+</style><style>
+@media all and (min-width: 904px) and (max-width: 1079.98px) {
+  .f {
+    background-color: rgba(242, 242, 242, 1) !important;
+  }
+
+  .g {
+    padding: 6px 0 40px 0;
+  }
+
+  .q {
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .r {
+    border-radius: 4px;
+  }
+
+  .w {
+    padding: 28px 40px 0 40px !important;
+  }
+
+  .ap {
+    font-size: 13px;
+  }
+
+  .aq {
+    line-height: 18px;
+  }
+
+  .bb {
+    margin-bottom: 5px !important;
+  }
+
+  .bc {
+    margin-top: 25px !important;
+  }
+
+  .bn {
+    padding: 20px 40px 40px !important;
+  }
+
+  .bv {
+    font-size: 16px !important;
+  }
+
+  .bw {
+    line-height: 24px !important;
+  }
+
+  .cg {
+    margin-bottom: 24px !important;
+  }
+
+  .ch {
+    margin-top: 24px !important;
+  }
+
+  .cr {
+    height: 144px !important;
+  }
+
+  .cs {
+    width: 144px !important;
+  }
+
+  .cy {
+    width: 72% !important;
+  }
+
+  .dc {
+    min-height: 0 !important;
+  }
+
+  .dh {
+    font-size: 18px !important;
+  }
+
+  .dn {
+    width: 100% !important;
+  }
+
+  .dt {
+    width: 88% !important;
+  }
+
+  .eb {
+    font-size: 14px;
+  }
+
+  .ec {
+    line-height: 20px;
+  }
+
+  .ek {
+    padding: 0px 40px 60px !important;
+  }
+
+  .et {
+    font-size: 24px;
+  }
+
+  .eu {
+    line-height: 28px;
+  }
+
+  .fr {
+    padding: 40px !important;
+  }
+
+  .fv {
+    padding-bottom: 0 !important;
+  }
+
+  .fw {
+    padding-top: 10px;
+  }
+
+  .gc {
+    display: inline-block !important;
+  }
+
+  .gd {
+    float: right !important;
+  }
+
+  .gj {
+    padding-top: 34px;
+  }
+}
+</style><style>
+@media all and (min-width: 1080px) {
+  .h {
+    background-color: rgba(242, 242, 242, 1) !important;
+  }
+
+  .i {
+    padding: 6px 0 40px 0;
+  }
+
+  .s {
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .t {
+    border-radius: 4px;
+  }
+
+  .x {
+    padding: 28px 40px 0 40px !important;
+  }
+
+  .ar {
+    font-size: 13px;
+  }
+
+  .as {
+    line-height: 18px;
+  }
+
+  .bd {
+    margin-bottom: 5px !important;
+  }
+
+  .be {
+    margin-top: 25px !important;
+  }
+
+  .bo {
+    padding: 20px 40px 40px !important;
+  }
+
+  .bx {
+    font-size: 16px !important;
+  }
+
+  .by {
+    line-height: 24px !important;
+  }
+
+  .ci {
+    margin-bottom: 24px !important;
+  }
+
+  .cj {
+    margin-top: 24px !important;
+  }
+
+  .ct {
+    height: 144px !important;
+  }
+
+  .cu {
+    width: 144px !important;
+  }
+
+  .cz {
+    width: 72% !important;
+  }
+
+  .dd {
+    min-height: 0 !important;
+  }
+
+  .di {
+    font-size: 18px !important;
+  }
+
+  .do {
+    width: 100% !important;
+  }
+
+  .du {
+    width: 88% !important;
+  }
+
+  .ed {
+    font-size: 14px;
+  }
+
+  .ee {
+    line-height: 20px;
+  }
+
+  .el {
+    padding: 0px 40px 60px !important;
+  }
+
+  .ev {
+    font-size: 24px;
+  }
+
+  .ew {
+    line-height: 28px;
+  }
+
+  .fs {
+    padding: 40px !important;
+  }
+
+  .fx {
+    padding-bottom: 0 !important;
+  }
+
+  .fy {
+    padding-top: 10px;
+  }
+
+  .ge {
+    display: inline-block !important;
+  }
+
+  .gf {
+    float: right !important;
+  }
+
+  .gk {
+    padding-top: 34px;
+  }
+}
+</style><style>
+@media all and (max-width: 551.98px) {
+  .aj {
+    font-size: 11px;
+  }
+
+  .ak {
+    line-height: 14px;
+  }
+
+  .dv {
+    font-size: 16px;
+  }
+
+  .dw {
+    line-height: 24px;
+  }
+
+  .en {
+    font-size: 18px;
+  }
+
+  .eo {
+    line-height: 21px;
+  }
+}
+</style><style>
+@media all and (min-width: 552px) and (max-width: 727.98px) {
+  .al {
+    font-size: 11px;
+  }
+
+  .am {
+    line-height: 14px;
+  }
+
+  .dx {
+    font-size: 16px;
+  }
+
+  .dy {
+    line-height: 24px;
+  }
+
+  .ep {
+    font-size: 18px;
+  }
+
+  .eq {
+    line-height: 21px;
+  }
+}
+</style></head><body style=3D"margin: 0; padding: 0;"><div class=3D"c d e f=
+ g h i" style=3D"background-color: rgba(255, 255, 255, 1);"><table class=3D=
+"j k l m" role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"margin-left: auto; margin-right: auto; width: 100%; max-width: 680px;" =
+width=3D"100%"><tbody><tr><td class=3D"l n" style=3D"width: 100%; min-width=
+: 100%;" width=3D"100%"><img src=3D"https://medium.com/_/stat?event=3Demail=
+.opened&amp;emailId=3Dd1ec47eb-e422-4e4f-ba16-40d51cf19bc5&amp;source=3Dema=
+il-9c3bd689d8a4-1639245848185-digest.reader-------------------------d1ec47e=
+b_e422_4e4f_ba16_40d51cf19bc5" width=3D"1" height=3D"1" alt><div class=3D"a=
+ b" style=3D"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; c=
+olor: rgba(25, 25, 25, 1);"><div class=3D"c o p q r s t" style=3D"backgroun=
+d-color: rgba(255, 255, 255, 1);"><div class=3D"u v w x" style=3D"padding: =
+12px 27px 0 27px;"><div class=3D"y" style=3D"text-align: left;"><div class>=
+<div class=3D"z ab" style=3D"display: inline-block; vertical-align: middle;=
+"><a href=3D"https://medium.com/@lily.lawrence2019?source=3Demail-9c3bd689d=
+8a4-1639245848185-digest.reader-------------------------d1ec47eb_e422_4e4f_=
+ba16_40d51cf19bc5" style=3D"color: inherit; text-decoration: none;"><img al=
+t=3D"Lily Lawrence" class=3D"ac ae af ag" src=3D"https://miro.medium.com/fi=
+t/c/64/64/0*TIIn9r8IlOZfswzp.jpg" width=3D"32" height=3D"32" style=3D"displ=
+ay: block; border-radius: 50%; height: 32px; width: 32px;"></a></div><div c=
+lass=3D"z ah ab" style=3D"display: inline-block; vertical-align: middle; pa=
+dding-left: 9px;"><div class=3D"ai aj ak al am an ao ap aq ar as at" style=
+=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><a href=3D"https://mediu=
+m.com/@lily.lawrence2019?source=3Demail-9c3bd689d8a4-1639245848185-digest.r=
+eader-------------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=
+=3D"color: inherit; text-decoration: none;">Stories for <span style=3D"font=
+-weight:700">Lily Lawrence</span></a></div><div class=3D"ai aj ak al am an =
+ao ap aq ar as at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">=
+<span class=3D"ai aj ak al am an ao ap aq ar as au" style=3D"font-weight: 4=
+00; color: rgba(117, 117, 117, 1);"><a href=3D"https://medium.com/@lily.law=
+rence2019?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader----------=
+---------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"color: inheri=
+t; text-decoration: none;">@lily.lawrence2019</a><span class=3D"av aw" styl=
+e=3D"padding-left: 4px; padding-right: 4px;">=C2=B7</span></span><span clas=
+s=3D"ai aj ak al am an ao ap aq ar as ax" style=3D"font-weight: 400; color:=
+ rgba(26, 137, 23, 1);"><a href=3D"https://medium.com/plans?source=3Demail-=
+9c3bd689d8a4-1639245848185-digest.reader-------------------------d1ec47eb_e=
+422_4e4f_ba16_40d51cf19bc5" style=3D"color: inherit; text-decoration: none;=
+">Become a member</a></span></div></div></div></div><div class=3D"ay az ba =
+bb bc bd be bf bg" style=3D"margin-bottom: 8px; margin-top: 22px; text-alig=
+n: center;"><img alt=3D"Medium daily digest" class=3D"l bh" src=3D"https://=
+miro.medium.com/max/1200/4*pUIfRlZh07mLXKHFllcZSw.png" width=3D"600" style=
+=3D"width: 100%; min-width: 400px;"></div></div><div class=3D"bi bj l" styl=
+e=3D"width: 100%; border-bottom: 1px solid rgba(230, 230, 230, 1); height: =
+0px;"></div><div class=3D"bk bl bm bn bo" style=3D"background-color: #FAFAF=
+A; padding: 20px 27px 40px;"><div class=3D"bp bq" style=3D"margin-bottom: 1=
+1px; margin-top: 11px;"><p class=3D"br bs bt bu bv bw bx by bz at ca" style=
+=3D"margin: 0; color: rgba(41, 41, 41, 1); font-weight: 700; font-size: 18p=
+x; line-height: 24px; text-transform: uppercase;">Today=E2=80=99s highlight=
+s</p></div><div class=3D"cb bj l" style=3D"width: 100%; height: 0px; border=
+-bottom: 1px solid rgba(117, 117, 117, 1);"></div><div><div class=3D"cc cd =
+ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margi=
+n-top: 20px;"><a href=3D"https://medium.com/@darshakrana/i-did-2-minute-pla=
+nk-every-day-for-42-days-heres-what-happened-6688767fad69?source=3Demail-9c=
+3bd689d8a4-1639245848185-digest.reader-7038e003d060-6688767fad69----0-96---=
+---------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa=
+59_dce89251a3f6" aria-labelledby=3D"9CGUSiNt" style=3D"color: inherit; text=
+-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D=
+"display: inline-block; float: right; vertical-align: top; height: 100px; w=
+idth: 100px; background-image: url(https://miro.medium.com/fit/c/960/960/1*=
+WWjYs5yzLKj5WCOkdf8j0A.jpeg); background-position: -1% -1%; background-repe=
+at: no-repeat; background-size: cover;"></div></a><div class=3D"z cv cw cx =
+cy cz" style=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><=
+div class=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-=
+align: top; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://me=
+dium.com/@darshakrana/i-did-2-minute-plank-every-day-for-42-days-heres-what=
+-happened-6688767fad69?source=3Demail-9c3bd689d8a4-1639245848185-digest.rea=
+der-7038e003d060-6688767fad69----0-96------------------d1ec47eb_e422_4e4f_b=
+a16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"color: in=
+herit; text-decoration: none;"><div class=3D"de" style=3D"margin-bottom: 4p=
+x;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D"font-weight: 400;=
+ color: rgba(41, 41, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"=
+9CGUSiNt">I Did 2-Minute Plank Every Day for 42 Days=E2=80=8A=E2=80=94=E2=
+=80=8AHere=E2=80=99s What Happened</b></div></div><div class=3D"ai dk bt bu=
+ bv bw bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); =
+line-height: 28px; font-size: 20px;">No, I didn=E2=80=99t get six-pack abs-=
+but I didn=E2=80=99t realize that it would make such a difference in other =
+ways</div></a></div><div class=3D"dl dm dn do" style=3D"width: 138%;"><div =
+class=3D"z dp ab" style=3D"display: inline-block; vertical-align: middle; m=
+argin-right: 12px;"><a href=3D"https://medium.com/better-humans?source=3Dem=
+ail-9c3bd689d8a4-1639245848185-digest.reader-7038e003d060-6688767fad69----0=
+-96------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4=
+173_aa59_dce89251a3f6" style=3D"color: inherit; text-decoration: none;"><im=
+g alt=3D"Better Humans" class=3D"dq ag af ac" src=3D"https://miro.medium.co=
+m/fit/c/64/64/1*c_2w6a-GqcYDbmJFO8Frgw.png" width=3D"32" height=3D"32" styl=
+e=3D"display: block; height: 32px; width: 32px; border-radius: 4px;"></a></=
+div><div class=3D"z dr ds dt du ab" style=3D"display: inline-block; vertica=
+l-align: middle; width: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed e=
+e at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D=
+"https://medium.com/@darshakrana?source=3Demail-9c3bd689d8a4-1639245848185-=
+digest.reader-7038e003d060-6688767fad69----0-96------------------d1ec47eb_e=
+422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D=
+"color: inherit; text-decoration: none;">Darshak Rana</a> in <a href=3D"htt=
+ps://medium.com/better-humans?source=3Demail-9c3bd689d8a4-1639245848185-dig=
+est.reader-7038e003d060-6688767fad69----0-96------------------d1ec47eb_e422=
+_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"co=
+lor: inherit; text-decoration: none;">Better Humans</a></b><span class=3D"e=
+f eg" style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</span><div cl=
+ass=3D"z" style=3D"display: inline-block;"><span class=3D"ai dv dw dx dy dz=
+ ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"=
+>8 min read</span><div class=3D"z eh" style=3D"display: inline-block; margi=
+n-left: 6px;"><img alt=3D"Member only content" class src=3D"https://miro.me=
+dium.com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"1=
+2"></div></div></div></div></div></div></div><div class=3D"bi bj l" style=
+=3D"width: 100%; border-bottom: 1px solid rgba(230, 230, 230, 1); height: 0=
+px;"></div></div><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"ov=
+erflow: hidden; margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://=
+medium.com/@hotslang/how-my-crypto-cold-wallet-was-hacked-a301a0e9bf49?sour=
+ce=3Demail-9c3bd689d8a4-1639245848185-digest.reader-e38916e60487-a301a0e9bf=
+49----1-73------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82=
+_527b_4173_aa59_dce89251a3f6" aria-labelledby=3D"jg9n4-8e" style=3D"color: =
+inherit; text-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct=
+ cu" style=3D"display: inline-block; float: right; vertical-align: top; hei=
+ght: 100px; width: 100px; background-image: url(https://miro.medium.com/fit=
+/c/960/960/1*BLiYCEaJ77JJw9rg_-1Q4w.jpeg); background-position: -1% -1%; ba=
+ckground-repeat: no-repeat; background-size: cover;"></div></a><div class=
+=3D"z cv cw cx cy cz" style=3D"display: inline-block; padding-bottom: 12px;=
+ width: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: inline-b=
+lock; vertical-align: top; padding-bottom: 12px; min-height: 100px;"><a hre=
+f=3D"https://medium.com/@hotslang/how-my-crypto-cold-wallet-was-hacked-a301=
+a0e9bf49?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-e38916e604=
+87-a301a0e9bf49----1-73------------------d1ec47eb_e422_4e4f_ba16_40d51cf19b=
+c5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"color: inherit; text-de=
+coration: none;"><div class=3D"de" style=3D"margin-bottom: 4px;"><div class=
+=3D"ai df dg bu dh bw di by dj at" style=3D"font-weight: 400; color: rgba(4=
+1, 41, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"jg9n4-8e">How =
+My Crypto Cold Wallet Was Hacked</b></div></div><div class=3D"ai dk bt bu b=
+v bw bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); li=
+ne-height: 28px; font-size: 20px;">And it Was All My Fault</div></a></div><=
+div class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" sty=
+le=3D"display: inline-block; vertical-align: middle; margin-right: 12px;"><=
+a href=3D"https://medium.com/changeling-lore?source=3Demail-9c3bd689d8a4-16=
+39245848185-digest.reader-e38916e60487-a301a0e9bf49----1-73----------------=
+--d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3=
+f6" style=3D"color: inherit; text-decoration: none;"><img alt=3D"Changeling=
+ Lore" class=3D"dq ag af ac" src=3D"https://miro.medium.com/fit/c/64/64/1*u=
+_b2LllB0IIukM4gxGgsRw.jpeg" width=3D"32" height=3D"32" style=3D"display: bl=
+ock; height: 32px; width: 32px; border-radius: 4px;"></a></div><div class=
+=3D"z dr ds dt du ab" style=3D"display: inline-block; vertical-align: middl=
+e; width: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D=
+"font-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D"https://mediu=
+m.com/@hotslang?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-e38=
+916e60487-a301a0e9bf49----1-73------------------d1ec47eb_e422_4e4f_ba16_40d=
+51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"color: inherit; =
+text-decoration: none;">Hotse Langeraar</a> in <a href=3D"https://medium.co=
+m/changeling-lore?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-e=
+38916e60487-a301a0e9bf49----1-73------------------d1ec47eb_e422_4e4f_ba16_4=
+0d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"color: inherit=
+; text-decoration: none;">Changeling Lore</a></b><span class=3D"ef eg" styl=
+e=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" =
+style=3D"display: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec =
+ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">3 min rea=
+d</span><div class=3D"z eh" style=3D"display: inline-block; margin-left: 6p=
+x;"><img alt=3D"Member only content" class src=3D"https://miro.medium.com/f=
+it/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></div><=
+/div></div></div></div></div></div><div class=3D"bi bj l" style=3D"width: 1=
+00%; border-bottom: 1px solid rgba(230, 230, 230, 1); height: 0px;"></div><=
+/div><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidd=
+en; margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://medium.com/@=
+jamesmsama/10-things-good-men-never-do-in-relationships-6cf640f8a678?source=
+=3Demail-9c3bd689d8a4-1639245848185-digest.reader--6cf640f8a678----2-73----=
+--------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa5=
+9_dce89251a3f6" aria-labelledby=3D"Lr9ev5Gy" style=3D"color: inherit; text-=
+decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"=
+display: inline-block; float: right; vertical-align: top; height: 100px; wi=
+dth: 100px; background-image: url(https://miro.medium.com/fit/c/960/960/1*U=
+cDYU3H1slFvbgn202MG3w.png); background-position: -1% -1%; background-repeat=
+: no-repeat; background-size: cover;"></div></a><div class=3D"z cv cw cx cy=
+ cz" style=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><di=
+v class=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-al=
+ign: top; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://medi=
+um.com/@jamesmsama/10-things-good-men-never-do-in-relationships-6cf640f8a67=
+8?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader--6cf640f8a678----=
+2-73------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_=
+4173_aa59_dce89251a3f6" style=3D"color: inherit; text-decoration: none;"><d=
+iv class=3D"de" style=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh =
+bw di by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font=
+-size: 22px; line-height: 28px;"><b id=3D"Lr9ev5Gy">10 Things Good Men Neve=
+r Do In Relationships</b></div></div><div class=3D"ai dk bt bu bv bw bx by =
+dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-height: =
+28px; font-size: 20px;">Good men live by a code.</div></a></div><div class=
+=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"dis=
+play: inline-block; vertical-align: middle; margin-right: 12px;"><a href=3D=
+"https://medium.com/@jamesmsama?source=3Demail-9c3bd689d8a4-1639245848185-d=
+igest.reader--6cf640f8a678----2-73------------------d1ec47eb_e422_4e4f_ba16=
+_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"color: inher=
+it; text-decoration: none;"><img alt=3D"James Michael Sama" class=3D"ac ae =
+af ag" src=3D"https://miro.medium.com/fit/c/64/64/1*61ZnV_e6NmlSgdrbypXhUQ.=
+png" width=3D"32" height=3D"32" style=3D"display: block; border-radius: 50%=
+; height: 32px; width: 32px;"></a></div><div class=3D"z dr ds dt du ab" sty=
+le=3D"display: inline-block; vertical-align: middle; width: 85%;"><div clas=
+s=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color:=
+ rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.com/@jamesmsama?source=
+=3Demail-9c3bd689d8a4-1639245848185-digest.reader--6cf640f8a678----2-73----=
+--------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa5=
+9_dce89251a3f6" style=3D"color: inherit; text-decoration: none;">James Mich=
+ael Sama</a></b><span class=3D"ef eg" style=3D"padding-left: 6px; padding-r=
+ight: 6px;">=C2=B7</span><div class=3D"z" style=3D"display: inline-block;">=
+<span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 4=
+00; color: rgba(41, 41, 41, 1);">6 min read</span><div class=3D"z eh" style=
+=3D"display: inline-block; margin-left: 6px;"><img alt=3D"Member only conte=
+nt" class src=3D"https://miro.medium.com/fit/c/24/24/4*MKBko6INVaAhSM1V278M=
+jA.png" width=3D"12" height=3D"12"></div></div></div></div></div></div></di=
+v><div class=3D"bi bj l" style=3D"width: 100%; border-bottom: 1px solid rgb=
+a(230, 230, 230, 1); height: 0px;"></div></div><div><div class=3D"cc cd ce =
+cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margin-t=
+op: 20px;"><a href=3D"https://medium.com/@mackenzie-scott/no-poetry-this-ti=
+me-c991fdb836c4?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader--c9=
+91fdb836c4----3-98------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-=
+ee87ed82_527b_4173_aa59_dce89251a3f6" aria-labelledby=3D"OvY7R5ls" style=3D=
+"color: inherit; text-decoration: none;"><div class=3D"z cl cm cn co cp cq =
+cr cs ct cu" style=3D"display: inline-block; float: right; vertical-align: =
+top; height: 100px; width: 100px; background-image: url(https://miro.medium=
+.com/fit/c/960/960/1*DO4VVw-XeBX1CJbH5yS3Ew.jpeg); background-position: -1%=
+ -1%; background-repeat: no-repeat; background-size: cover;"></div></a><div=
+ class=3D"z cv cw cx cy cz" style=3D"display: inline-block; padding-bottom:=
+ 12px; width: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: in=
+line-block; vertical-align: top; padding-bottom: 12px; min-height: 100px;">=
+<a href=3D"https://medium.com/@mackenzie-scott/no-poetry-this-time-c991fdb8=
+36c4?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader--c991fdb836c4-=
+---3-98------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_52=
+7b_4173_aa59_dce89251a3f6" style=3D"color: inherit; text-decoration: none;"=
+><div class=3D"de" style=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu =
+dh bw di by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); f=
+ont-size: 22px; line-height: 28px;"><b id=3D"OvY7R5ls">No Poetry This Time<=
+/b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-w=
+eight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20px;=
+">Disclosures, self and otherwise</div></a></div><div class=3D"dl dm dn do"=
+ style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"display: inline-blo=
+ck; vertical-align: middle; margin-right: 12px;"><a href=3D"https://medium.=
+com/@mackenzie-scott?source=3Demail-9c3bd689d8a4-1639245848185-digest.reade=
+r--c991fdb836c4----3-98------------------d1ec47eb_e422_4e4f_ba16_40d51cf19b=
+c5-1-ee87ed82_527b_4173_aa59_dce89251a3f6" style=3D"color: inherit; text-de=
+coration: none;"><img alt=3D"MacKenzie Scott" class=3D"ac ae af ag" src=3D"=
+https://miro.medium.com/fit/c/64/64/1*QMsurWSr8igdWJEPkwOwyQ.jpeg" width=3D=
+"32" height=3D"32" style=3D"display: block; border-radius: 50%; height: 32p=
+x; width: 32px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"display=
+: inline-block; vertical-align: middle; width: 85%;"><div class=3D"ai dv dw=
+ dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41,=
+ 41, 1);"><b><a href=3D"https://medium.com/@mackenzie-scott?source=3Demail-=
+9c3bd689d8a4-1639245848185-digest.reader--c991fdb836c4----3-98-------------=
+-----d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-1-ee87ed82_527b_4173_aa59_dce8925=
+1a3f6" style=3D"color: inherit; text-decoration: none;">MacKenzie Scott</a>=
+</b><span class=3D"ef eg" style=3D"padding-left: 6px; padding-right: 6px;">=
+=C2=B7</span><div class=3D"z" style=3D"display: inline-block;"><span class=
+=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: =
+rgba(41, 41, 41, 1);">2 min read</span></div></div></div></div></div></div>=
+</div><div class=3D"bp bq" style=3D"margin-bottom: 11px; margin-top: 11px;"=
+><p class=3D"br bs bt bu bv bw bx by bz at ca" style=3D"margin: 0; color: r=
+gba(41, 41, 41, 1); font-weight: 700; font-size: 18px; line-height: 24px; t=
+ext-transform: uppercase;">Quick reads</p></div><div class=3D"cb bj l" styl=
+e=3D"width: 100%; height: 0px; border-bottom: 1px solid rgba(117, 117, 117,=
+ 1);"></div><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflo=
+w: hidden; margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://mediu=
+m.com/@bloktopia/building-bloks-a73c6b6bf621?source=3Demail-9c3bd689d8a4-16=
+39245848185-digest.reader--a73c6b6bf621----0-72------------------d1ec47eb_e=
+422_4e4f_ba16_40d51cf19bc5-28-" aria-labelledby=3D"RKWdcPTr" style=3D"color=
+: inherit; text-decoration: none;"><div class=3D"z cl cm cn co cp cq cr cs =
+ct cu" style=3D"display: inline-block; float: right; vertical-align: top; h=
+eight: 100px; width: 100px; background-image: url(https://miro.medium.com/f=
+it/c/960/960/1*rrTedRIvqqBuwHTuhDexcg@2x.png); background-position: -1% -1%=
+; background-repeat: no-repeat; background-size: cover;"></div></a><div cla=
+ss=3D"z cv cw cx cy cz" style=3D"display: inline-block; padding-bottom: 12p=
+x; width: 72%;"><div class=3D"z cv da db dc dd cm" style=3D"display: inline=
+-block; vertical-align: top; padding-bottom: 12px; min-height: 100px;"><a h=
+ref=3D"https://medium.com/@bloktopia/building-bloks-a73c6b6bf621?source=3De=
+mail-9c3bd689d8a4-1639245848185-digest.reader--a73c6b6bf621----0-72--------=
+----------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-" style=3D"color: inherit=
+; text-decoration: none;"><div class=3D"de" style=3D"margin-bottom: 4px;"><=
+div class=3D"ai df dg bu dh bw di by dj at" style=3D"font-weight: 400; colo=
+r: rgba(41, 41, 41, 1); font-size: 22px; line-height: 28px;"><b id=3D"RKWdc=
+PTr">BUILDING $BLOKS=E2=80=A6</b></div></div><div class=3D"ai dk bt bu bv b=
+w bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-=
+height: 28px; font-size: 20px;">There are now lots of ways to earn from you=
+r $BLOK</div></a></div><div class=3D"dl dm dn do" style=3D"width: 138%;"><d=
+iv class=3D"z dp ab" style=3D"display: inline-block; vertical-align: middle=
+; margin-right: 12px;"><a href=3D"https://medium.com/@bloktopia?source=3Dem=
+ail-9c3bd689d8a4-1639245848185-digest.reader--a73c6b6bf621----0-72---------=
+---------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-" style=3D"color: inherit;=
+ text-decoration: none;"><img alt=3D"Bloktopia" class=3D"ac ae af ag" src=
+=3D"https://miro.medium.com/fit/c/64/64/1*FWBNCaX6br6T4JeGXj1aqA.jpeg" widt=
+h=3D"32" height=3D"32" style=3D"display: block; border-radius: 50%; height:=
+ 32px; width: 32px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"dis=
+play: inline-block; vertical-align: middle; width: 85%;"><div class=3D"ai d=
+v dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41,=
+ 41, 41, 1);"><b><a href=3D"https://medium.com/@bloktopia?source=3Demail-9c=
+3bd689d8a4-1639245848185-digest.reader--a73c6b6bf621----0-72---------------=
+---d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-" style=3D"color: inherit; text-=
+decoration: none;">Bloktopia</a></b><span class=3D"ef eg" style=3D"padding-=
+left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=3D"disp=
+lay: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee at" sty=
+le=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">4 min read</span></div=
+></div></div></div></div></div><div class=3D"bi bj l" style=3D"width: 100%;=
+ border-bottom: 1px solid rgba(230, 230, 230, 1); height: 0px;"></div></div=
+><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidden; =
+margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://medium.com/@mela=
+nnealva/one-sided-polyamory-you-cant-have-your-cake-and-eat-mine-too-433f93=
+fa4ba7?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-c89c77d90298=
+-433f93fa4ba7----1-72------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5=
+-28-" aria-labelledby=3D"MCdVv0Ie" style=3D"color: inherit; text-decoration=
+: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: i=
+nline-block; float: right; vertical-align: top; height: 100px; width: 100px=
+; background-image: url(https://miro.medium.com/fit/c/960/960/1*nvVuxmJYVEr=
+C_bmPmX6NvA.jpeg); background-position: -1% -1%; background-repeat: no-repe=
+at; background-size: cover;"></div></a><div class=3D"z cv cw cx cy cz" styl=
+e=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><div class=
+=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-align: to=
+p; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://medium.com/=
+@melannealva/one-sided-polyamory-you-cant-have-your-cake-and-eat-mine-too-4=
+33f93fa4ba7?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-c89c77d=
+90298-433f93fa4ba7----1-72------------------d1ec47eb_e422_4e4f_ba16_40d51cf=
+19bc5-28-" style=3D"color: inherit; text-decoration: none;"><div class=3D"d=
+e" style=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj a=
+t" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; =
+line-height: 28px;"><b id=3D"MCdVv0Ie">One-Sided Polyamory: You Can=E2=80=
+=99t Have Your Cake and Eat Mine Too</b></div></div><div class=3D"ai dk bt =
+bu bv bw bx by dj at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1)=
+; line-height: 28px; font-size: 20px;">Some partners have an issue with the=
+ir own behavior being reflected back at them.</div></a></div><div class=3D"=
+dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=3D"display=
+: inline-block; vertical-align: middle; margin-right: 12px;"><a href=3D"htt=
+ps://medium.com/polyamory-today?source=3Demail-9c3bd689d8a4-1639245848185-d=
+igest.reader-c89c77d90298-433f93fa4ba7----1-72------------------d1ec47eb_e4=
+22_4e4f_ba16_40d51cf19bc5-28-" style=3D"color: inherit; text-decoration: no=
+ne;"><img alt=3D"Polyamory Today" class=3D"dq ag af ac" src=3D"https://miro=
+.medium.com/fit/c/64/64/1*8RzkF5INvjULt45U2OD1Dg.jpeg" width=3D"32" height=
+=3D"32" style=3D"display: block; height: 32px; width: 32px; border-radius: =
+4px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"display: inline-bl=
+ock; vertical-align: middle; width: 85%;"><div class=3D"ai dv dw dx dy dz e=
+a eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><=
+b><a href=3D"https://medium.com/@melannealva?source=3Demail-9c3bd689d8a4-16=
+39245848185-digest.reader-c89c77d90298-433f93fa4ba7----1-72----------------=
+--d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-" style=3D"color: inherit; text-d=
+ecoration: none;">Melissa Alvarez</a> in <a href=3D"https://medium.com/poly=
+amory-today?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-c89c77d=
+90298-433f93fa4ba7----1-72------------------d1ec47eb_e422_4e4f_ba16_40d51cf=
+19bc5-28-" style=3D"color: inherit; text-decoration: none;">Polyamory Today=
+</a></b><span class=3D"ef eg" style=3D"padding-left: 6px; padding-right: 6p=
+x;">=C2=B7</span><div class=3D"z" style=3D"display: inline-block;"><span cl=
+ass=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 400; colo=
+r: rgba(41, 41, 41, 1);">4 min read</span><div class=3D"z eh" style=3D"disp=
+lay: inline-block; margin-left: 6px;"><img alt=3D"Member only content" clas=
+s src=3D"https://miro.medium.com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" =
+width=3D"12" height=3D"12"></div></div></div></div></div></div></div><div c=
+lass=3D"bi bj l" style=3D"width: 100%; border-bottom: 1px solid rgba(230, 2=
+30, 230, 1); height: 0px;"></div></div><div><div class=3D"cc cd ce cf cg ch=
+ ci cj ck" style=3D"overflow: hidden; margin-bottom: 20px; margin-top: 20px=
+;"><a href=3D"https://medium.com/@ellesilver/my-exs-rich-parents-are-buying=
+-him-a-house-but-wouldn-t-pay-my-child-support-be2d52b86168?source=3Demail-=
+9c3bd689d8a4-1639245848185-digest.reader-3b2e302f79ca-be2d52b86168----2-72-=
+-----------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-" aria-labelledby=
+=3D"zSSm_Dg8" style=3D"color: inherit; text-decoration: none;"><div class=
+=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline-block; float:=
+ right; vertical-align: top; height: 100px; width: 100px; background-image:=
+ url(https://miro.medium.com/fit/c/960/960/1*6QbnqxBzKcnEFjCCfw6iDQ.jpeg); =
+background-position: -1% -1%; background-repeat: no-repeat; background-size=
+: cover;"></div></a><div class=3D"z cv cw cx cy cz" style=3D"display: inlin=
+e-block; padding-bottom: 12px; width: 72%;"><div class=3D"z cv da db dc dd =
+cm" style=3D"display: inline-block; vertical-align: top; padding-bottom: 12=
+px; min-height: 100px;"><a href=3D"https://medium.com/@ellesilver/my-exs-ri=
+ch-parents-are-buying-him-a-house-but-wouldn-t-pay-my-child-support-be2d52b=
+86168?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-3b2e302f79ca-=
+be2d52b86168----2-72------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-=
+28-" style=3D"color: inherit; text-decoration: none;"><div class=3D"de" sty=
+le=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" sty=
+le=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-h=
+eight: 28px;"><b id=3D"zSSm_Dg8">My Ex=E2=80=99s Rich Parents Are Buying Hi=
+m a House but Wouldn=E2=80=99t Pay My Child Support</b></div></div><div cla=
+ss=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-weight: 400; color: rgba=
+(41, 41, 41, 1); line-height: 28px; font-size: 20px;">When I first left my =
+husband, he wasn=E2=80=99t working and couldn=E2=80=99t help me. His rich p=
+arents could have but=E2=80=A6</div></a></div><div class=3D"dl dm dn do" st=
+yle=3D"width: 138%;"><div class=3D"z dp ab" style=3D"display: inline-block;=
+ vertical-align: middle; margin-right: 12px;"><a href=3D"https://medium.com=
+/heart-affairs?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-3b2e=
+302f79ca-be2d52b86168----2-72------------------d1ec47eb_e422_4e4f_ba16_40d5=
+1cf19bc5-28-" style=3D"color: inherit; text-decoration: none;"><img alt=3D"=
+Heart Affairs" class=3D"dq ag af ac" src=3D"https://miro.medium.com/fit/c/6=
+4/64/1*5OC1_I6c5i66vv6bNUxwSA.jpeg" width=3D"32" height=3D"32" style=3D"dis=
+play: block; height: 32px; width: 32px; border-radius: 4px;"></a></div><div=
+ class=3D"z dr ds dt du ab" style=3D"display: inline-block; vertical-align:=
+ middle; width: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" st=
+yle=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D"https:/=
+/medium.com/@ellesilver?source=3Demail-9c3bd689d8a4-1639245848185-digest.re=
+ader-3b2e302f79ca-be2d52b86168----2-72------------------d1ec47eb_e422_4e4f_=
+ba16_40d51cf19bc5-28-" style=3D"color: inherit; text-decoration: none;">Ell=
+e Silver</a> in <a href=3D"https://medium.com/heart-affairs?source=3Demail-=
+9c3bd689d8a4-1639245848185-digest.reader-3b2e302f79ca-be2d52b86168----2-72-=
+-----------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-28-" style=3D"color: =
+inherit; text-decoration: none;">Heart Affairs</a></b><span class=3D"ef eg"=
+ style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</span><div class=
+=3D"z" style=3D"display: inline-block;"><span class=3D"ai dv dw dx dy dz ea=
+ eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">3 =
+min read</span><div class=3D"z eh" style=3D"display: inline-block; margin-l=
+eft: 6px;"><img alt=3D"Member only content" class src=3D"https://miro.mediu=
+m.com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12">=
+</div></div></div></div></div></div></div></div><div class=3D"bp bq" style=
+=3D"margin-bottom: 11px; margin-top: 11px;"><p class=3D"br bs bt bu bv bw b=
+x by bz at ca" style=3D"margin: 0; color: rgba(41, 41, 41, 1); font-weight:=
+ 700; font-size: 18px; line-height: 24px; text-transform: uppercase;">Edito=
+rs=E2=80=99 picks</p></div><div class=3D"cb bj l" style=3D"width: 100%; hei=
+ght: 0px; border-bottom: 1px solid rgba(117, 117, 117, 1);"></div><div><div=
+ class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow: hidden; margin-bot=
+tom: 20px; margin-top: 20px;"><a href=3D"https://medium.com/@timdenning/har=
+sh-reality-when-you-leave-a-job-nobody-will-miss-you-e413a014e997?source=3D=
+email-9c3bd689d8a4-1639245848185-digest.reader-40187e704f1c-e413a014e997---=
+-0-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" aria-labell=
+edby=3D"Bsh8oSpl" style=3D"color: inherit; text-decoration: none;"><div cla=
+ss=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline-block; floa=
+t: right; vertical-align: top; height: 100px; width: 100px; background-imag=
+e: url(https://miro.medium.com/focal/960/960/34/22/1*ssPo-GsFx03fucTOGyhZsQ=
+.jpeg); background-position: 34% 22%; background-repeat: no-repeat; backgro=
+und-size: cover;"></div></a><div class=3D"z cv cw cx cy cz" style=3D"displa=
+y: inline-block; padding-bottom: 12px; width: 72%;"><div class=3D"z cv da d=
+b dc dd cm" style=3D"display: inline-block; vertical-align: top; padding-bo=
+ttom: 12px; min-height: 100px;"><a href=3D"https://medium.com/@timdenning/h=
+arsh-reality-when-you-leave-a-job-nobody-will-miss-you-e413a014e997?source=
+=3Demail-9c3bd689d8a4-1639245848185-digest.reader-40187e704f1c-e413a014e997=
+----0-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" style=3D=
+"color: inherit; text-decoration: none;"><div class=3D"de" style=3D"margin-=
+bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D"font-we=
+ight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-height: 28px;"=
+><b id=3D"Bsh8oSpl">Harsh Reality: When You Leave a Job, Nobody Will Miss Y=
+ou</b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"fon=
+t-weight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20=
+px;">Don=E2=80=99t collect business connections like empty beer bottles</di=
+v></a></div><div class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D=
+"z dp ab" style=3D"display: inline-block; vertical-align: middle; margin-ri=
+ght: 12px;"><a href=3D"https://medium.com/index?source=3Demail-9c3bd689d8a4=
+-1639245848185-digest.reader-40187e704f1c-e413a014e997----0-74-------------=
+-----d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" style=3D"color: inherit; text=
+-decoration: none;"><img alt=3D"Index" class=3D"dq ag af ac" src=3D"https:/=
+/miro.medium.com/fit/c/64/64/1*4C8qpSEEu7Q1p9wWImUgMw.jpeg" width=3D"32" he=
+ight=3D"32" style=3D"display: block; height: 32px; width: 32px; border-radi=
+us: 4px;"></a></div><div class=3D"z dr ds dt du ab" style=3D"display: inlin=
+e-block; vertical-align: middle; width: 85%;"><div class=3D"ai dv dw dx dy =
+dz ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1)=
+;"><b><a href=3D"https://medium.com/@timdenning?source=3Demail-9c3bd689d8a4=
+-1639245848185-digest.reader-40187e704f1c-e413a014e997----0-74-------------=
+-----d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" style=3D"color: inherit; text=
+-decoration: none;">Tim Denning</a> in <a href=3D"https://medium.com/index?=
+source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-40187e704f1c-e413a0=
+14e997----0-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" st=
+yle=3D"color: inherit; text-decoration: none;">Index</a></b><span class=3D"=
+ef eg" style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</span><div c=
+lass=3D"z" style=3D"display: inline-block;"><span class=3D"ai dv dw dx dy d=
+z ea eb ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);=
+">4 min read</span><div class=3D"z eh" style=3D"display: inline-block; marg=
+in-left: 6px;"><img alt=3D"Member only content" class src=3D"https://miro.m=
+edium.com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"=
+12"></div></div></div></div></div></div></div><div class=3D"bi bj l" style=
+=3D"width: 100%; border-bottom: 1px solid rgba(230, 230, 230, 1); height: 0=
+px;"></div></div><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"ov=
+erflow: hidden; margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://=
+medium.com/@AlexComb/23-things-to-quit-for-an-easier-happier-life-60a3a78f0=
+b7b?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-3f6ecf56618-60a=
+3a78f0b7b----1-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-"=
+ aria-labelledby=3D"6m9ttuba" style=3D"color: inherit; text-decoration: non=
+e;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display: inline=
+-block; float: right; vertical-align: top; height: 100px; width: 100px; bac=
+kground-image: url(https://miro.medium.com/focal/960/960/46/41/1*YjYyIiNZyO=
+kYtLKObR2NYw.jpeg); background-position: 46% 41%; background-repeat: no-rep=
+eat; background-size: cover;"></div></a><div class=3D"z cv cw cx cy cz" sty=
+le=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><div class=
+=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-align: to=
+p; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://medium.com/=
+@AlexComb/23-things-to-quit-for-an-easier-happier-life-60a3a78f0b7b?source=
+=3Demail-9c3bd689d8a4-1639245848185-digest.reader-3f6ecf56618-60a3a78f0b7b-=
+---1-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" style=3D"=
+color: inherit; text-decoration: none;"><div class=3D"de" style=3D"margin-b=
+ottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" style=3D"font-wei=
+ght: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-height: 28px;">=
+<b id=3D"6m9ttuba">23 Things to Quit for an Easier, Happier Life</b></div><=
+/div><div class=3D"ai dk bt bu bv bw bx by dj at" style=3D"font-weight: 400=
+; color: rgba(41, 41, 41, 1); line-height: 28px; font-size: 20px;">All base=
+d on research-backed psychology and ideas from therapy</div></a></div><div =
+class=3D"dl dm dn do" style=3D"width: 138%;"><div class=3D"z dp ab" style=
+=3D"display: inline-block; vertical-align: middle; margin-right: 12px;"><a =
+href=3D"https://medium.com/forge?source=3Demail-9c3bd689d8a4-1639245848185-=
+digest.reader-3f6ecf56618-60a3a78f0b7b----1-74------------------d1ec47eb_e4=
+22_4e4f_ba16_40d51cf19bc5-6-" style=3D"color: inherit; text-decoration: non=
+e;"><img alt=3D"Forge" class=3D"dq ag af ac" src=3D"https://miro.medium.com=
+/fit/c/64/64/1*uWbn_ZpGom5xlrE-bX-EuQ.jpeg" width=3D"32" height=3D"32" styl=
+e=3D"display: block; height: 32px; width: 32px; border-radius: 4px;"></a></=
+div><div class=3D"z dr ds dt du ab" style=3D"display: inline-block; vertica=
+l-align: middle; width: 85%;"><div class=3D"ai dv dw dx dy dz ea eb ec ed e=
+e at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);"><b><a href=3D=
+"https://medium.com/@AlexComb?source=3Demail-9c3bd689d8a4-1639245848185-dig=
+est.reader-3f6ecf56618-60a3a78f0b7b----1-74------------------d1ec47eb_e422_=
+4e4f_ba16_40d51cf19bc5-6-" style=3D"color: inherit; text-decoration: none;"=
+>Alexander M. Combstrong</a> in <a href=3D"https://medium.com/forge?source=
+=3Demail-9c3bd689d8a4-1639245848185-digest.reader-3f6ecf56618-60a3a78f0b7b-=
+---1-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" style=3D"=
+color: inherit; text-decoration: none;">Forge</a></b><span class=3D"ef eg" =
+style=3D"padding-left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D=
+"z" style=3D"display: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb=
+ ec ed ee at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">19 mi=
+n read</span><div class=3D"z eh" style=3D"display: inline-block; margin-lef=
+t: 6px;"><img alt=3D"Member only content" class src=3D"https://miro.medium.=
+com/fit/c/24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></=
+div></div></div></div></div></div></div><div class=3D"bi bj l" style=3D"wid=
+th: 100%; border-bottom: 1px solid rgba(230, 230, 230, 1); height: 0px;"></=
+div></div><div><div class=3D"cc cd ce cf cg ch ci cj ck" style=3D"overflow:=
+ hidden; margin-bottom: 20px; margin-top: 20px;"><a href=3D"https://medium.=
+com/@robertroybritt/5-health-appointments-americans-should-schedule-now-91c=
+37f195cd4?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-8d6b8a439=
+e32-91c37f195cd4----2-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19=
+bc5-6-" aria-labelledby=3D"7WRPO3rk" style=3D"color: inherit; text-decorati=
+on: none;"><div class=3D"z cl cm cn co cp cq cr cs ct cu" style=3D"display:=
+ inline-block; float: right; vertical-align: top; height: 100px; width: 100=
+px; background-image: url(https://miro.medium.com/fit/c/960/960/1*7GBSxiU-Z=
+Kq-e-tzmjZ-6g.jpeg); background-position: -1% -1%; background-repeat: no-re=
+peat; background-size: cover;"></div></a><div class=3D"z cv cw cx cy cz" st=
+yle=3D"display: inline-block; padding-bottom: 12px; width: 72%;"><div class=
+=3D"z cv da db dc dd cm" style=3D"display: inline-block; vertical-align: to=
+p; padding-bottom: 12px; min-height: 100px;"><a href=3D"https://medium.com/=
+@robertroybritt/5-health-appointments-americans-should-schedule-now-91c37f1=
+95cd4?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-8d6b8a439e32-=
+91c37f195cd4----2-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-=
+6-" style=3D"color: inherit; text-decoration: none;"><div class=3D"de" styl=
+e=3D"margin-bottom: 4px;"><div class=3D"ai df dg bu dh bw di by dj at" styl=
+e=3D"font-weight: 400; color: rgba(41, 41, 41, 1); font-size: 22px; line-he=
+ight: 28px;"><b id=3D"7WRPO3rk">5 Health Appointments Americans Should Sche=
+dule Now</b></div></div><div class=3D"ai dk bt bu bv bw bx by dj at" style=
+=3D"font-weight: 400; color: rgba(41, 41, 41, 1); line-height: 28px; font-s=
+ize: 20px;">Critical exams and scans are dangerously overdue for millions o=
+f people</div></a></div><div class=3D"dl dm dn do" style=3D"width: 138%;"><=
+div class=3D"z dp ab" style=3D"display: inline-block; vertical-align: middl=
+e; margin-right: 12px;"><a href=3D"https://medium.com/elemental-by-medium?s=
+ource=3Demail-9c3bd689d8a4-1639245848185-digest.reader-8d6b8a439e32-91c37f1=
+95cd4----2-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" sty=
+le=3D"color: inherit; text-decoration: none;"><img alt=3D"Elemental" class=
+=3D"dq ag af ac" src=3D"https://miro.medium.com/fit/c/64/64/1*GhG8ZeoE0TGfC=
+HwL9SCrfw.png" width=3D"32" height=3D"32" style=3D"display: block; height: =
+32px; width: 32px; border-radius: 4px;"></a></div><div class=3D"z dr ds dt =
+du ab" style=3D"display: inline-block; vertical-align: middle; width: 85%;"=
+><div class=3D"ai dv dw dx dy dz ea eb ec ed ee at" style=3D"font-weight: 4=
+00; color: rgba(41, 41, 41, 1);"><b><a href=3D"https://medium.com/@robertro=
+ybritt?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-8d6b8a439e32=
+-91c37f195cd4----2-74------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5=
+-6-" style=3D"color: inherit; text-decoration: none;">Robert Roy Britt</a> =
+in <a href=3D"https://medium.com/elemental-by-medium?source=3Demail-9c3bd68=
+9d8a4-1639245848185-digest.reader-8d6b8a439e32-91c37f195cd4----2-74--------=
+----------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5-6-" style=3D"color: inherit;=
+ text-decoration: none;">Elemental</a></b><span class=3D"ef eg" style=3D"pa=
+dding-left: 6px; padding-right: 6px;">=C2=B7</span><div class=3D"z" style=
+=3D"display: inline-block;"><span class=3D"ai dv dw dx dy dz ea eb ec ed ee=
+ at" style=3D"font-weight: 400; color: rgba(41, 41, 41, 1);">9 min read</sp=
+an><div class=3D"z eh" style=3D"display: inline-block; margin-left: 6px;"><=
+img alt=3D"Member only content" class src=3D"https://miro.medium.com/fit/c/=
+24/24/4*MKBko6INVaAhSM1V278MjA.png" width=3D"12" height=3D"12"></div></div>=
+</div></div></div></div></div></div></div><div class=3D"bk ei ej ek el bg" =
+style=3D"text-align: center; background-color: #FAFAFA; padding: 0px 27px 5=
+4px;"><h2 class=3D"ai em en eo ep eq er es et eu ev ew ex" style=3D"margin:=
+ 0; font-weight: 400; font-family: Georgia, serif; color: rgba(8, 8, 8, 1);=
+">See more of what you like and less of what you don=E2=80=99t.</h2><div cl=
+ass=3D"ey" style=3D"padding-top: 16px;"><a class=3D"ez fa fb z fc fd fe ff =
+fg fh fi fj fk ai fl bz" href=3D"https://medium.com/me/missioncontrol?sourc=
+e=3Demail-9c3bd689d8a4-1639245848185-digest.reader-------------------------=
+d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"display: inline-block; font-=
+weight: 400; line-height: 24px; border-width: 1px; border-style: solid; box=
+-sizing: border-box; text-decoration: none; padding: 9px 20px; background: =
+rgba(26, 137, 23, 1); border-color: rgba(26, 137, 23, 1); color: rgba(255, =
+255, 255, 1); fill: rgba(255, 255, 255, 1); border-radius: 99em; font-size:=
+ 16px;">Control your recommendations</a></div></div><div class=3D"fn fo fp =
+fq fr fs" style=3D"background-color: rgba(0, 0, 0, 1); border-radius: 0 0 4=
+px 4px; padding: 32px 27px;"><div class=3D"z cv ft fu fv fw fx fy" style=3D=
+"display: inline-block; padding-bottom: 12px;"><h2 class=3D"br fl fz fg" st=
+yle=3D"margin: 0; font-weight: 700; color: rgba(255, 255, 255, 1); font-siz=
+e: 16px; line-height: 20px;">Read or write from anywhere.</h2></div><div cl=
+ass=3D"ac ga gb gc gd ge gf gg" style=3D"display: block; float: none;"><div=
+ class=3D"z gh" style=3D"display: inline-block; padding-right: 12px;"><a cl=
+ass=3D"z" href=3D"https://itunes.apple.com/app/medium-everyones-stories/id8=
+28256236?pt=3D698524&amp;mt=3D8&amp;source=3Demail-9c3bd689d8a4-16392458481=
+85-digest.reader-------------------------d1ec47eb_e422_4e4f_ba16_40d51cf19b=
+c5" style=3D"color: inherit; text-decoration: none; display: inline-block;"=
+><img alt=3D"Get Medium on the App Store" class src=3D"https://miro.medium.=
+com/proxy/1*CXKdDEfFShoF6Azy5V8ZKQ@2x.png" width=3D"120" height=3D"40"></a>=
+</div><a class=3D"z" href=3D"https://play.google.com/store/apps/details?id=
+=3Dcom.medium.reader&amp;source=3Demail-9c3bd689d8a4-1639245848185-digest.r=
+eader-------------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=
+=3D"color: inherit; text-decoration: none; display: inline-block;"><img alt=
+=3D"Get Medium on Google Play" class src=3D"https://miro.medium.com/proxy/1=
+*D-oULOaPtKR8A1jatsII4w@2x.png" width=3D"134.17" height=3D"40"></a></div><d=
+iv class=3D"gi gj gk gl" style=3D"padding: 20px 0px;"><div class=3D"cb bj l=
+" style=3D"width: 100%; height: 0px; border-bottom: 1px solid rgba(117, 117=
+, 117, 1);"></div></div><div class=3D"fm" style=3D"clear: both;"><div class=
+=3D"y" style=3D"text-align: left;"><div class=3D"ai gm fz fg" style=3D"font=
+-weight: 400; color: rgba(255, 255, 255, 1); line-height: 20px; font-size: =
+13px;"><div class>Sent by <a href=3D"https://medium.com/?source=3Demail-9c3=
+bd689d8a4-1639245848185-digest.reader-------------------------d1ec47eb_e422=
+_4e4f_ba16_40d51cf19bc5" style=3D"color: inherit; text-decoration: none;">M=
+edium</a><span class=3D"av aw" style=3D"padding-left: 4px; padding-right: 4=
+px;">=C2=B7</span>P.O. Box 602, San Francisco, CA 94104-0602</div><a class=
+=3D"gn" href=3D"https://medium.com/me/email-settings/9c3bd689d8a4/b5774658e=
+549?type=3Dsocial&amp;source=3Demail-9c3bd689d8a4-1639245848185-digest.read=
+er-------------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"c=
+olor: inherit; text-decoration: underline;">Unsubscribe</a> from this type =
+of email<span class=3D"av aw" style=3D"padding-left: 4px; padding-right: 4p=
+x;">=C2=B7</span><a class=3D"gn" href=3D"https://medium.com/me/email-settin=
+gs/9c3bd689d8a4/b5774658e549?type=3Dsocial&amp;preference=3D2&amp;source=3D=
+email-9c3bd689d8a4-1639245848185-digest.reader-------------------------d1ec=
+47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"color: inherit; text-decoration:=
+ underline;">Switch to the Weekly Digest</a><span class=3D"av aw" style=3D"=
+padding-left: 4px; padding-right: 4px;">=C2=B7</span><a class=3D"gn" href=
+=3D"https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e?source=3D=
+email-9c3bd689d8a4-1639245848185-digest.reader-------------------------d1ec=
+47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"color: inherit; text-decoration:=
+ underline;">Careers</a><span class=3D"av aw" style=3D"padding-left: 4px; p=
+adding-right: 4px;">=C2=B7</span><a class=3D"gn" href=3D"https://help.mediu=
+m.com/hc/en-us?source=3Demail-9c3bd689d8a4-1639245848185-digest.reader-----=
+--------------------d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"color: i=
+nherit; text-decoration: underline;">Help Center</a><span class=3D"av aw" s=
+tyle=3D"padding-left: 4px; padding-right: 4px;">=C2=B7</span><a class=3D"gn=
+" href=3D"https://policy.medium.com/medium-privacy-policy-f03bf92035c9?sour=
+ce=3Demail-9c3bd689d8a4-1639245848185-digest.reader------------------------=
+-d1ec47eb_e422_4e4f_ba16_40d51cf19bc5" style=3D"color: inherit; text-decora=
+tion: underline;">Privacy Policy</a><span class=3D"av aw" style=3D"padding-=
+left: 4px; padding-right: 4px;">=C2=B7</span><a class=3D"gn" href=3D"https:=
+//policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=3Demail-9c3=
+bd689d8a4-1639245848185-digest.reader-------------------------d1ec47eb_e422=
+_4e4f_ba16_40d51cf19bc5" style=3D"color: inherit; text-decoration: underlin=
+e;">Terms of service</a></div></div></div></div></div></div></td></tr></tbo=
+dy></table></div><img src=3D"https://u1823144.ct.sendgrid.net/wf/open?upn=
+=3D5EuW0-2FJLkspeKQNHAERBBjUK3XHjTCqcqoJbddj0yRnROQe9ULfp3GyuepbeZvFcHrL8hK=
+fPscPTZ3ww8KaxxYs8puDxbslwI2gqnw4q9WYjXDpV9ntXlIu-2FfFTeJ87MyKDUSeASTtgzumh=
+jiaFx-2FAwsY8c0QSEWkSFBEgl1NYSEhy3dVj19A2z17jvjPesRT8E2vBoGVYAeawOF5PmqS44S=
+9sKK9kTqo-2BQ-2Bxpd8NyhegJXxwtXJ65jf1RkGa-2FMPxpQ8B-2BJx79JcRjBds8W4KXE1-2B=
+Zc2dL93EDr8wkxmWOcSVzSdw8inSDjEdS7wBb3Ado91g6kbF1ajcb3WHPg5p9w7rDhMFrLomKzc=
+ZCB-2FF16pXQisAIHDO1-2FrnD6UDT2FQh9NTXPWMU8K4Nhu2EsdN4rGNTQBhFu0wZgJi6aauoI=
+-3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !im=
+portant;width:1px !important;border-width:0 !important;margin-top:0 !import=
+ant;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !imp=
+ortant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0=
+ !important;padding-left:0 !important;"/></body></html>
+--969cc9a1b3f2020f52369d7d9943acf20020feb734dc730f20047503be21--

@@ -1,0 +1,364 @@
+Delivered-To: lily.lawrence2019@gmail.com
+Received: by 2002:a17:906:1492:0:0:0:0 with SMTP id x18csp5111782ejc;
+        Wed, 22 Dec 2021 22:33:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx/9s75XBSFbCw18IHEV0FtBodH6YTNQFATt6fvqvu7OWLT3PL5gtTUt9TaSPbdarYbEemT
+X-Received: by 2002:a17:90b:1d03:: with SMTP id on3mr1503871pjb.82.1640241189015;
+        Wed, 22 Dec 2021 22:33:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640241189; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NGedRiBVbF6hWoCLaDPQLnSGVoCr7Ork3N5likYcY/aTeCj9GP3+2/0taiF33BR5y8
+         LxL+kHBEFXkBr5a3wmXjbpOGUw1TAJXHzR/5fiXlNjALpTrSErha3fP88zayaDYa8fFZ
+         RHs3z7a7VmOBJW4sDThh9rnRyuUTMbSxs9oh1rsGGL0q5GpwnybhVJkisCBcXkS5HRUI
+         OhI6b4kBBfjwSUxxYg8RZ5OEWMqUcMfqGJScodRwErog0DFj2l043TtEFVfhhqzVECLJ
+         XPvkE3XGMj4Xk4wN4ke1GQrovNoNn1Hyfp2fhRgWchQUaiIjBYDE9Cz1rwsA3Ad5IAy2
+         leoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:mime-version:subject:to:message-id:from:date
+         :dkim-signature:dkim-signature;
+        bh=iIc1bS4KQNv2siZyYS+8HwO9SxoYyDJjec9gXZNnXxk=;
+        b=IaUiMjesSS6fQID31jIQVEVwVVtMWQQNhU82DTZnKX+HIdktGY816Kcsdp1DdAdheg
+         HsSz13NFRc6TX5rAK/nLpevR5cL5rw8HsM77pETielvZyMu4U+i7xHFKqZ2c+gw01JQM
+         O21TgKP6O2aN2xOxP4Czz9JB1me0HZtTSZCPixtyX8qmoX76qUEeB7+8M1qjAFoUOUdG
+         qB/HNFIkV/yKltRgBpBTc4ouwD338QeLNUAuC3SRDYBgW7zEGrwGqcDQsoEV+GKMtTDn
+         Xdi4qWih0MhQUqGVudtNs/SjHZNuykcOXuPStxuy1ZYgIDbRX73cDiEMMmuEIZueMEyY
+         axDQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@geeksforgeeks.org header.s=vbkcpt5oltuwfu74jemwdidlf5e7ffgm header.b=SgCTSDrS;
+       dkim=pass header.i=@amazonses.com header.s=7v7vs6w47njt4pimodk5mmttbegzsi6n header.b=azh8AbOs;
+       spf=pass (google.com: domain of 0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com designates 54.240.26.8 as permitted sender) smtp.mailfrom=0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=geeksforgeeks.org
+Return-Path: <0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com>
+Received: from a26-8.smtp-out.us-west-2.amazonses.com (a26-8.smtp-out.us-west-2.amazonses.com. [54.240.26.8])
+        by mx.google.com with ESMTPS id j11si4372019plx.487.2021.12.22.22.33.08
+        for <lily.lawrence2019@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 22 Dec 2021 22:33:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com designates 54.240.26.8 as permitted sender) client-ip=54.240.26.8;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@geeksforgeeks.org header.s=vbkcpt5oltuwfu74jemwdidlf5e7ffgm header.b=SgCTSDrS;
+       dkim=pass header.i=@amazonses.com header.s=7v7vs6w47njt4pimodk5mmttbegzsi6n header.b=azh8AbOs;
+       spf=pass (google.com: domain of 0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com designates 54.240.26.8 as permitted sender) smtp.mailfrom=0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=geeksforgeeks.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=vbkcpt5oltuwfu74jemwdidlf5e7ffgm; d=geeksforgeeks.org;
+	t=1640241188;
+	h=Date:From:Message-Id:To:Subject:MIME-Version:Content-type;
+	bh=GXOEFgNPEi2tkOgSLunqSuIWIxEhWXQjyeTahl6lKws=;
+	b=SgCTSDrSEdlTjcCXkXNyuidvWc3uKbKMcqEuOpRODTj4uw5BP0w75i426EV/ZUmk
+	a/UbiEilb2YdWKuRQtsSq38kNHUAMMqwoc+lZPTpasYwke3V1iJNwviNd0MMX+26eJE
+	YmKBp2FmxgkpC3VYR5kbhEESDRwQbBgIliUa1u3Q=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=7v7vs6w47njt4pimodk5mmttbegzsi6n; d=amazonses.com; t=1640241188;
+	h=Date:From:Message-Id:To:Subject:MIME-Version:Content-type:Feedback-ID;
+	bh=GXOEFgNPEi2tkOgSLunqSuIWIxEhWXQjyeTahl6lKws=;
+	b=azh8AbOscccR3mYm5oM8VbthGNyfjCZKIH+VxHwwuK2TMslQpIeVuETqSjOohtUN
+	i+OLGuhaVxiUHC6op5oTAU3o1NATc1oFBe0MAz4EHsw1bKx9FKssWKFPFMnnw7bAGcj
+	l46eGVpIeS35BKebZK0hhYUqPbcsTaEDxPsuN2hs=
+Date: Thu, 23 Dec 2021 06:33:08 +0000
+From: no-reply@geeksforgeeks.org
+Message-ID: <0101017de5fe4cc3-3578810d-732d-41bc-8eb1-f2ef5455e5e1-000000@us-west-2.amazonses.com>
+X-Authentication-Warning: ip-172-31-20-228.us-west-2.compute.internal: www-data set sender to no-reply@geeksforgeeks.org using -f
+To: lily.lawrence2019@gmail.com
+Subject: Welcome to GeeksforGeeks!
+X-PHP-Originating-Script: 0:functions.php
+MIME-Version: 1.0
+Content-type: text/html
+Feedback-ID: 1.us-west-2./TBjKWUgPnMTk3cvFInNvq1o9VXc945X17xQ0jWk78c=:AmazonSES
+X-SES-Outgoing: 2021.12.23-54.240.26.8
+
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+           
+       <head>
+          <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="format-detection" content="date=no">
+          <meta name="format-detection" content="address=no">
+          <meta name="format-detection" content="telephone=no">
+          <title>
+          </title>
+          <style type="text/css" media="screen">
+                         /* Linked Styles */
+                         body {
+                             padding:0 !important;
+                             margin:0 !important;
+                             display:block !important;
+                             background:#1e1e1e;
+                             -webkit-text-size-adjust:none }
+                         a {
+                             color:#a88123;
+                             text-decoration:none }
+                         p {
+                             padding:0 !important;
+                             margin:0 !important }
+                         /* Mobile styles */
+          </style>
+          <style media="only screen and (max-device-width: 480px), only screen and (max-width: 480px)" type="text/css">
+                         @media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
+                             div[class='mobile-br-5'] {
+                                 height: 5px !important;
+                             }
+                             div[class='mobile-br-10'] {
+                                 height: 10px !important;
+                             }
+                             div[class='mobile-br-15'] {
+                                 height: 15px !important;
+                             }
+                             div[class='mobile-br-20'] {
+                                 height: 20px !important;
+                             }
+                             div[class='mobile-br-25'] {
+                                 height: 25px !important;
+                             }
+                             div[class='mobile-br-30'] {
+                                 height: 30px !important;
+                             }
+                             th[class='m-td'], 
+                             td[class='m-td'], 
+                             div[class='hide-for-mobile'], 
+                             span[class='hide-for-mobile'] {
+                                 display: none !important;
+                                 width: 0 !important;
+                                 height: 0 !important;
+                                 font-size: 0 !important;
+                                 line-height: 0 !important;
+                                 min-height: 0 !important;
+                             }
+                             span[class='mobile-block'] {
+                                 display: block !important;
+                             }
+                             div[class='wgmail'] img {
+                                 min-width: 320px !important;
+                                 width: 320px !important;
+                             }
+                             div[class='img-m-center'] {
+                                 text-align: center !important;
+                             }
+                             div[class='fluid-img'] img,
+                             td[class='fluid-img'] img {
+                                 width: 100% !important;
+                                 max-width: 100% !important;
+                                 height: auto !important;
+                             }
+                             table[class='mobile-shell'] {
+                                 width: 100% !important;
+                                 min-width: 100% !important;
+                             }
+                             td[class='td'] {
+                                 width: 100% !important;
+                                 min-width: 100% !important;
+                             }
+                             table[class='center'] {
+                                 margin: 0 auto;
+                             }
+                             td[class='column-top'],
+                             th[class='column-top'],
+                             td[class='column'],
+                             th[class='column'] {
+                                 float: left !important;
+                                 width: 100% !important;
+                                 display: block !important;
+                             }
+                             td[class='content-spacing'] {
+                                 width: 15px !important;
+                             }
+                             div[class='h2'] {
+                                 font-size: 44px !important;
+                                 line-height: 48px !important;
+                             }
+                         }
+                             .button-td,
+                             .button-a {
+                                     transition: all 100ms ease-in;
+                                 
+                             }
+                             .button-td:hover,
+                             .button-a:hover {
+                                     background: #555555 !important;
+                                     border-color: #555555 !important;
+                             }
+          </style>
+       </head>
+       <body class="body" style="padding:0 !important; margin:0 !important; display:block !important; background:#ffffff; -webkit-text-size-adjust:none">
+          <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+             <tbody>
+                <tr>
+                   <td align="center" valign="top">
+                      <!-- Top --> <!-- END Top -->
+                      <table class="mobile-shell" border="0" width="600" cellspacing="0" cellpadding="0">
+                         <tbody>
+                            <tr>
+                               <td class="td" style="font-size: 0pt; line-height: 0pt; padding: 0; margin: 0; font-weight: normal; width: 600px; min-width: 600px;" width="600">
+                                  <!-- Main -->
+                                  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                     <tbody>
+                                        <tr>
+                                           <td>
+                                              <!-- Body -->
+                                              <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                                 <tbody>
+                                                    <tr>
+                                                       <td>
+                                                          <div class="fluid-img" style="font-size: 0pt; line-height: 0pt; text-align: left;"><a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210927135920/Image-1.jpg" alt="" width="600" height="" border="0"> </a></div>
+                                                          <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="35">&nbsp;</td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                          <div class="h3-1-center" style="color: #1e1e1e; font-family: 'Open Sans', Verdana, Arial, sans-serif; min-width: auto !important; font-size: 16px; line-height: 26px; text-align: center;">Hi lilylawrence2019<br>Thank you for registering. Your login details are as follows:<br>Username: <strong>lilylawrence2019</strong> <br>Email: <strong>lily.lawrence2019@gmail.com</strong><br><br>Explore the unlimited learning opportunities-</div>
+                                                          <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="35">&nbsp;</td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                          <div class="fluid-img" style="font-size: 0pt; line-height: 0pt; text-align: left;"><a href="https://practice.geeksforgeeks.org/courses" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210927145216/Image-2-5.png" alt="" width="600" height="" border="0"> </a></div>
+                                                          <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="35">&nbsp;</td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                          <div class="fluid-img" style="font-size: 0pt; line-height: 0pt; text-align: left;"><a href="https://write.geeksforgeeks.org/" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210927135917/Image-3-5.png" alt="" width="600" height="" border="0"> </a></div>
+                                                          <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="35">&nbsp;</td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                          <div class="fluid-img" style="font-size: 0pt; line-height: 0pt; text-align: left;"><a href="https://practice.geeksforgeeks.org/home/" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210927163027/Image-4-4.png" alt="" width="600" height="" border="0"> </a></div>
+                                                          <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="35">&nbsp;</td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                          <div class="fluid-img" style="font-size: 0pt; line-height: 0pt; text-align: left;"><a href="https://www.geeksforgeeks.org/school-learning/" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210927143722/Image-5-3.png" alt="" width="600" height="" border="0"> </a></div>
+                                                          <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td>
+                                                                      <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                         <tbody>
+                                                                            <tr>
+                                                                               <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="35">&nbsp;</td>
+                                                                            </tr>
+                                                                         </tbody>
+                                                                      </table>
+                                                                      <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                         <tbody>
+                                                                            <tr>
+                                                                               <td class="content-spacing" style="font-size: 0pt; line-height: 0pt; text-align: left;" width="20">&nbsp;</td>
+                                                                               <td>
+                                                                                  <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                                     <tbody>
+                                                                                        <tr>
+                                                                                           <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="25">
+                                                                                              &nbsp;
+                                                                                              <div class="h3-1-center" style="color: #1e1e1e; font-family: 'Open Sans', Verdana, Arial, sans-serif; min-width: auto !important; font-size: 16px; line-height: 26px; text-align: center;">We hope we can help you in achieving your career goals and that you level up your skills one coding problem a day! <br><br>If you have any queries, you can write to us at<strong> feedback@geeksforgeeks.org</strong><br><br><a href="https://auth.geeksforgeeks.org/user/lilylawrence2019" rel="noopener noreferrer" style="color: #5ce5a5;">See My Profile</a> | <a href="https://auth.geeksforgeeks.org/edit-profile.php" rel="noopener noreferrer" style="color: #5ce5a5;">Edit My Profile</a><br><br></div>
+                                                                                           </td>
+                                                                                        </tr>
+                                                                                     </tbody>
+                                                                                  </table>
+                                                                               </td>
+                                                                               <td class="content-spacing" style="font-size: 0pt; line-height: 0pt; text-align: left;" width="20">&nbsp;</td>
+                                                                            </tr>
+                                                                         </tbody>
+                                                                      </table>
+                                                                   </td>
+                                                                   <td class="content-spacing" style="font-size: 0pt; line-height: 0pt; text-align: left;" width="20">&nbsp;</td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                       </td>
+                                                    </tr>
+                                                 </tbody>
+                                              </table>
+                                              <!-- END Body --> <!-- Foot -->
+                                              <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                                 <tbody>
+                                                    <tr>
+                                                       <td>
+                                                          <div style="max-width: 600px; margin: auto;">
+                                                             <table style="max-width: 600px;" border="0" width="100%" cellspacing="0" cellpadding="0" align="center" bgcolor="#ffffff">
+                                                                <tbody>
+                                                                   <tr>
+                                                                      <td><a href="https://play.google.com/store/apps/details?id=free.programming.programming&amp;hl=en_IN&amp;gl=US"> <img style="width: 100%; max-width: 600px;" src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210526173230/Mobile-app-Promo-Mail-Header-5.png" alt="" width="600" height="" align="middle" border="0"> </a></td>
+                                                                   </tr>
+                                                                </tbody>
+                                                             </table>
+                                                          </div>
+                                                          <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                             <tbody>
+                                                                <tr>
+                                                                   <td class="img" style="font-size: 0pt; line-height: 0pt; text-align: left;" bgcolor="#ffffff" width="3">&nbsp;</td>
+                                                                   <td>
+                                                                      <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                         <tbody>
+                                                                            <tr>
+                                                                               <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="10">&nbsp;</td>
+                                                                            </tr>
+                                                                         </tbody>
+                                                                      </table>
+                                                                      <div class="h3-1-center" style="color: #000000; font-family: 'Open Sans', Verdana, Arial, sans-serif; min-width: auto !important; font-size: 17px; line-height: 26px; text-align: center;">&nbsp;</div>
+                                                                      <table class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                         <tbody>
+                                                                            <tr>
+                                                                               <td class="spacer" style="font-size: 0pt; line-height: 0pt; text-align: center; width: 100%; min-width: 100%;" height="10">&nbsp;</td>
+                                                                            </tr>
+                                                                         </tbody>
+                                                                      </table>
+                                                                      <!-- Socials -->
+                                                                      <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                         <tbody>
+                                                                            <tr>
+                                                                               <td align="center">
+                                                                                  <table border="0" cellspacing="0" cellpadding="0">
+                                                                                     <tbody>
+                                                                                        <tr>
+                                                                                           <td class="img-center" style="font-size: 0pt; line-height: 0pt; text-align: center;" width="38"><a href="https://www.facebook.com/geeksforgeeks.org" target="_blank" rel="noopener"> <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/facebook.png" alt="" width="28" height="28" border="0"> </a></td>
+                                                                                           <td class="img-center" style="font-size: 0pt; line-height: 0pt; text-align: center;" width="38"><a href="https://www.instagram.com/geeks_for_geeks/" target="_blank" rel="noopener"> <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/instagram.png" alt="" width="28" height="28" border="0"> </a></td>
+                                                                                           <td class="img-center" style="font-size: 0pt; line-height: 0pt; text-align: center;" width="38"><a href="https://www.youtube.com/c/GeeksforGeeksVideos/videos" target="_blank" rel="noopener"> <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/youtube.png" alt="" width="28" height="28" border=""> </a></td>
+                                                                                           <td class="img-center" style="font-size: 0pt; line-height: 0pt; text-align: center;" width="38"><a href="https://twitter.com/geeksforgeeks" target="_blank" rel="noopener"> <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/twitter.png" alt="" width="28" height="28" border="0" > </a></td>
+                                                                                           <td class="img-center" style="font-size: 0pt; line-height: 0pt; text-align: center;" width="38"><a href="https://in.pinterest.com/geeks_for_geeks/_created/" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20201028104523/pinterest-logo.png" alt="" width="28" height="28" border="0"> </a></td>
+                                                                                           <td class="img-center" style="font-size: 0pt; line-height: 0pt; text-align: center;" width="38"><a href="https://play.google.com/store/apps/details?id=free.programming.programming&amp;hl=en_IN&amp;gl=US" target="_blank" rel="noopener"> <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210526173228/Playstore.png" alt="" width="28" height="28" border="" > </a></td>
+                                                                                        </tr>
+                                                                                     </tbody>
+                                                                                  </table>
+                                                                               </td>
+                                                                            </tr>
+                                                                         </tbody>
+                                                                      </table>
+                                                                      <!-- END Socials -->
+                                                                   </td>
+                                                                </tr>
+                                                             </tbody>
+                                                          </table>
+                                                       </td>
+                                                    </tr>
+                                                 </tbody>
+                                              </table>
+                                              <!-- END Foot -->
+                                           </td>
+                                        </tr>
+                                     </tbody>
+                                  </table>
+                                  <!-- END Main --> <!-- Footer --> <!-- END Footer -->
+                               </td>
+                            </tr>
+                         </tbody>
+                      </table>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </body>
+    </html>

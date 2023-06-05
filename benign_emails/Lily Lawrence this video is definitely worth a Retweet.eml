@@ -1,0 +1,808 @@
+Delivered-To: lily.lawrence2019@gmail.com
+Received: by 2002:a17:907:3c16:0:0:0:0 with SMTP id gh22csp868810ejc;
+        Thu, 26 May 2022 22:30:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHkRY7lwcA0psC18XSbuHFHvJVkC7TSjJBwtiOCnW5plWwi8Tiu3ert9ay0m2ElBnsnn/U
+X-Received: by 2002:a25:c3c1:0:b0:64f:6f81:ca5a with SMTP id t184-20020a25c3c1000000b0064f6f81ca5amr17615471ybf.473.1653629432120;
+        Thu, 26 May 2022 22:30:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653629432; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fQVoefNjgkXLkGh3tn84rGlNIgV9knbwCFKi0xtSr1tvSJZ+y8pROY45mgmN7/Okhe
+         Y7Qz9Pfy6i/ovClklAMFgoQj6kXklRVijHWDqzCwRjDZoQg/L8dRKJqifRtQz6O/6KVr
+         qPGhobF7YvPkziyWGQ33xSCQWv5ZFLDy14rnM8bGhVxXeRbSf0aN9uOo28kK1tptoiGd
+         RA0AUzq5oqITIsxwMvyCejn5E/95gg90DEIoNOEmcCNJ8++cL/iMHk47oyDqa/PFE2le
+         bUwJxdCB4kDf+ppup88eElBAOx3tm0V5t2g80/qIFEvhx6zZJScUQzsMbuq0UlxU7sGO
+         lQjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:precedence:list-unsubscribe:mime-version
+         :subject:to:from:date:dkim-signature;
+        bh=tZmemrQ09TcPA3XbnpuLCS+V4rj6m1vLaVBBCR3V5Lo=;
+        b=ndkqaskYu5xxsBtN5mkVibcx+L+ZcRfnlidqV+MJbrrZyR9meBSCOJIiGAZ1waWah5
+         mckTAcWsEFuYjswHqb4mJIuYsBi2X+DPYwd8ztGfcBM2irRD6PhaozyK47utM5ETk+Bo
+         37jeJDJRwp1+LYPDhd/FAWKlXjNr/RPbsOdm5IPHY5Y1qOGonFUehELvURoZguRIIRBV
+         bcBZtQyfxozrMeTNrT2gNtryEEJDouti9EaWang9QEDxju4ST7hbepdfSUHZ9A6REqbq
+         Tz6MlkpV7rc0lWRIV+CgYp1m+jX2OUOW3b7sc6gW+JSE5SZGmmZjVk9bBLrOOaryJyRa
+         8VaA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@twitter.com header.s=dkim-201406 header.b=qMVLH8Dj;
+       spf=pass (google.com: domain of n0139f83709-170d5988d90b4598-lily.lawrence2019===gmail.com@bounce.twitter.com designates 199.16.156.176 as permitted sender) smtp.mailfrom="n0139f83709-170d5988d90b4598-lily.lawrence2019===gmail.com@bounce.twitter.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=twitter.com
+Return-Path: <n0139f83709-170d5988d90b4598-lily.lawrence2019===gmail.com@bounce.twitter.com>
+Received: from spring-chicken-bk.twitter.com (spring-chicken-bk.twitter.com. [199.16.156.176])
+        by mx.google.com with ESMTPS id 202-20020a8106d3000000b002ffb0232c53si1015177ywg.475.2022.05.26.22.30.31
+        for <lily.lawrence2019@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 May 2022 22:30:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of n0139f83709-170d5988d90b4598-lily.lawrence2019===gmail.com@bounce.twitter.com designates 199.16.156.176 as permitted sender) client-ip=199.16.156.176;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@twitter.com header.s=dkim-201406 header.b=qMVLH8Dj;
+       spf=pass (google.com: domain of n0139f83709-170d5988d90b4598-lily.lawrence2019===gmail.com@bounce.twitter.com designates 199.16.156.176 as permitted sender) smtp.mailfrom="n0139f83709-170d5988d90b4598-lily.lawrence2019===gmail.com@bounce.twitter.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=twitter.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=twitter.com;
+	s=dkim-201406; t=1653629431;
+	bh=tZmemrQ09TcPA3XbnpuLCS+V4rj6m1vLaVBBCR3V5Lo=;
+	h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:
+	 Message-ID;
+	b=qMVLH8DjPiJeGf9moaX/QcK5K5J1g9xxTuhWzBbQMBXQ4tyylHiFaQtRXWwEEnqF4
+	 dpG8nNGYcKbWWhtfKcAfnAMMKu1Gwu8Z9L5/HFJftQl43/1cFYBrgmYfXW7Qieuknm
+	 1eAhoqx05XzGoYOo37hluuJI/Hon3PYxhoFuEzIolYMyX/VKC3ZJaLawRuAQMXFnm8
+	 uL4RPjH+os2b2asNvpf/44HmaEwnwf17S2/gH03gq2Ve5vVuhPzVqm1SDsLYkn1yOs
+	 iQ4QDRbjZtZZlyEGel89B0lrqfm/piMUfMugwBzQCgOxH8mJpbmWpHiaxw8nY7RHND
+	 TqvbeaQ+G8OJA==
+X-MSFBL: /5ccp3R5q3CZ966G1zMhhA4drVUF2D8ad3iElv0kTwA=|eyJ1IjoibGlseS5sYXd
+	yZW5jZTIwMTlAZ21haWwuY29tQGlpZCMjMTcwZDU5ODhkOTBiNDU5ODgyZWU2MDF
+	jYjgyZTkyZGRAdXNiIyMyQDI5NkAxNTA1NTA2MjQ5MjExMDAyODgxQDBAOTE1MDd
+	iMDZiOWVhMjQxOTdiZjU0MTFjZTczZjNiYWU4NDA2ZTc1YiIsImciOiJCdWxrIiw
+	iYiI6ImF0bGEtYnNqLTM0LXNyMS1CdWxrLjE5NiIsInIiOiJsaWx5Lmxhd3JlbmN
+	lMjAxOUBnbWFpbC5jb20ifQ==
+Date: Fri, 27 May 2022 05:30:31 +0000
+From: Twitter <info@twitter.com>
+To: Lily Lawrence <lily.lawrence2019@gmail.com>
+Subject: Lily Lawrence this video is definitely worth a Retweet
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_91089100_1159486294.1653629431555"
+List-Unsubscribe: <https://twitter.com/i/u?t=1&listunsub=t&cn=Y21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&sig=f65877c5a6bdd002e578a74a9df1ae1fd2779bf6&iid=170d5988d90b459882ee601cb82e92dd&uid=1505506249211002881&nid=244+26&usbid=2>
+Precedence: Bulk
+X-Twitter-CID: ibis2-cm_20220521_reactivation_retweet31_en
+Message-ID: <E8.88.04015.7F160926@twitter.com>
+Feedback-ID: atla.0c757e79b0e1e1e46a12181b1b2fcb64:Twitter
+
+------=_Part_91089100_1159486294.1653629431555
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Get steps on how to share with your following
+
+
+Reply
+> https://twitter.com/i/events/1525135652647538690?ref_src=twsrc%5E__Marketing_ReferralParams__%7Ctwcamp%5E__Null__Null__actioneducationretweet31__Null__%7Ctwgr%5E__Null__Null__twitterlogo__%7Ctwcon%5E__Null__email__%7Ctwterm%5E__Null__Null__Null
+
+Retweet
+> https://twitter.com/i/events/1525135652647538690?ref_src=twsrc%5E__Marketing_ReferralParams__%7Ctwcamp%5E__Null__Null__actioneducationretweet31__Null__%7Ctwgr%5E__Null__Null__twitterlogo__%7Ctwcon%5E__Null__email__%7Ctwterm%5E__Null__Null__Null
+
+Like
+> https://twitter.com/i/events/1525135652647538690?ref_src=twsrc%5E__Marketing_ReferralParams__%7Ctwcamp%5E__Null__Null__actioneducationretweet31__Null__%7Ctwgr%5E__Null__Null__twitterlogo__%7Ctwcon%5E__Null__email__%7Ctwterm%5E__Null__Null__Null
+
+DM
+> https://twitter.com/i/events/1525135652647538690?ref_src=twsrc%5E__Marketing_ReferralParams__%7Ctwcamp%5E__Null__Null__actioneducationretweet31__Null__%7Ctwgr%5E__Null__Null__twitterlogo__%7Ctwcon%5E__Null__email__%7Ctwterm%5E__Null__Null__Null
+
+
+Retweet and share
+
+
+Send a Retweet
+>  https://twitter.com/i/events/1525135652647538690?ref_src=twsrc%5E__Marketing_ReferralParams__%7Ctwcamp%5E__Null__Null__actioneducationretweet31__Null__%7Ctwgr%5E__Null__Null__twitterlogo__%7Ctwcon%5E__Null__email__%7Ctwterm%5E__Null__Null__Null
+
+
+ 
+Retweet lets your followers in on the action.
+Anytime you see a Tweet that you want to share, all you have to do is tap that Retweet icon, and your followers will see it.
+
+
+ =
+ 
+ 
+ 
+Help
+> https://support.twitter.com/
+
+Privacy
+> https://twitter.com/privacy
+
+Reset Password
+> https://twitter.com/account/begin_password_reset?account_identifier=LilyLaw63230078
+
+Download App
+> https://twitter.com/download
+
+We sent this to @LilyLaw63230078. Unsubscribe
+> https://twitter.com/i/u?t=1&amp;cn=Y21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;sig=e94b5da7962c976ada5dd174be750b2146cdbab0&amp;iid=170d5988d90b459882ee601cb82e92dd&amp;uid=1505506249211002881&amp;nid=244+26&amp;usbid=2
+
+Twitter, Inc. 1355 Market Street, Suite 900 San Francisco, CA 94103
+
+------=_Part_91089100_1159486294.1653629431555
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/
+html; charset=3Dutf-8" />
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, minimum-scale=3D1.=
+0, maximum-scale=3D1.0, user-scalable=3D0" />
+<meta name=3D"apple-mobile-web-app-capable" content=3D"yes" />
+<!--[if gte mso 9]><xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml><![endif]-->
+<style type=3D"text/css">
+/* Windows 10 Mail Fix */
+a { text-decoration: none; }
+/* a:visited { color: #8899A6; text-decoration:none; } */
+.addressLink a { color: #8899A6 !important; text-decoration: none !importan=
+t; }
+/* Windows 10 Mail Fix End */
+@media only screen and (max-width: 500px) {
+.width_full {
+width: 100% !important;
+}
+.width_20 {
+width: 20px !important;
+min-width: 20px !important;
+}
+.width_24 {
+width: 24px !important;
+}
+#hide {
+display: none !important;
+}
+.hide {
+display: none !important;
+}
+.show {
+overflow: visible !important;
+float: none !important;
+display: table !important;
+line-height: 100% !important;
+width: 100% !important;
+}
+.h1 {
+font-size: 24px;
+line-height: 30px;
+}
+.h2 {
+font-size: 20px;
+line-height: 25px;
+}
+.mobile-bg{
+background-image: url(https://ea.twimg.com/self_serve/media/bg_mobile-16389=
+19233378.png) !important;
+background-repeat: repeat-y;
+background-size: contain !important;
+}
+#hero {
+background-image: url(https://ea.twimg.com/self_serve/media/top_video_retwe=
+et_31-1653071236410.jpg) !important;
+background-size: cover !important;
+height: 180px !important;
+}
+.width_full {
+width: 100% !important;
+min-width: 340px !important;
+}
+.width_zero {
+width: 0px !important;
+}
+.height_zero {
+height: 0px !important;
+}
+.height_12 {
+height: 12px !important;
+}
+.height_30 {
+height: 30px !important;
+}
+.height_40 {
+height: 40px !important;
+}
+.height_50 {
+height: 50px !important;
+}
+.width_20 {
+width: 20px !important;
+min-width: 20px !important;
+}
+.module_height {
+height: auto !important;
+}
+.m_center {
+text-align: center !important;
+}
+.m_pad {
+padding: 0px 20px !important;
+}
+.m_pad_footer {
+padding-left: 30px !important;
+padding-right: 30px !important;
+}
+.headline {
+font-size: 36px !important;
+line-height: 36px !important;
+}
+.subheadline {
+font-size: 24px !important;
+line-height: 28px !important;
+}
+.bg_white {
+background-color: #ffffff !important;
+}
+.bg_grey {
+background-color: #f5f8fa !important;
+}
+}
+</style>
+<style type=3D"text/css">
+u + #new-gmail-hack {
+display: block !important;
+}
+</style>
+<style type=3D"text/css">
+@media only screen and (max-width: 500px) {
+@supports (-webkit-overflow-scrolling:touch) and (color:#ffff) {
+.show {
+display: none !important;
+}
+.show_ios {
+overflow: visible !important;
+float: none !important;
+display: table !important;
+line-height:100% !important;
+width: 100% !important;
+}
+}
+}
+</style>
+</head>
+<body style=3D"margin:0px auto;padding:0px;-webkit-text-size-adjust:100%;-m=
+s-text-size-adjust:100%;">
+<img width=3D"1" height=3D"1" src=3D"https://twitter.com/scribe/ibis?t=3D1&=
+amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;iid=
+=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=
+=3D296+20" style=3D"margin:0px;padding:0px;display:inline-block;-ms-interpo=
+lation-mode:bicubic;border:none;outline:none;" />
+<style>
+.ios_blue a {
+color: #1DA1F2 !important;
+text-decoration: none;
+}
+</style>
+<!--[if (gte mso 9)|(IE)]>
+<style inline=3D"false">
+.ie_hide {
+display: none !important;
+}
+</style>
+<![endif]-->
+<div class=3D"preheader" style=3D"display:none;font-size:1px;color:#333333;=
+line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+Get steps on how to share with your following
+</div>
+<!-- Insert &zwnj;&nbsp; hack after hidden preview text -->
+<div class=3D"preheader" style=3D"display:none;font-size:1px;color:#333333;=
+line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;
+</div>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" bgco=
+lor=3D"#ffffff" class=3D"wrapper" style=3D"padding:0px;line-height:1px;font=
+-size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" width=3D"100%" align=3D"center" style=3D"padding:0px;ma=
+rgin:0px auto;font-size:0px;line-height:1px;padding:0px;">
+<!-- BODY START -->
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" bg=
+color=3D"#f5f8fa" width=3D"100%" class=3D"width_full" dir=3D"ltr" style=3D"=
+padding:0px;line-height:1px;font-size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" bg=
+color=3D"#ffffff" width=3D"640" class=3D"width_full" style=3D"padding:0px;l=
+ine-height:1px;font-size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"image empty" style=3D"padding:0px;margin:0px auto;font-size:0p=
+x;line-height:1px;padding:0px;font-size:0px;line-height:100%;padding:0px;ms=
+o-line-height-rule:exactly;"> <a href=3D"https://twitter.com/i/redirect?url=
+=3Dhttps%3A%2F%2Ftwitter.com%3Fref_src%3Dtwsrc%255E__Marketing_ReferralPara=
+ms__%257Ctwcamp%255E__Null__Null__actioneducationretweet31__Null__%257Ctwgr=
+%255E__Null__Null__twitterlogo__%257Ctwcon%255E__Null__email__%257Ctwterm%2=
+55E__Null__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3=
+JldHdlZXQzMV9lbg%3D%3D&amp;sig=3Dede61700f543b333887bab93d4c57ab445568551&a=
+mp;iid=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp=
+;nid=3D296+1" border=3D"0" style=3D"text-decoration:none;border-style:none;=
+border:0px;padding:0px;margin:0px;color:#1DA1F2;text-decoration:none;"> <im=
+g src=3D"https://ea.twimg.com/self_serve/media/header_640-1641255227193.jpg=
+" width=3D"640" class=3D"width_full" style=3D"margin:0px;padding:0px;displa=
+y:inline-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" />=
+ </a> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"image empty" id=3D"hero" background=3D"https://ea.twimg.com/se=
+lf_serve/media/top_video_retweet_31-1653071236410.jpg" height=3D"325" style=
+=3D"padding:0px;margin:0px auto;font-size:0px;line-height:1px;padding:0px;f=
+ont-size:0px;line-height:100%;padding:0px;mso-line-height-rule:exactly;back=
+ground-image:url(https://ea.twimg.com/self_serve/media/top_video_retweet_31=
+-1653071238116.gif) !important;background-size:cover !important;"> <a href=
+=3D"https://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwitter.com%2Fi%2Fev=
+ents%2F1525135652647538690%3Fref_src%3Dtwsrc%255E__Marketing_ReferralParams=
+__%257Ctwcamp%255E__Null__Null__actioneducationretweet31__Null__%257Ctwgr%2=
+55E__Null__Null__twitterlogo__%257Ctwcon%255E__Null__email__%257Ctwterm%255=
+E__Null__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3Jl=
+dHdlZXQzMV9lbg%3D%3D&amp;sig=3D8392adaddf418716ebd46ebcdcfa50da7ca134ad&amp=
+;iid=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;n=
+id=3D296+2" border=3D"0" style=3D"text-decoration:none;border-style:none;bo=
+rder:0px;padding:0px;margin:0px;color:#1DA1F2;text-decoration:none;">
+<!--[if !gte mso 9]><!----> <img src=3D"https://ea.twimg.com/email/self_ser=
+ve/media/play-1537479962601.png" width=3D"640" class=3D"width_full ie_hide"=
+ style=3D"margin:0px;padding:0px;display:inline-block;-ms-interpolation-mod=
+e:bicubic;border:none;outline:none;" />
+<!--<![endif]-->
+<!--[if (gte mso 9)|(IE)]>
+<img src=3D"https://ea.twimg.com/self_serve/media/top_video_retweet_31-1653=
+071236410.jpg" width=3D"640" class=3D"width_full" border=3D"0" />
+<![endif]--> </a> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"image empty" style=3D"padding:0px;margin:0px auto;font-size:0p=
+x;line-height:1px;padding:0px;font-size:0px;line-height:100%;padding:0px;ms=
+o-line-height-rule:exactly;"> <img src=3D"https://ea.twimg.com/self_serve/m=
+edia/header2_640-1641255311310.jpg" width=3D"640" class=3D"width_full" styl=
+e=3D"margin:0px;padding:0px;display:inline-block;-ms-interpolation-mode:bic=
+ubic;border:none;outline:none;" /> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" di=
+r=3D"ltr" width=3D"640" class=3D"width_full" style=3D"padding:0px;line-heig=
+ht:1px;font-size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty image " width=3D"25%" align=3D"center" style=3D"padding:=
+0px;margin:0px auto;font-size:0px;line-height:1px;padding:0px;font-size:0px=
+;line-height:100%;padding:0px;mso-line-height-rule:exactly;"> <a href=3D"ht=
+tps://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwitter.com%2Fi%2Fevents%2=
+F1525135652647538690%3Fref_src%3Dtwsrc%255E__Marketing_ReferralParams__%257=
+Ctwcamp%255E__Null__Null__actioneducationretweet31__Null__%257Ctwgr%255E__N=
+ull__Null__twitterlogo__%257Ctwcon%255E__Null__email__%257Ctwterm%255E__Nul=
+l__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZX=
+QzMV9lbg%3D%3D&amp;sig=3D1d46427d9744ec666cd28153d5f21ad4d8487221&amp;iid=
+=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=
+=3D296+3" style=3D"text-decoration:none;border-style:none;border:0px;paddin=
+g:0px;margin:0px;color:#1DA1F2;text-decoration:none;"> <img src=3D"https://=
+ea.twimg.com/self_serve/media/reply_off-1648076495330.png" width=3D"40%" al=
+t=3D"Reply" title=3D"Reply" style=3D"margin:0px;padding:0px;display:inline-=
+block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </a> </t=
+d>
+<td class=3D"empty image " width=3D"25%" align=3D"center" style=3D"padding:=
+0px;margin:0px auto;font-size:0px;line-height:1px;padding:0px;font-size:0px=
+;line-height:100%;padding:0px;mso-line-height-rule:exactly;"> <a href=3D"ht=
+tps://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwitter.com%2Fi%2Fevents%2=
+F1525135652647538690%3Fref_src%3Dtwsrc%255E__Marketing_ReferralParams__%257=
+Ctwcamp%255E__Null__Null__actioneducationretweet31__Null__%257Ctwgr%255E__N=
+ull__Null__twitterlogo__%257Ctwcon%255E__Null__email__%257Ctwterm%255E__Nul=
+l__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZX=
+QzMV9lbg%3D%3D&amp;sig=3Dc2222159d7a273298bf2f89d53b9ccbda643451d&amp;iid=
+=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=
+=3D296+4" style=3D"text-decoration:none;border-style:none;border:0px;paddin=
+g:0px;margin:0px;color:#1DA1F2;text-decoration:none;"> <img src=3D"https://=
+ea.twimg.com/self_serve/media/retweet_final-1650062003044.png" width=3D"40%=
+" alt=3D"Retweet" title=3D"Retweet" style=3D"margin:0px;padding:0px;display=
+:inline-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> =
+</a> </td>
+<td class=3D"empty image " width=3D"25%" align=3D"center" style=3D"padding:=
+0px;margin:0px auto;font-size:0px;line-height:1px;padding:0px;font-size:0px=
+;line-height:100%;padding:0px;mso-line-height-rule:exactly;"> <a href=3D"ht=
+tps://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwitter.com%2Fi%2Fevents%2=
+F1525135652647538690%3Fref_src%3Dtwsrc%255E__Marketing_ReferralParams__%257=
+Ctwcamp%255E__Null__Null__actioneducationretweet31__Null__%257Ctwgr%255E__N=
+ull__Null__twitterlogo__%257Ctwcon%255E__Null__email__%257Ctwterm%255E__Nul=
+l__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZX=
+QzMV9lbg%3D%3D&amp;sig=3D43377cc7c4c38a97a72e08d0aaf2b66ba80b30d6&amp;iid=
+=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=
+=3D296+5" style=3D"text-decoration:none;border-style:none;border:0px;paddin=
+g:0px;margin:0px;color:#1DA1F2;text-decoration:none;"> <img src=3D"https://=
+ea.twimg.com/self_serve/media/like_off-1648065549366.png" width=3D"40%" alt=
+=3D"Like" title=3D"Like" style=3D"margin:0px;padding:0px;display:inline-blo=
+ck;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </a> </td>
+<td class=3D"empty image " width=3D"25%" align=3D"center" style=3D"padding:=
+0px;margin:0px auto;font-size:0px;line-height:1px;padding:0px;font-size:0px=
+;line-height:100%;padding:0px;mso-line-height-rule:exactly;"> <a href=3D"ht=
+tps://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwitter.com%2Fi%2Fevents%2=
+F1525135652647538690%3Fref_src%3Dtwsrc%255E__Marketing_ReferralParams__%257=
+Ctwcamp%255E__Null__Null__actioneducationretweet31__Null__%257Ctwgr%255E__N=
+ull__Null__twitterlogo__%257Ctwcon%255E__Null__email__%257Ctwterm%255E__Nul=
+l__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZX=
+QzMV9lbg%3D%3D&amp;sig=3D84f1fdd2918d6b9baf3cccf8b3d46821c1128238&amp;iid=
+=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=
+=3D296+6" style=3D"text-decoration:none;border-style:none;border:0px;paddin=
+g:0px;margin:0px;color:#1DA1F2;text-decoration:none;"> <img src=3D"https://=
+ea.twimg.com/self_serve/media/dm_off-1648065546741.png" width=3D"40%" alt=
+=3D"DM" title=3D"DM" style=3D"margin:0px;padding:0px;display:inline-block;-=
+ms-interpolation-mode:bicubic;border:none;outline:none;" /> </a> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty width_20" width=3D"40" style=3D"padding:0px;margin:0px a=
+uto;font-size:0px;line-height:1px;padding:0px;">&nbsp;</td>
+<td class=3D"width_full" width=3D" " style=3D"padding:0px;margin:0px auto;"=
+>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"560" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" height=3D"24" colspan=3D"2" style=3D"padding:0px;margin=
+:0px auto;font-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+<tr>
+<td width=3D"100%" class=3D"h1 text_black" align=3D"left" dir=3D"ltr" style=
+=3D"padding:0px;margin:0px auto;color:#14171A;font-family:'Helvetica Neue',=
+ Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;-webkit-te=
+xt-size-adjust:none;font-size:32px;padding:0px;margin:0px;font-weight:bold;=
+line-height:36px;color:#292F33 !important;"> Retweet and share </td>
+</tr>
+<tr>
+<td class=3D"empty" height=3D"13" colspan=3D"2" style=3D"padding:0px;margin=
+:0px auto;font-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+<tr>
+<td class=3D"empty" colspan=3D"2" align=3D"left" style=3D"padding:0px;margi=
+n:0px auto;font-size:0px;line-height:1px;padding:0px;">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left" styl=
+e=3D"padding:0px;line-height:1px;font-size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"button center" bgcolor=3D"#000000" dir=3D"ltr=
+" style=3D"padding:0px;margin:0px auto;text-align:center;margin:auto;-webki=
+t-border-radius:50px;-moz-border-radius:50px;border-radius:50px;line-height=
+:18px;"> <a href=3D"https://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwit=
+ter.com%2Fi%2Fevents%2F1525135652647538690%3Fref_src%3Dtwsrc%255E__Marketin=
+g_ReferralParams__%257Ctwcamp%255E__Null__Null__actioneducationretweet31__N=
+ull__%257Ctwgr%255E__Null__Null__twitterlogo__%257Ctwcon%255E__Null__email_=
+_%257Ctwterm%255E__Null__Null__Null&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVh=
+Y3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;sig=3De5055ded332900b7586d02f8f045=
+212b92907c18&amp;iid=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D150550624=
+9211002881&amp;nid=3D296+7" target=3D"_blank" class=3D"button" style=3D"tex=
+t-decoration:none;border-style:none;border:0px;padding:0px;margin:0px;color=
+:#1DA1F2;text-decoration:none;font-size:16px;font-family:'HelveticaNeue', '=
+Helvetica Neue', Helvetica, Arial, sans-serif;color:#ffffff;text-decoration=
+:none;-webkit-border-radius:50px;-moz-border-radius:50px;border-radius:50px=
+;padding:11px 20px;border:1px solid #000000;display:inline-block;font-weigh=
+t:bold;-webkit-font-smoothing:antialiased;">
+<!--[if gte mso 11]>&nbsp; &nbsp; &nbsp;<![endif]--> Send a Retweet
+<!--[if gte mso 11]>&nbsp; &nbsp; &nbsp;<![endif]--> </a> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+<tr>
+<td class=3D"empty" height=3D"24" colspan=3D"2" style=3D"padding:0px;margin=
+:0px auto;font-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+<tr>
+<td class=3D"body text_black" align=3D"left" dir=3D"ltr" style=3D"padding:0=
+px;margin:0px auto;color:#14171A;font-family:'Helvetica Neue Light', Helvet=
+ica, Arial, sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size=
+-adjust:none;font-size:16px;padding:0px;margin:0px;font-weight:normal;line-=
+height:20px;font-family:'Helvetica Neue Light', Helvetica, Arial, sans-seri=
+f;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;font-siz=
+e:16px;padding:0px;margin:0px;font-weight:normal;line-height:20px;color:#29=
+2F33 !important;"> Retweet lets your followers in on the action. Anytime yo=
+u see a Tweet that you want to share, all you have to do is tap that Retwee=
+t icon, and your followers will see it. </td>
+</tr>
+<tr>
+<td class=3D"empty" height=3D"40" colspan=3D"2" style=3D"padding:0px;margin=
+:0px auto;font-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+</tbody>
+</table> </td>
+<td class=3D"empty width_20" width=3D"40" style=3D"padding:0px;margin:0px a=
+uto;font-size:0px;line-height:1px;padding:0px;">&nbsp;</td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" wi=
+dth=3D"640" class=3D"width_full" style=3D"padding:0px;line-height:1px;font-=
+size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty width_20" width=3D"34" style=3D"padding:0px;margin:0px a=
+uto;font-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+<td class=3D"empty" style=3D"padding:0px;margin:0px auto;font-size:0px;line=
+-height:1px;padding:0px;">
+<table align=3D"center" dir=3D"ltr" style=3D"padding:0px;line-height:1px;fo=
+nt-size:1px;margin:0px auto;">
+<tbody>
+<tr>
+<td class=3D"empty" height=3D"48" style=3D"padding:0px;margin:0px auto;font=
+-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+<tr>
+<td class=3D"footer strong deep_grey center" align=3D"center" dir=3D"ltr" s=
+tyle=3D"padding:0px;margin:0px auto;color:#657786;font-family:'Helvetica Ne=
+ue Light', Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;=
+-webkit-text-size-adjust:none;font-size:12px;padding:0px;margin:0px;font-we=
+ight:normal;line-height:16px;font-weight:bold;text-align:center;margin:auto=
+;"> <a href=3D"https://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Fsupport.t=
+witter.com%2F&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZX=
+QzMV9lbg%3D%3D&amp;sig=3D94f9ddf3b2b644c3789f20222b040bb2eae4abd9&amp;iid=
+=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=
+=3D296+8" class=3D"footer_grey" style=3D"text-decoration:none;border-style:=
+none;border:0px;padding:0px;margin:0px;color:#1DA1F2;text-decoration:none;c=
+olor:#8899a6;"> Help </a> &nbsp;|&nbsp; <a href=3D"https://twitter.com/i/re=
+direct?url=3Dhttps%3A%2F%2Ftwitter.com%2Fprivacy&amp;t=3D1&amp;cn=3DY21fMjA=
+yMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;sig=3Dff9279eadde5ea1=
+4916fb278c11496b2fa900e30&amp;iid=3D170d5988d90b459882ee601cb82e92dd&amp;ui=
+d=3D1505506249211002881&amp;nid=3D296+9" class=3D"footer_grey" style=3D"tex=
+t-decoration:none;border-style:none;border:0px;padding:0px;margin:0px;color=
+:#1DA1F2;text-decoration:none;color:#8899a6;"> Privacy </a> &nbsp;|&nbsp; <=
+a href=3D"https://twitter.com/i/redirect?url=3Dhttps%3A%2F%2Ftwitter.com%2F=
+account%2Fbegin_password_reset%3Faccount_identifier%3DLilyLaw63230078&amp;t=
+=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;=
+sig=3D5861243d19e0e10ebce24d04e9112ed5d35e165e&amp;iid=3D170d5988d90b459882=
+ee601cb82e92dd&amp;uid=3D1505506249211002881&amp;nid=3D296+10" class=3D"foo=
+ter_grey" style=3D"text-decoration:none;border-style:none;border:0px;paddin=
+g:0px;margin:0px;color:#1DA1F2;text-decoration:none;color:#8899a6;"> Reset =
+Password </a> &nbsp;|&nbsp; <a href=3D"https://twitter.com/i/redirect?url=
+=3Dhttps%3A%2F%2Ftwitter.com%2Fdownload&amp;t=3D1&amp;cn=3DY21fMjAyMjA1MjFf=
+cmVhY3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;sig=3Db64748df5378bbcb7675db01=
+9ea3503d0c3fb400&amp;iid=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D15055=
+06249211002881&amp;nid=3D296+11" class=3D"footer_grey nowrap" style=3D"text=
+-decoration:none;border-style:none;border:0px;padding:0px;margin:0px;white-=
+space:nowrap;color:#1DA1F2;text-decoration:none;color:#8899a6;"> Download A=
+pp </a> </td>
+</tr>
+<tr>
+<td class=3D"empty" height=3D"12" style=3D"padding:0px;margin:0px auto;font=
+-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+<tr>
+<td class=3D"footer footer_grey center" align=3D"center" style=3D"padding:0=
+px;margin:0px auto;font-family:'Helvetica Neue Light', Helvetica, Arial, sa=
+ns-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;f=
+ont-size:12px;padding:0px;margin:0px;font-weight:normal;line-height:16px;te=
+xt-align:center;margin:auto;color:#8899a6;"> We sent this to @LilyLaw632300=
+78. <a href=3D"https://twitter.com/i/u?t=3D1&amp;cn=3DY21fMjAyMjA1MjFfcmVhY=
+3RpdmF0aW9uX3JldHdlZXQzMV9lbg%3D%3D&amp;sig=3De94b5da7962c976ada5dd174be750=
+b2146cdbab0&amp;iid=3D170d5988d90b459882ee601cb82e92dd&amp;uid=3D1505506249=
+211002881&amp;nid=3D244+26&amp;usbid=3D2" class=3D"link_deep_grey" style=3D=
+"text-decoration:none;border-style:none;border:0px;padding:0px;margin:0px;c=
+olor:#1DA1F2;text-decoration:none;color:#8899a6;text-decoration:underline;"=
+><u>Unsubscribe</u></a> </td>
+</tr>
+<tr>
+<td class=3D"empty" height=3D"12" style=3D"padding:0px;margin:0px auto;font=
+-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+<tr>
+<td class=3D"footer footer_grey center" align=3D"center" style=3D"padding:0=
+px;margin:0px auto;font-family:'Helvetica Neue Light', Helvetica, Arial, sa=
+ns-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;f=
+ont-size:12px;padding:0px;margin:0px;font-weight:normal;line-height:16px;te=
+xt-align:center;margin:auto;color:#8899a6;"> <span class=3D"addressLink"><a=
+ href=3D"http://twitter.com" style=3D"color: #8899a6 !important; text-decor=
+ation: none !important;text-decoration:none;border-style:none;border:0;padd=
+ing:0;margin:0;text-decoration:none;border-style:none;border:0px;padding:0p=
+x;margin:0px;color:#1DA1F2;text-decoration:none;"><span style=3D"color: #88=
+99a6 !important; text-decoration: none !important;">Twitter, Inc. 1355 Mark=
+et Street, Suite 900 San&nbsp;Francisco,&nbsp;CA&nbsp;94103</span></a> </sp=
+an> </td>
+</tr>
+<tr>
+<td class=3D"empty" height=3D"50" style=3D"padding:0px;margin:0px auto;font=
+-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+</tbody>
+</table> </td>
+<td class=3D"empty width_20" width=3D"34" style=3D"padding:0px;margin:0px a=
+uto;font-size:0px;line-height:1px;padding:0px;"> &nbsp; </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table>
+<!-- BODY END --> </td>
+</tr>
+<tr>
+<td class=3D"fix_gmail_ios" id=3D"hide" align=3D"center" style=3D"padding:0=
+px;margin:0px auto;color:#ffffff;font-family:Arial, sans-serif;font-size:14=
+px;"> =E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=
+=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=
+=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=80=94=E2=
+=80=94=E2=80=94=E2=80=94=E2=80=94 </td>
+</tr>
+<tr>
+<td class=3D"fix_gmail_android" id=3D"hide" align=3D"center" style=3D"paddi=
+ng:0px;margin:0px auto;">
+<table align=3D"center" style=3D"padding:0px;line-height:1px;font-size:1px;=
+margin:0px auto;">
+<tbody>
+<tr>
+<td width=3D"135" height=3D"1" style=3D"padding:0px;margin:0px auto;"> <img=
+ src=3D"https://ea.twimg.com/email/self_serve/media/spacer-1476918453497.pn=
+g" height=3D"1" width=3D"130" style=3D"margin:0px;padding:0px;display:inlin=
+e-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </td>
+<td width=3D"135" height=3D"1" style=3D"padding:0px;margin:0px auto;"> <img=
+ src=3D"https://ea.twimg.com/email/self_serve/media/spacer-1476918453497.pn=
+g" height=3D"1" width=3D"130" style=3D"margin:0px;padding:0px;display:inlin=
+e-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </td>
+<td width=3D"135" height=3D"1" style=3D"padding:0px;margin:0px auto;"> <img=
+ src=3D"https://ea.twimg.com/email/self_serve/media/spacer-1476918453497.pn=
+g" height=3D"1" width=3D"130" style=3D"margin:0px;padding:0px;display:inlin=
+e-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </td>
+<td width=3D"135" height=3D"1" style=3D"padding:0px;margin:0px auto;"> <img=
+ src=3D"https://ea.twimg.com/email/self_serve/media/spacer-1476918453497.pn=
+g" height=3D"1" width=3D"130" style=3D"margin:0px;padding:0px;display:inlin=
+e-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </td>
+<td width=3D"135" height=3D"1" style=3D"padding:0px;margin:0px auto;"> <img=
+ src=3D"https://ea.twimg.com/email/self_serve/media/spacer-1476918453497.pn=
+g" height=3D"1" width=3D"130" style=3D"margin:0px;padding:0px;display:inlin=
+e-block;-ms-interpolation-mode:bicubic;border:none;outline:none;" /> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table>
+<section>
+<div id=3D"new-gmail-hack" style=3D"white-space: nowrap; font: 15px courier=
+; line-height: 0; display: none;">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</div>
+</section>
+</body>
+</html>
+------=_Part_91089100_1159486294.1653629431555--

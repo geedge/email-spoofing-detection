@@ -1,0 +1,116 @@
+X-Mda-Received: from <mx-14-109.mail.sina.com.cn>([<10.41.14.109>])
+ by <micagent-3-36.mda.fmail.dbl.sinanode.com> with LMTP id <3524945>
+ Oct 30 2022 07:08:13 +0800 (CST)
+X-Sina-MID:04932DA976F70CCE4AAEC7FE7AD2F2458D00000000000001
+X-Sina-Attnum:0
+Received: (qmail 15087 invoked by uid 544); 30 Oct 2022 07:08:13 +0800 (CST)
+X-SMAIL-SPAM-FILTER: 15084 OK; Sun, 30 Oct 2022 07:08:13 +0800 (CST)
+X-subc-flag: YES
+Received: from out-17.smtp.github.com (HELO smtp.github.com)([192.30.252.200])
+	by sina.com (10.41.14.109) with SMTP
+	id 635DB25B00003A97; Sat, 30 Oct 2022 07:08:12 +0800 (CST)
+X-Sender: noreply@github.com
+Authentication-Results: sina.com; dkim=pass (Signature verified) header.i=github.com
+Received-SPF: Pass (sina.com: SPF record at github.com designates 192.30.252.200 as permitted sender) identity=from;
+	client-ip=192.30.252.200;
+	receiver=sina.com;
+	envelope-from=noreply@github.com;
+	helo=smtp.github.com
+X-SMAIL-MID: 95964176284377
+Received: from github-lowworker-ba34c0f.va3-iad.github.net (github-lowworker-ba34c0f.va3-iad.github.net [10.48.121.65])
+	by smtp.github.com (Postfix) with ESMTP id C0A0C5C0476
+	for <jas31@sina.com>; Sat, 29 Oct 2022 16:08:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1667084890;
+	bh=gQVp/wnjvP2mne2MwdyKKEcjdnnKk+4gkiC5ypldgNE=;
+	h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:List-ID:
+	 List-Archive:List-Post:List-Unsubscribe:From;
+	b=cenZuFaX7bmAed20S1I+5JoFPLZQDn5u/pA5+lJ1o2/6PkEdW6UvuVvN2hidnGOsE
+	 d144jNqYpSCpW/X/sGLWAp2dqlZ52+HzfqcDB27vuvzxPDIdcEUSlL9WRxiBF2EGQL
+	 rrxxFHu8f5/7wGEUdHW5F7NY9yIhsNezRDotA8cA=
+Date: Sat, 29 Oct 2022 16:08:10 -0700
+From: dan-m8t <notifications@github.com>
+Reply-To: AdguardTeam/AdGuardHome <reply+AD2VYOPUZNOLKMYOL2U5HNGBNLSNVEVBMXHAARH2EQ@reply.github.com>
+To: AdguardTeam/AdGuardHome <AdGuardHome@noreply.github.com>
+Cc: Subscribed <subscribed@noreply.github.com>
+Message-ID: <AdguardTeam/AdGuardHome/repo-discussions/5079/comments/4009722@github.com>
+In-Reply-To: <AdguardTeam/AdGuardHome/repo-discussions/5079@github.com>
+References: <AdguardTeam/AdGuardHome/repo-discussions/5079@github.com>
+Subject: Re: [AdguardTeam/AdGuardHome] Where is "blocked services"
+ configuration stored? (Discussion #5079)
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_635db25ab26e0_802ed4f81784f5";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Precedence: list
+X-GitHub-Sender: dan-m8t
+X-GitHub-Recipient: jas31
+X-GitHub-Reason: subscribed
+List-ID: AdguardTeam/AdGuardHome <AdGuardHome.AdguardTeam.github.com>
+List-Archive: https://github.com/AdguardTeam/AdGuardHome
+List-Post: <mailto:reply+AD2VYOPUZNOLKMYOL2U5HNGBNLSNVEVBMXHAARH2EQ@reply.github.com>
+List-Unsubscribe: <mailto:unsub+AD2VYOPUZNOLKMYOL2U5HNGBNLSNVEVBMXHAARH2EQ@reply.github.com>,
+ <https://github.com/notifications/unsubscribe/AD2VYOKF2B5MJOZDKLBWP3TWFWU5VANCNFSM6AAAAAARR7DBSQ>
+X-Auto-Response-Suppress: All
+X-GitHub-Recipient-Address: jas31@sina.com
+
+
+----==_mimepart_635db25ab26e0_802ed4f81784f5
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I think I got it, I messed things up a little.
+
+Conf dir in is `/opt/adguardhome/conf` and not `/tmp` of course, this comes from my init container which copies the config to the proper location inside the pod.
+
+Again I copied the config before I blocked any services and then did a diff after I updated the setting.
+
+Setting to set is:
+`blocked_services`
+
+I even got this in my ConfigMap, maybe to late for tinkering around.
+
+/Solved ;)
+
+-- 
+Reply to this email directly or view it on GitHub:
+https://github.com/AdguardTeam/AdGuardHome/discussions/5079#discussioncomment-4009722
+You are receiving this because you are subscribed to this thread.
+
+Message ID: <AdguardTeam/AdGuardHome/repo-discussions/5079/comments/4009722@github.com>
+----==_mimepart_635db25ab26e0_802ed4f81784f5
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p></p>
+<p dir="auto">I think I got it, I messed things up a little.</p>
+<p dir="auto">Conf dir in is <code class="notranslate">/opt/adguardhome/conf</code> and not <code class="notranslate">/tmp</code> of course, this comes from my init container which copies the config to the proper location inside the pod.</p>
+<p dir="auto">Again I copied the config before I blocked any services and then did a diff after I updated the setting.</p>
+<p dir="auto">Setting to set is:<br>
+<code class="notranslate">blocked_services</code></p>
+<p dir="auto">I even got this in my ConfigMap, maybe to late for tinkering around.</p>
+<p dir="auto">/Solved ;)</p>
+
+<p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">&mdash;<br />Reply to this email directly, <a href="https://github.com/AdguardTeam/AdGuardHome/discussions/5079#discussioncomment-4009722">view it on GitHub</a>, or <a href="https://github.com/notifications/unsubscribe-auth/AD2VYON32BUHU26FCBIPJKDWFWU5VANCNFSM6AAAAAARR7DBSQ">unsubscribe</a>.<br />You are receiving this because you are subscribed to this thread.<img src="https://github.com/notifications/beacon/AD2VYOL6W6SQSULLDVKJEQLWFWU5VA5CNFSM6AAAAAARR7DBSSWGG33NNVSW45C7OR4XAZNRIRUXGY3VONZWS33OINXW23LFNZ2KUY3PNVWWK3TUL5UWJTQAHUXPU.gif" height="1" width="1" alt="" /><span style="color: transparent; font-size: 0; display: none; visibility: hidden; overflow: hidden; opacity: 0; width: 0; height: 0; max-width: 0; max-height: 0; mso-hide: all">Message ID: <span>&lt;AdguardTeam/AdGuardHome/repo-discussions/5079/comments/4009722</span><span>@</span><span>github</span><span>.</span><span>com&gt;</span></span></p>
+<script type="application/ld+json">[
+{
+"@context": "http://schema.org",
+"@type": "EmailMessage",
+"potentialAction": {
+"@type": "ViewAction",
+"target": "https://github.com/AdguardTeam/AdGuardHome/discussions/5079#discussioncomment-4009722",
+"url": "https://github.com/AdguardTeam/AdGuardHome/discussions/5079#discussioncomment-4009722",
+"name": "View Discussion"
+},
+"description": "View this Discussion on GitHub",
+"publisher": {
+"@type": "Organization",
+"name": "GitHub",
+"url": "https://github.com"
+}
+}
+]</script>
+----==_mimepart_635db25ab26e0_802ed4f81784f5--

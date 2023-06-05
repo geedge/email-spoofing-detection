@@ -1,0 +1,193 @@
+Received: from AM5EUR03HT077.eop-EUR03.prod.protection.outlook.com
+ (2603:1096:203:2f::14) by HK2PR06MB3346.apcprd06.prod.outlook.com with HTTPS
+ via HK0PR03CA0026.APCPRD03.PROD.OUTLOOK.COM; Mon, 7 Oct 2019 05:34:49 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass;
+ b=H5cSjZ3PmIWLeaL+K04wxostc4KHAees4kVROeqw+YOVHZVGn3urhC3QhBZWEfxup/RDHqqfPpzWbiLuAqJrrF7s/KtkdNiQKuJcd+IK6UplFQkpBInGxg3MjjDHu8wWynDUResURpDfDUvpuUFqyQjpR1wwX2zVm4lwdP5sYIWFQdwABpGMonc64NbHuGA4H3yuCBakCwMMaxNmmJIPWrtM6CyDgrP/nL2XfscF4F0xJIaoxwACmuDHiZpz4IY+TCfWVdpZGHNmnM+CoUn3Wd1OgbmdS2d+yTjUpfVeJ2as/qAUC4BEpim7mCnFfGtepH/oKajkJMalOg6Embl0zQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oj+dHu7Gd3nFunluPpfn9kWJHHCblwuGQ5tI4v5n+EU=;
+ b=UPZ8lliNYFkPdCImnLVKB8+NqHrrEzFFHYRA127PH47XlMMHaILl/wJVzgP1DnrH2pzeGteuyLZlj5kGxPr5vlX2tRhwfLv+quyWd0wUQp9G6+1Ey/HX/Pr4XgjzbysfFPfPhcohhfFFRJ5yX1ZZMl2bPWPWWNnlvcUgJ6AuHvG5AYvN4/mNWPNnqNmAhCElIdQJTnDkz6Bxq5CfEGPZozjkxKZPtjWOaVDBCuBcJBDfvGl1Do2Q/Z5LFU53cn71EE8tnhBbs0CY4EtFkwfvzeL1RfAnRdFij8jq7B2A5SNMGHWEcxvQVwYmK57c6CLLLO+knbuJlfyHGfDexFm4+Q==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 40.107.79.53) smtp.rcpttodomain=outlook.com
+ smtp.mailfrom=accountprotection.microsoft.com; dmarc=pass (p=reject sp=reject
+ pct=100) action=none header.from=accountprotection.microsoft.com; dkim=pass
+ (signature was verified) header.d=accountprotection.microsoft.com; arc=pass
+ (0 oda=1 ltdi=1 spf=[1,1,smtp.mailfrom=accountprotection.microsoft.com]
+ dmarc=[1,1,header.from=accountprotection.microsoft.com])
+Received: from AM5EUR03FT014.eop-EUR03.prod.protection.outlook.com
+ (10.152.16.51) by AM5EUR03HT077.eop-EUR03.prod.protection.outlook.com
+ (10.152.17.59) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2305.15; Mon, 7 Oct
+ 2019 05:34:47 +0000
+Authentication-Results: spf=pass (sender IP is 40.107.79.53)
+ smtp.mailfrom=accountprotection.microsoft.com; outlook.com; dkim=pass
+ (signature was verified)
+ header.d=accountprotection.microsoft.com;outlook.com; dmarc=pass action=none
+ header.from=accountprotection.microsoft.com;
+Received-SPF: Pass (protection.outlook.com: domain of
+ accountprotection.microsoft.com designates 40.107.79.53 as permitted sender)
+ receiver=protection.outlook.com; client-ip=40.107.79.53;
+ helo=NAM03-CO1-obe.outbound.protection.outlook.com;
+Received: from NAM03-CO1-obe.outbound.protection.outlook.com (40.107.79.53) by
+ AM5EUR03FT014.mail.protection.outlook.com (10.152.16.130) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2305.15 via Frontend Transport; Mon, 7 Oct 2019 05:34:47 +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:4103CA67E1C3217D6AA72AE3845A3B08E716650DF8BF3984AF03C29D6FCC6303;UpperCasedChecksum:F08C8A64C17FF51EDA3DCC498F517B90A8F26FBEF63609A593D1D2C0E8EE8A93;SizeAsReceived:5871;Count:38
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BAIDyTI9aqqy7iVz2gWeswsKN5oUmubwvnq+k2g1Jy89RjFhzaCehG/1ZNKyu9Z248esr89SSfJM4aKnDVKGNsiX/Rz+83rBjflTThoaTJ8vYbGeK7E18RiZnojy9pDNMJXzhtmG5df1VEeFQ8/+PDofH0eL9fxXSv1luQBuX5C+Yu5d8i4emFKrflBCWncUbO5/ePsC5GnSc0bAtVpvUD7fD3GpLg88ol3dfkmK8jPQZuMerDR/mKwpFHdRkSz7k7jLPkM4Ts9LcKGn5rPtcITOy2b0yvXeSdfwYKTDcliVZRepLssEi8PNpN+oZJFIVkCP4YlWbNq/Gq//JqQE7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oj+dHu7Gd3nFunluPpfn9kWJHHCblwuGQ5tI4v5n+EU=;
+ b=f0xx67BED3HGlNe/hTDrsBJuxPWG6JTLLKOea0+Q68E3iNOFc1XhU+J6/oGF/BvkxhWmrO2lsxSwvM2aOz+nmT3I6SCsGLIs3KUg5zPVl26FlzrHDVW978q1qXZ/qHwJicFOn7xeZqrpCCFrF4TWExx1IHJdPKmiU0mTZW8ga5vGL0rKKE3uf0o2blalS4I/I16GMJzoYbqUvs8Cvcrr8/pxU4Z6ixrfH3Bi5vdgQ2yeOQEbVmxAO/LFvidD/kB6NnfJo5h9+U9uDAlEAxoBc60fc1FQfcihBPoGbyNtjFgvxA3mAB7pbxGtaY/O0hJ6t0sB3PZ8sm8q6rag7gdL/Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 157.55.103.193) smtp.rcpttodomain=outlook.com
+ smtp.mailfrom=accountprotection.microsoft.com; dmarc=pass (p=reject sp=reject
+ pct=100) action=none header.from=accountprotection.microsoft.com; dkim=none
+ (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=accountprotection.microsoft.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oj+dHu7Gd3nFunluPpfn9kWJHHCblwuGQ5tI4v5n+EU=;
+ b=bPCmRouqVZPd4SocMTaGsXfz61B4dZnPTYHI4W3Gd7ZRODAfQi8LpTsfp1wSOou7u18Ah0Zc/3iU50ij/H8Wk6mcH8rrz0RdMrZq6o+eVkUlUpNFtQeL2r45mOGxJnIlsqaYq4pueeEqet4dYDK8qija8Mj9mVq34KNJ2iW8yNI=
+Received: from DM3NAM03FT036.eop-NAM03.prod.protection.outlook.com
+ (10.152.82.60) by DM3NAM03HT102.eop-NAM03.prod.protection.outlook.com
+ (10.152.83.215) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2327.20; Mon, 7 Oct
+ 2019 05:34:45 +0000
+Authentication-Results-Original: spf=pass (sender IP is 157.55.103.193)
+ smtp.mailfrom=accountprotection.microsoft.com; outlook.com; dkim=none
+ (message not signed) header.d=none;outlook.com; dmarc=pass action=none
+ header.from=accountprotection.microsoft.com;
+Received-SPF: Pass (protection.outlook.com: domain of
+ accountprotection.microsoft.com designates 157.55.103.193 as permitted
+ sender) receiver=protection.outlook.com; client-ip=157.55.103.193;
+ helo=accountprotection.microsoft.com;
+Received: from accountprotection.microsoft.com (157.55.103.193) by
+ DM3NAM03FT036.mail.protection.outlook.com (10.152.82.189) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2327.20 via Frontend Transport; Mon, 7 Oct 2019 05:34:45 +0000
+From: Microsoft =?gb2312?b?1cq7p83FttM=?=
+	<account-security-noreply@accountprotection.microsoft.com>
+Date: Sun, 06 Oct 2019 22:34:45 -0700
+Subject: Microsoft =?gb2312?b?1cq7p9Lss6O1x8K8u+62rw==?=
+To: lxyuestc@outlook.com
+X-MSAPipeline: MessageDispatcherEOP
+Message-ID: <OFZQVYYWQ8U4.STXXJY0JYGWN@CY1SCH030011758>
+X-MSAMetaData:
+ =?us-ascii?q?DZpH2AMWAGRTRkOIhO3n!cknqtiMxHqfVH5bJbVMcPi5PLLR3LvUrrW1Jwnu2?=
+ =?us-ascii?q?k4jxQbskkhKCTzVhb*1GgBVYNmvetZS!9aa*79FwNMZwVfJfrkDzun*8Ak5LS?=
+ =?us-ascii?q?5z9tC!Ow$$?=
+Content-Type: multipart/alternative; boundary="=-SCMF7eYkptleDRXOoNutxQ=="
+Return-Path: account-security-noreply@accountprotection.microsoft.com
+X-EOPAttributedMessage: 1
+X-Forefront-Antispam-Report-Untrusted:
+ CIP:157.55.103.193;IPV:NLI;CTRY:US;EFV:NLI;SFV:NSPM;SFS:(10009020)(1496009)(7916004)(136003)(34036004)(39860400002)(396003)(376002)(346002)(47530400004)(199004)(189003)(85182001)(36736006)(71190400001)(33656002)(336012)(22452003)(10290500003)(10090500001)(966005)(508600001)(606006)(186003)(81686011)(956004)(476003)(126002)(14444005)(316002)(118246002)(16586007)(106002)(574094003)(5000100001)(2906002)(356004)(70206006)(70586007)(5660300002)(6916009)(86362001)(121820200001)(512914005)(236005)(2351001)(33716001)(81156014)(8936002)(26005)(81166006)(224303003)(6512007)(25786009)(6306002)(53416004)(9686003)(486006)(2361001)(6486002);DIR:OUT;SFP:1101;SCL:1;SRVR:DM3NAM03HT102;H:accountprotection.microsoft.com;FPR:;SPF:Pass;LANG:zh-cn;PTR:msnbot-157-55-103-193.search.msn.com;A:0;MX:1;
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: adea1add-5a50-4f3c-51f7-08d74ae81113
+X-MS-TrafficTypeDiagnostic: DM3NAM03HT102:|AM5EUR03HT077:
+X-MS-Exchange-PUrlCount: 1
+X-Microsoft-Antispam-PRVS:
+ <DM3NAM03HT10224AF0371D185F4A26E98899B0@DM3NAM03HT102.eop-NAM03.prod.protection.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1728;
+X-Forefront-PRVS: 01834E39B7
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:
+ RXRFsouDinQCGBtMPYFTAHE9iTbjOx52mjFAl60YVxtXaTMTpppcM8Z650chQERdi5C10wu/mwyhWkXryalCtollFIeyqyP7xvlyzzm89kodpPCKcX9iTMyArXUOJ879P0xDKvAfgxqk7XI38srse/luVbAbtp7dTqdtoUjMXzQa8V7U+lBXIgiv5UBOPzhd1UFFwehlzZpMVYLnK9bAeyKcvdYM09MBDPg9FyRXMr6m2eWcso+24+vJZI9hEl7oXfllPnYyS76CCB9lnJBVSLkf0zkxLSL4ach1cSYELkDKmFwnr97HSdh02Ajvnfj851SJlA5KRu6uNICWzKmvhM1E4+r3vBwI3rsMjeb/Rm/tCUMxksZOciVE1N9yYfCYVDnzB9Jw5/CQOfI/l1qidDT2CyMNDR3iJ6Ms3BlkfP4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM3NAM03HT102
+X-IncomingHeaderCount: 38
+X-MS-Exchange-Organization-ExpirationStartTime: 07 Oct 2019 05:34:47.5561
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ adea1add-5a50-4f3c-51f7-08d74ae81113
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped:
+ AM5EUR03FT014.eop-EUR03.prod.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted:
+ AM5EUR03FT014.eop-EUR03.prod.protection.outlook.com
+X-Forefront-Antispam-Report: EFV:NLI;
+X-MS-Exchange-Organization-AuthSource:
+ AM5EUR03FT014.eop-EUR03.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 10/7/2019 5:19:48 AM
+X-MS-Office365-Filtering-Correlation-Id-Prvs:
+ dcbbdf93-5570-48ee-67bb-08d74ae80ff0
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 40.107.79.53
+X-SID-PRA: ACCOUNT-SECURITY-NOREPLY@ACCOUNTPROTECTION.MICROSOFT.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-PCL: 2
+X-Microsoft-Antispam: BCL:0;
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Oct 2019 05:34:47.2258
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: adea1add-5a50-4f3c-51f7-08d74ae81113
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5ba90553-c2cd-460e-b5fd-ab93ad9155c7;Ip=[157.55.103.193];Helo=[accountprotection.microsoft.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+ 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5EUR03HT077
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.0938975
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.2327.004
+X-Microsoft-Antispam-Mailbox-Delivery:
+	abwl:0;wl:0;pcwl:0;kl:0;iwl:0;dwl:0;dkl:0;rwl:0;ucf:0;jmr:0;ex:0;auth:1;dest:I;OFR:SpamFilterPass;ENG:(5062000261)(5061607266)(5061608174)(4900115)(4920090)(6212095)(4950130)(4990090)(9110004);
+X-Message-Info:
+	5vMbyqxGkdee9CWP6GN6k7SiFatHA5tOJthXLYGApF09RV+2VIwDStI5kt5QysY4oISaJVMew/jCeAAos7pgDMg0N0s3uGXy5pAhCGEqPjuj4HzY3T0pAeNe+Adnxy3HYwH4aoa6vr14753RU0x48kcoDh6cbU4+iw8FtO++2G++UBhFcPRDzPWoZOR4ANhpzVt594td91PxQhM95uWdsA==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0xO0Q9MTtHRD0xO1NDTD0tMQ==
+X-Microsoft-Antispam-Message-Info:
+	oHlQ5NvI8c9L4LNOTkIzIwC7KOYO4R3zY88wg9OSH3dNYtuu7Y93gQEWd6RZlBe+Qg1oS9350E+/ownZJqWesCJLJGvcYoa9VHFYl6+n3whA6frJFyMHL+0RRizXEK+ylrD+yWnICEmjqd9ldY3SULs8I5QKX6D/0L8yHSeCYp8I9wLr30BqIQzr+Z177WJhj7USDoj7dV3XzN2G+rpAen26lbXtMlQaqFVDSJkkfBztkRLhZ9hvQ8CPZqH8ZbZOcb0Fd1kFydJxX+b4r7JuBNn+QrnedZXBBhJhvEYeObX/+gsrG6WBHn2qT9igiQg8WbExc0uCEI5EhvVGeg6aUWDM+cmNUB0L/w1ZsSoczF65c7Vetb/ApVRrD1lGUZ5CvfEeZ73KNB0pFX8zQNJgqCPfdENtc8n59FNMFbqyNH08xwHiyejoBssIt+2yKi+KPouL09iHiqLFjLy0mokSKbsmBnoFwdm4ld3akOqAD3x8l2akdvjuvDcAowrUZcscq094yb8vc9IGenCJgkWvVlW66eO1TCtdDAGOYpqrtOBi4a9cDMQogBN+oDDs4bRHdWq6V8FLtVf7i99Oe77Vzlu9GuqsoQdQdx7QHvklL9RswrrCo2nlDorzY+jXj6Zqgyno+e649Ji4gi13BnyA12GZ3lZAN44gd/w8QT0Xp2fZQT2I8BhVLsBN50YXn1y7MKnTf+xcKIHhRZoU/WYYsQiyjnkEK0XLp8gPuoizP1cxS5wG7Ku8igTdISK8rEck/JiQTRanCQBzn0s4C6wtKELCrUsqStbQGOJ+lmTODR/g+RzMQaH9WiXHzAiHtBtAFNBExiQ4nHWwd6YylnueuVjVQU8cJ1OAliyQeox2BLs=
+MIME-Version: 1.0
+
+--=-SCMF7eYkptleDRXOoNutxQ==
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+我们检测到 Microsoft 帐户 lx*****@outlook.com 最近的一次登录中存在异常。例如，你可能从新位置、新设备或新应用进行了登录。
+
+为了确保安全，我们已阻止此次登录中对收件箱、联系人列表和日历的访问。请查看你最近的活动，我们将帮助你保护你的帐户。若要重新获取访问权限，需要确认最近活动的执行者是你本人。
+
+查看最近的活动 https://account.microsoft.com/activity。
+
+谢谢!
+Microsoft 帐户团队 
+--=-SCMF7eYkptleDRXOoNutxQ==
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" dir="ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"><style type="text/css">
+ .link:link, .link:active, .link:visited {
+       color:#2672ec !important;
+       text-decoration:none !important;
+ }
+
+ .link:hover {
+       color:#4284ee !important;
+       text-decoration:none !important;
+ }
+</style>
+<title></title>
+</head>
+<body>
+<table dir="ltr">
+      <tr><td id="i1" style="padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:17px; color:#707070;">Microsoft 帐户</td></tr>
+      <tr><td id="i2" style="padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:41px; color:#2672ec;">验证你的帐户</td></tr>
+      <tr><td id="i3" style="padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;">我们检测到 Microsoft 帐户 <a dir="ltr" id="iAccount" class="link" style="color:#2672ec; text-decoration:none" href="mailto:lx*****@outlook.com">lx*****@outlook.com</a> 最近的一次登录存在某些异常。例如，从新位置、新设备或新应用登录。</td></tr>
+      <tr><td id="i4" style="padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;">为了确保安全，我们已阻止此次登录中对收件箱、联系人列表和日历的访问。请查看你最近的活动，我们将帮助你保护你的帐户。若要重新获取访问权限，需要确认最近活动的执行者是你本人。</td></tr>
+      <tr><td style="padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;">
+         <table border="0" cellspacing="0"><tr><td bgcolor="#2672ec" style="background-color:#2672ec; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; min-width:50px;"><a id="i5" style="font-family: 'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; text-align:center; text-decoration:none; font-weight:600; letter-spacing:0.02em; color:#fff;" href="https://account.microsoft.com/activity">查看最近的活动</a></td></tr></table>
+      </td></tr>
+      <tr><td id="i6" style="padding:0; padding-top:25px; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;">谢谢!</td></tr>
+      <tr><td id="i7" style="padding:0; font-family:'Microsoft Yahei', Verdana, Simsun, sans-serif; font-size:14px; color:#2a2a2a;">Microsoft 帐户团队</td></tr>
+</table>
+</body>
+</html>
+--=-SCMF7eYkptleDRXOoNutxQ==--
